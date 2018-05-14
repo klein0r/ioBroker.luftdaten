@@ -14,40 +14,23 @@
         },
 		"title": "Luftdaten adapter",
         "titleLang": {
-            "en": "Javascript/Node.js based luftdaten adapter",
-            "de": "Javascript / Node.js basierte Vorlagenadapter",
-            "ru": "Адаптер шаблонов на основе Javascript / Node.js",
-            "pt": "Adaptador de modelo baseado em Javascript / Node.js",
-            "nl": "Javascript / Node.js gebaseerde sjabloonadapter",
-            "fr": "Javascript / Node.js basé adaptateur de modèle",
-            "it": "Adattatore modello basato su Javascript / Node.js",
-            "es": "Adaptador de plantilla basado en JavaScript / Node.js"
+            "en": "Javascript / Node.js based Luftdaten",
+            "de": "Javascript / Node.js basierte Luftdaten"
         },
         "desc": {
-            "en": "ioBroker luftdaten Adapter",
-            "de": "ioBroker Luftdaten Adapter",
-            "ru": "ioBroker Luftdaten драйвер как образец",
-            "pt": "Modelo de adaptador para o ioBroker",
-            "fr": "ioBroker adaptateur modèle",
-            "nl": "ioBroker Luftdaten Adapter",
-            "it": "Adattatore modello ioBroker",
-            "es": "Adaptador de plantilla ioBroker"
+            "en": "Luftdaten Adapter",
+            "de": "Luftdaten Adapter"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
         ],
         "docs": {
             "en": "docs/en/admin.md",
-            "ru": "docs/ru/admin.md",
-            "de": "docs/de/admin.md",
-            "es": "docs/es/admin.md",
-            "it": "docs/it/admin.md",
-            "fr": "docs/fr/admin.md",
-            "nl": "docs/nl/admin.md",
-            "pt": "docs/pt/admin.md"
+            "de": "docs/de/admin.md"
         },
         "platform": "Javascript/Node.js",
-        "mode": "daemon",
+        "mode": "schedule",
+        "schedule": "*/5 * * * *",
         "icon": "luftdaten.png",
         "materialize": true,
         "enabled": true,
