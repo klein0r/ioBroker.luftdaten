@@ -1,9 +1,9 @@
 /*
-    ioBroker.template Widget-Set
+    ioBroker.luftdaten Widget-Set
 
     version: "0.5.0"
 
-    Copyright 10.2015-2016 @@Author@@<@@email@@>
+    Copyright 10.2015-2016 Matthias Kleine<info@haus-automatisierung.com>
 
 */
 "use strict";
@@ -28,13 +28,13 @@ $.extend(true, systemDictionary, {
     "Instance":  {"en": "Instance", "de": "Instanz", "ru": "Инстанция"}
 });
 
-// this code can be placed directly in template.html
-vis.binds.template = {
+// this code can be placed directly in luftdaten.html
+vis.binds.luftdaten = {
     version: "0.5.0",
     showVersion: function () {
-        if (vis.binds.template.version) {
-            console.log('Version template: ' + vis.binds.template.version);
-            vis.binds.template.version = null;
+        if (vis.binds.luftdaten.version) {
+            console.log('Version luftdaten: ' + vis.binds.luftdaten.version);
+            vis.binds.luftdaten.version = null;
         }
     },
 	createWidget: function (widgetID, view, data, style) {
@@ -42,7 +42,7 @@ vis.binds.template = {
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.template.createWidget(widgetID, view, data, style);
+                vis.binds.luftdaten.createWidget(widgetID, view, data, style);
             }, 100);
         }
 
@@ -59,10 +59,10 @@ vis.binds.template = {
         // subscribe on updates of value
         if (data.oid) {
             vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
-                $div.find('.template-value').html(newVal);
+                $div.find('.luftdaten-value').html(newVal);
             });
         }
     }
 };
 	
-vis.binds.template.showVersion();
+vis.binds.luftdaten.showVersion();

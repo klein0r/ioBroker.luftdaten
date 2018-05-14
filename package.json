@@ -1,28 +1,28 @@
 {
-  "name": "iobroker.template",
+  "name": "iobroker.luftdaten",
   "version": "0.6.0",
-  "description": "ioBroker template Adapter",
+  "description": "ioBroker luftdaten Adapter",
   "author": {
-    "name": "@@Author@@",
-    "email": "@@email@@"
+    "name": "Matthias Kleine",
+    "email": "info@haus-automatisierung.com"
   },
   "contributors": [
     {
-      "name": "@@Author@@",
-      "email": "@@email@@"
+      "name": "Matthias Kleine",
+      "email": "info@haus-automatisierung.com"
     }
   ],
-  "homepage": "https://github.com/ioBroker/ioBroker.template",
+  "homepage": "https://github.com/ioBroker/ioBroker.luftdaten",
   "license": "MIT",
   "keywords": [
     "ioBroker",
-    "template",
+    "luftdaten",
     "Smart Home",
     "home automation"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.template"
+    "url": "https://github.com/ioBroker/ioBroker.luftdaten"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,7 +35,7 @@
     "test": "node node_modules/mocha/bin/mocha --exit"
   },
   "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.template/issues"
+    "url": "https://github.com/ioBroker/ioBroker.luftdaten/issues"
   },
   "readmeFilename": "README.md"
 }
