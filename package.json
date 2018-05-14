@@ -1,6 +1,6 @@
 {
   "name": "iobroker.luftdaten",
-  "version": "0.6.0",
+  "version": "0.0.1",
   "description": "ioBroker luftdaten Adapter",
   "author": {
     "name": "Matthias Kleine",
@@ -12,7 +12,7 @@
       "email": "info@haus-automatisierung.com"
     }
   ],
-  "homepage": "https://github.com/ioBroker/ioBroker.luftdaten",
+  "homepage": "https://github.com/klein0r/ioBroker.luftdaten",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -22,9 +22,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.luftdaten"
+    "url": "https://github.com/klein0r/ioBroker.luftdaten"
   },
-  "dependencies": {},
+  "dependencies": {
+      "request": "^2.72.0"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "mocha": "^4.1.0",
@@ -35,7 +37,7 @@
     "test": "node node_modules/mocha/bin/mocha --exit"
   },
   "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.luftdaten/issues"
+    "url": "https://github.com/klein0r/ioBroker.luftdaten/issues"
   },
   "readmeFilename": "README.md"
 }
