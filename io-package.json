@@ -1,15 +1,11 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
-            "0.0.1": {
+            "0.0.2": {
                 "en": "initial adapter",
-                "de": "Initiale Version",
-                "ru": "Первоначальный адаптер",
-                "pt": "Versão inicial",
-                "fr": "Version initiale",
-                "nl": "Eerste release"
+                "de": "Initiale Version"
             }
         },
 		"title": "Luftdaten adapter",
@@ -36,9 +32,10 @@
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
         "keywords": ["luftdaten", "vis", "GUI", "graphical", "scada"],
+        "license": "MIT",
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
-        "type": "general",
+        "type": "iot-systems",
         "restartAdapters": ["vis"]
     },
     "native": {

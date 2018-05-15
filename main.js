@@ -27,7 +27,7 @@ function main() {
                 url: "http://" + sensorIdentifier + "/data.json",
                 json: true
             },
-            function(error, response, content) {
+            function (error, response, content) {
                 adapter.log.debug('Request done');
 
                 if (!error && response.statusCode == 200) {
@@ -61,7 +61,7 @@ function main() {
                 url: "http://api.luftdaten.info/v1/sensor/" + sensorIdentifier + "/",
                 json: true
             },
-            function(error, response, content) {
+            function (error, response, content) {
                 adapter.log.debug('Request done');
 
                 if (!error && response.statusCode == 200) {
