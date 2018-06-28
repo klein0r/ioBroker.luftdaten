@@ -6,6 +6,10 @@ This adapter adds "luftdaten.info" sensor data to your ioBroker installation. Yo
 
 ## Changelog
 
+### 0.0.3
+
+* (pix) path and sensor name added
+
 ### 0.0.1
 
 * (klein0r) initial release
