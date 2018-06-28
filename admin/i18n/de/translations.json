@@ -3,5 +3,6 @@
   "Local": "Lokal",
   "Remote": "Remote",
   "Sensor Identifier": "Sensor Kennung",
-  "IP (when local) or ID (when remote)": "IP (wenn lokal) oder ID (wenn Remote)"
+  "IP (when local) or ID (when remote)": "IP (wenn lokal) oder ID (wenn Remote)",
+  "Individual name for sensor": "Eigener Name für diesen Sensor"
 }
