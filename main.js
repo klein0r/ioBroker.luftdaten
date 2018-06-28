@@ -29,7 +29,7 @@ function main() {
             },
         native: {}
     });
-    adapter.setState('Name', {val: sensorName, ack: true});
+    adapter.setState(path + 'Name', {val: sensorName, ack: true});
     if (sensorType == "local") {
         adapter.log.info('local request');
         request(
@@ -45,7 +45,7 @@ function main() {
                     for (var key in content.sensordatavalues) {
                         var obj = content.sensordatavalues[key];
 
-                        adapter.setObjectNotExists(obj.value_type, {
+                        adapter.setObjectNotExists(path + obj.value_type, {
                             type: 'state',
                             common: {
                                 name: obj.value_type,
@@ -55,7 +55,7 @@ function main() {
                             native: {}
                         });
 
-                        adapter.setState(obj.value_type, {val: obj.value, ack: true});
+                        adapter.setState(path + obj.value_type, {val: obj.value, ack: true});
                     }
 
                 } else {
@@ -78,7 +78,7 @@ function main() {
                     for (var key in content[0].sensordatavalues) {
                         var obj = content[0].sensordatavalues[key];
 
-                        adapter.setObjectNotExists('SDS_' + obj.value_type, {
+                        adapter.setObjectNotExists(path + 'SDS_' + obj.value_type, {
                             type: 'state',
                             common: {
                                 name: 'SDS_' + obj.value_type,
@@ -88,7 +88,7 @@ function main() {
                             native: {}
                         });
 
-                        adapter.setState('SDS_' + obj.value_type, {val: obj.value, ack: true});
+                        adapter.setState(path + 'SDS_' + obj.value_type, {val: obj.value, ack: true});
                     }
 
                 } else {
