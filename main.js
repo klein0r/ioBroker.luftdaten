@@ -16,7 +16,7 @@ function main() {
     var sensorType = adapter.config.sensorType;
     var sensorIdentifier = adapter.config.sensorIdentifier;
     var sensorName = adapter.config.sensorName;
-    sensorName = (sensorName.length === 0) ? sensorIdentifier : sensorName;
+    sensorName = (sensorName) ? sensorName : sensorIdentifier;
     adapter.log.info('sensor type: ' + sensorType);
     adapter.log.info('sensor identifier: ' + sensorIdentifier);
     adapter.log.info('sensor name: ' + sensorName);
