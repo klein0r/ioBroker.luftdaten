@@ -16,7 +16,7 @@ function main() {
     var sensorType = adapter.config.sensorType;
     var sensorIdentifier = adapter.config.sensorIdentifier;
     var sensorName = (adapter.config.sensorName === "") ? sensorIdentifier : adapter.config.sensorName;
-    var path = (sensorType == "local") ? "local." : adapter.config.sensorIdentifier + ".";
+    var path = (sensorType == "local") ? adapter.config.sensorIdentifer.replace("."/g, '_') + "." : adapter.config.sensorIdentifier + ".";
     adapter.log.info('sensor type: ' + sensorType);
     adapter.log.info('sensor identifier: ' + sensorIdentifier);
     adapter.log.info('sensor name: ' + sensorName);
