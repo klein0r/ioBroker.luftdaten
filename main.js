@@ -16,10 +16,10 @@ function main() {
     var sensorType = adapter.config.sensorType;
     var sensorIdentifier = adapter.config.sensorIdentifier;
     var sensorName = (adapter.config.sensorName === "") ? sensorIdentifier : adapter.config.sensorName;
-    var path = (sensorType == "local") ? adapter.config.sensorIdentifer.replace("."/g, '_') + "." : adapter.config.sensorIdentifier + ".";
-    adapter.log.info('sensor type: ' + sensorType);
-    adapter.log.info('sensor identifier: ' + sensorIdentifier);
-    adapter.log.info('sensor name: ' + sensorName);
+    var path = (sensorType == "local") ? adapter.config.sensorIdentifer.replace(/./g,"_") + "." : adapter.config.sensorIdentifier + ".";
+    adapter.log.debug('sensor type: ' + sensorType);
+    adapter.log.debug('sensor identifier: ' + sensorIdentifier);
+    adapter.log.debug('sensor name: ' + sensorName);
     adapter.setObjectNotExists(path + 'Name', {
         type: 'state',
             common: {
@@ -31,7 +31,7 @@ function main() {
     });
     adapter.setState(path + 'Name', {val: sensorName, ack: true});
     if (sensorType == "local") {
-        adapter.log.info('local request');
+        adapter.log.debug('local request');
         request(
             {
                 url: "http://" + sensorIdentifier + "/data.json",
@@ -64,7 +64,7 @@ function main() {
             }
         );
     } else if (sensorType == "remote") {
-        adapter.log.info('remote request');
+        adapter.log.debug('remote request');
         request(
             {
                 url: "http://api.luftdaten.info/v1/sensor/" + sensorIdentifier + "/",
