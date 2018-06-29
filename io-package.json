@@ -6,7 +6,7 @@
             "0.0.3": {
                 "en": "added path an sensor name",
                 "de": "Objektpfad und Sensorname"
-            }
+            },
             "0.0.2": {
                 "en": "initial adapter",
                 "de": "Initiale Version"
