@@ -1,9 +1,13 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "news": {
-            "0.0.3": {
+            "0.0.4": {
+                "en": "path can be ip if sensor type is local",
+                "de": "IP-Adresse als Pfad bei lokalem Sensor"
+            },
+	    "0.0.3": {
                 "en": "added path an sensor name",
                 "de": "Objektpfad und Sensorname"
             },
