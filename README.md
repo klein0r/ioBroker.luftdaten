@@ -4,7 +4,16 @@
 
 This adapter adds "luftdaten.info" sensor data to your ioBroker installation. You can decide if you want to add a local sensor by ip or if you just want to use the API of lufdaten.info to get the data of another sensor.
 
+## Contributors
+
+- klein0r
+- pix
+
 ## Changelog
+
+### 0.0.5
+* (klein0r) fixed issues when sensor is not available
+* (klein0r) added location information for remote sensors
 
 ### 0.0.4
 * (pix) path is IP if sensor is local

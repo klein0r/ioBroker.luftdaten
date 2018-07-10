@@ -1,13 +1,17 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
+            "0.0.5": {
+                "en": "Fixed issues when sensor is not available",
+                "de": "Probleme behoben, wenn Sensor nicht verfügbar ist"
+            },
             "0.0.4": {
                 "en": "path can be ip if sensor type is local",
                 "de": "IP-Adresse als Pfad bei lokalem Sensor"
             },
-	    "0.0.3": {
+            "0.0.3": {
                 "en": "added path an sensor name",
                 "de": "Objektpfad und Sensorname"
             },
@@ -16,7 +20,7 @@
                 "de": "Initiale Version"
             }
         },
-		"title": "Luftdaten adapter",
+        "title": "Luftdaten adapter",
         "titleLang": {
             "en": "Javascript / Node.js based Luftdaten",
             "de": "Javascript / Node.js basierte Luftdaten"

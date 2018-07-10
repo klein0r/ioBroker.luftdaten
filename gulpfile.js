@@ -5,13 +5,7 @@ var fs        = require('fs');
 var pkg       = require('./package.json');
 var iopackage = require('./io-package.json');
 var version   = (pkg && pkg.version) ? pkg.version : iopackage.common.version;
-/*var appName   = getAppName();
 
-function getAppName() {
-    var parts = __dirname.replace(/\\/g, '/').split('/');
-    return parts[parts.length - 1].split('.')[0].toLowerCase();
-}
-*/
 const fileName = 'words.js';
 var languages =  {
     en: {},
