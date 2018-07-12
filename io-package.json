@@ -47,7 +47,7 @@
         "license": "MIT",
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
-        "type": "iot-systems"
+        "type": "weather"
     },
     "native": {
     },
