@@ -20,14 +20,14 @@
                 "de": "Initiale Version"
             }
         },
-        "title": "Luftdaten adapter",
+        "title": "Luftdaten.info",
         "titleLang": {
-            "en": "Javascript / Node.js based Luftdaten",
-            "de": "Javascript / Node.js basierte Luftdaten"
+            "en": "Luftdaten",
+            "de": "Luftdaten"
         },
         "desc": {
-            "en": "Luftdaten Adapter",
-            "de": "Luftdaten Adapter"
+            "en": "Luftdaten",
+            "de": "Luftdaten"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -43,7 +43,7 @@
         "materialize": true,
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
-        "keywords": ["luftdaten", "vis", "GUI", "graphical", "scada"],
+        "keywords": ["luftdaten"],
         "license": "MIT",
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
