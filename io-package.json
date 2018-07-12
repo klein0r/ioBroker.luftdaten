@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "Changed type to weather",
+                "de": "Typ zu Wetter geändert"
+            },
             "0.0.5": {
                 "en": "Fixed issues when sensor is not available",
                 "de": "Probleme behoben, wenn Sensor nicht verfügbar ist"

@@ -11,6 +11,9 @@ This adapter adds "luftdaten.info" sensor data to your ioBroker installation. Yo
 
 ## Changelog
 
+### 0.0.6
+* (klein0r) changed type to weather
+
 ### 0.0.5
 * (klein0r) fixed issues when sensor is not available
 * (klein0r) added location information for remote sensors
