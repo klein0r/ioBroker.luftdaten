@@ -36,10 +36,6 @@
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
         ],
-        "docs": {
-            "en": "docs/en/admin.md",
-            "de": "docs/de/admin.md"
-        },
         "platform": "Javascript/Node.js",
         "mode": "schedule",
         "schedule": "*/5 * * * *",
