@@ -35,6 +35,8 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 - klein0r
 - pix
+- GermanBluefox
+- Apollon77
 
 ## Changelog
 
