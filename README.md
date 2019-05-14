@@ -31,7 +31,7 @@ This adapter adds "luftdaten.info" sensor data to your ioBroker installation. Yo
 
 The MIT License (MIT)
 
-Copyright (c) 2018 Matthias Kleine <info@haus-automatisierung.com>
+Copyright (c) 2019 Matthias Kleine <info@haus-automatisierung.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
