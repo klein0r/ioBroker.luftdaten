@@ -1,14 +1,23 @@
-/* jshint -W097 */// jshint strict:false
-/*jslint node: true */
+/* jshint -W097 */
+/* jshint strict: false */
+/* jslint node: true */
 'use strict';
 
-var utils = require('@iobroker/adapter-core'); // Get common adapter utils
+var utils = require('@iobroker/adapter-core');
 var request = require('request');
 
-var adapter = new utils.Adapter('luftdaten');
+let adapter;
 
-adapter.on('ready', function () {
-    main();
+function startAdapter(options) {
+    options = options || {};
+    Object.assign(options, {
+        name: 'luftdaten',
+        ready: () => main()
+    });
+
+    adapter = new utils.Adapter(options);
+
+    return adapter;
 });
 
 function main() {
@@ -84,14 +93,16 @@ function main() {
                                     name: obj.value_type,
                                     type: 'number',
                                     role: role,
-                                    unit: unit
+                                    unit: unit,
+                                    read: true,
+                                    write: false
                                 },
                                 native: {}
                             });
                             adapter.setState(path + obj.value_type, {val: obj.value, ack: true});
                         }
                     } else {
-                        adapter.log.warn('Response has no valid content. Check IP address and try again.');
+                        adapter.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                     }
 
                 } else {
@@ -124,7 +135,9 @@ function main() {
                                     name: 'SDS_' + obj.value_type,
                                     type: 'number',
                                     role: 'value.ppm',
-                                    unit: 'µg/m³'
+                                    unit: 'µg/m³',
+                                    read: true,
+                                    write: false
                                 },
                                 native: {}
                             });
@@ -148,7 +161,9 @@ function main() {
                                     name: 'Longtitude',
                                     type: 'number',
                                     role: 'value.gps.longitude',
-                                    unit: '°'
+                                    unit: '°',
+                                    read: true,
+                                    write: false
                                 },
                                 native: {}
                             });
@@ -160,7 +175,9 @@ function main() {
                                     name: 'Latitude',
                                     type: 'number',
                                     role: 'value.gps.latitude',
-                                    unit: '°'
+                                    unit: '°',
+                                    read: true,
+                                    write: false
                                 },
                                 native: {}
                             });
@@ -172,18 +189,17 @@ function main() {
                                     name: 'Altitude',
                                     type: 'number',
                                     role: 'value.gps.elevation',
-                                    unit: 'm'
+                                    unit: 'm',
+                                    read: true,
+                                    write: false
                                 },
                                 native: {}
                             });
                             adapter.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
-
                         }
-
                     } else {
                         adapter.log.warn('Response has no valid content. Check sensor id and try again.');
                     }
-
                 } else {
                     adapter.log.error(error);
                 }
@@ -194,4 +210,11 @@ function main() {
     setTimeout(function () {
         adapter.stop();
     }, 10000);
+}
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) {
+    module.exports = startAdapter;
+} else {
+    startAdapter();
 }

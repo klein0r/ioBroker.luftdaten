@@ -46,6 +46,7 @@
         "icon": "luftdaten.png",
         "materialize": true,
         "enabled": true,
+        "compact": true,
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
         "keywords": ["luftdaten"],
         "license": "MIT",

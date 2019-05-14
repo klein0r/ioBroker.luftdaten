@@ -9,9 +9,14 @@ This adapter adds "luftdaten.info" sensor data to your ioBroker installation. Yo
 ### Local
 
 1. Build your own adapter and add it to your local wifi network
-2. 
+2. Create a new instance of the adapter
+3. Choose "Local" as type
+4. Fill the IP or Hostname of the sensor in the second input
+5. Choose a name and save the settings
 
-Feel free to change the schedule settings in the instances tab (default is every 5 minutes).
+Wait some minutes until the cronjob collects the data for the first time.
+
+*Feel free to change the schedule settings in the instances tab (default is every 5 minutes).*
 
 ### Remote
 
@@ -24,7 +29,7 @@ Feel free to change the schedule settings in the instances tab (default is every
 
 Wait some minutes until the cronjob collects the data for the first time.
 
-Feel free to change the schedule settings in the instances tab (default is every 5 minutes).
+*Feel free to change the schedule settings in the instances tab (default is every 5 minutes).*
 
 ## Contributors
 
