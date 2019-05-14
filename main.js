@@ -18,7 +18,7 @@ function startAdapter(options) {
     adapter = new utils.Adapter(options);
 
     return adapter;
-});
+};
 
 function main() {
 

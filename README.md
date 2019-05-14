@@ -1,5 +1,7 @@
 ![Logo](admin/luftdaten.png)
+
 # ioBroker.luftdaten
+
 ![Number of Installations](http://iobroker.live/badges/luftdaten-installed.svg) ![Number of Installations](http://iobroker.live/badges/luftdaten-stable.svg)
 
 This adapter adds "luftdaten.info" sensor data to your ioBroker installation. You can decide if you want to add a local sensor by ip or if you just want to use the API of lufdaten.info to get the data of another sensor.
