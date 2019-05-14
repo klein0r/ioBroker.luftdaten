@@ -1,8 +1,30 @@
 ![Logo](admin/luftdaten.png)
 # ioBroker.luftdaten
-![Number of Installations](http://iobroker.live/badges/luftdaten-installed.svg) ![Number of Installations](http://iobroker.live/badges/luftdaten-stable.svg) =================
+![Number of Installations](http://iobroker.live/badges/luftdaten-installed.svg) ![Number of Installations](http://iobroker.live/badges/luftdaten-stable.svg)
 
 This adapter adds "luftdaten.info" sensor data to your ioBroker installation. You can decide if you want to add a local sensor by ip or if you just want to use the API of lufdaten.info to get the data of another sensor.
+
+## Configuration
+
+### Local
+
+1. Build your own adapter and add it to your local wifi network
+2. 
+
+Feel free to change the schedule settings in the instances tab (default is every 5 minutes).
+
+### Remote
+
+1. Choose one of the sensors on the online map: [deutschland.maps.luftdaten.info](https://deutschland.maps.luftdaten.info/)
+2. Click on the sensor and copy the ID (#XXXXX)
+3. Create a new instance of the adapter
+4. Choose "Remote" as type
+5. Fill the ID of the sensor in the second input
+6. Choose a name and save the settings
+
+Wait some minutes until the cronjob collects the data for the first time.
+
+Feel free to change the schedule settings in the instances tab (default is every 5 minutes).
 
 ## Contributors
 
@@ -10,6 +32,9 @@ This adapter adds "luftdaten.info" sensor data to your ioBroker installation. Yo
 - pix
 
 ## Changelog
+
+### 0.0.7
+* (klein0r) merged pull requests - thanks a lot for contribution
 
 ### 0.0.6
 * (klein0r) changed type to weather

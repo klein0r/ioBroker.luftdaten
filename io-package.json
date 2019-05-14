@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "news": {
+            "0.0.7": {
+                "en": "Merged pull requests, updated documentation and added units",
+                "de": "Pull Requsts hinzugefügt, Dokumentation angepasst und Einheiten hinzugefügt"
+            },
             "0.0.6": {
                 "en": "Changed type to weather",
                 "de": "Typ zu Wetter geändert"

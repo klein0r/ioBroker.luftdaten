@@ -48,15 +48,43 @@ function main() {
                 if (!error && response.statusCode == 200) {
 
                     if (content && content.hasOwnProperty('sensordatavalues')) {
+
+                        var unitList = {
+                            temperature: '°C',
+                            humidity: '%',
+                            signal: 'dBa',
+                            min_micro: 'µs',
+                            max_micro: 'µs'
+                        };
+
+                        var roleList = {
+                            temperature: 'value.temperature',
+                            humidity: 'value.humidity',
+                            signal: 'value',
+                            min_micro: 'value',
+                            max_micro: 'value'
+                        };
+
                         for (var key in content.sensordatavalues) {
                             var obj = content.sensordatavalues[key];
+                            var unit = null;
+                            var role = 'value';
+
+                            if (obj.value_type.indexOf("SDS") == 0) {
+                                unit = 'µg/m³';
+                                role = 'value.ppm';
+                            } else if (unitList.hasOwnProperty(obj.value_type)) {
+                                unit = unitList[obj.value_type];
+                                role = roleList[obj.value_type];
+                            }
 
                             adapter.setObjectNotExists(path + obj.value_type, {
                                 type: 'state',
                                 common: {
                                     name: obj.value_type,
                                     type: 'number',
-                                    role: 'value'
+                                    role: role,
+                                    unit: unit
                                 },
                                 native: {}
                             });
@@ -95,7 +123,8 @@ function main() {
                                 common: {
                                     name: 'SDS_' + obj.value_type,
                                     type: 'number',
-                                    role: 'value'
+                                    role: 'value.ppm',
+                                    unit: 'µg/m³'
                                 },
                                 native: {}
                             });
@@ -108,7 +137,7 @@ function main() {
                                 type: 'channel',
                                 common: {
                                     name: 'Location',
-                                    role: ''
+                                    role: 'value.gps'
                                 },
                                 native: {}
                             });
@@ -118,7 +147,8 @@ function main() {
                                 common: {
                                     name: 'Longtitude',
                                     type: 'number',
-                                    role: 'value'
+                                    role: 'value.gps.longitude',
+                                    unit: '°'
                                 },
                                 native: {}
                             });
@@ -129,7 +159,8 @@ function main() {
                                 common: {
                                     name: 'Latitude',
                                     type: 'number',
-                                    role: 'value'
+                                    role: 'value.gps.latitude',
+                                    unit: '°'
                                 },
                                 native: {}
                             });
@@ -140,7 +171,8 @@ function main() {
                                 common: {
                                     name: 'Altitude',
                                     type: 'number',
-                                    role: 'value'
+                                    role: 'value.gps.elevation',
+                                    unit: 'm'
                                 },
                                 native: {}
                             });
