@@ -47,6 +47,9 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.8
+* (klein0r) added response time and units
+
 ### 0.0.7
 * (klein0r) merged pull requests - thanks a lot for contribution
 

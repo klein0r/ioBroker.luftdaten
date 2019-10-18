@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "Merged pull requests, minor fixes",
+                "de": "Pull Requsts hinzugefügt, kleine Fixes"
+            },
             "0.0.7": {
                 "en": "Merged pull requests, updated documentation and added units",
                 "de": "Pull Requsts hinzugefügt, Dokumentation angepasst und Einheiten hinzugefügt"

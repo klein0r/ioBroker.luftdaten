@@ -3,8 +3,8 @@
 /* jslint node: true */
 'use strict';
 
-var utils = require('@iobroker/adapter-core');
-var request = require('request');
+const utils = require('@iobroker/adapter-core');
+const request = require('request');
 
 class Luftdaten extends utils.Adapter {
 
@@ -45,76 +45,96 @@ class Luftdaten extends utils.Adapter {
             request(
                 {
                     url: 'http://' + sensorIdentifier + '/data.json',
-                    json: true
+                    json: true,
+                    time: true,
+                    timeout: 5000
                 },
                 function (error, response, content) {
                     self.log.debug('local request done');
 
-                    self.setObjectNotExists(path + 'responseCode', {
-                        type: 'state',
-                        common: {
-                            name: 'responseCode',
-                            type: 'number',
-                            role: 'value',
-                            read: true,
-                            write: false
-                        },
-                        native: {}
-                    });
-                    self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
+                    if (response) {
+                        self.setObjectNotExists(path + 'responseCode', {
+                            type: 'state',
+                            common: {
+                                name: 'responseCode',
+                                type: 'number',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
 
-                    if (!error && response.statusCode == 200) {
+                        self.setObjectNotExists(path + 'responseTime', {
+                            type: 'state',
+                            common: {
+                                name: 'responseTime',
+                                type: 'number',
+                                role: 'value',
+                                unit: 'ms',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
 
-                        if (content && content.hasOwnProperty('sensordatavalues')) {
+                        if (!error && response.statusCode == 200) {
 
-                            var unitList = {
-                                temperature: '°C',
-                                humidity: '%',
-                                signal: 'dBa',
-                                min_micro: 'µs',
-                                max_micro: 'µs'
-                            };
+                            if (content && content.hasOwnProperty('sensordatavalues')) {
 
-                            var roleList = {
-                                temperature: 'value.temperature',
-                                humidity: 'value.humidity',
-                                signal: 'value',
-                                min_micro: 'value',
-                                max_micro: 'value'
-                            };
+                                var unitList = {
+                                    temperature: '°C',
+                                    humidity: '%',
+                                    signal: 'dBa',
+                                    min_micro: 'µs',
+                                    max_micro: 'µs'
+                                };
 
-                            for (var key in content.sensordatavalues) {
-                                var obj = content.sensordatavalues[key];
-                                var unit = null;
-                                var role = 'value';
+                                var roleList = {
+                                    temperature: 'value.temperature',
+                                    humidity: 'value.humidity',
+                                    signal: 'value',
+                                    min_micro: 'value',
+                                    max_micro: 'value'
+                                };
 
-                                if (obj.value_type.indexOf("SDS") == 0) {
-                                    unit = 'µg/m³';
-                                    role = 'value.ppm';
-                                } else if (unitList.hasOwnProperty(obj.value_type)) {
-                                    unit = unitList[obj.value_type];
-                                    role = roleList[obj.value_type];
+                                for (var key in content.sensordatavalues) {
+                                    var obj = content.sensordatavalues[key];
+                                    var unit = null;
+                                    var role = 'value';
+
+                                    if (obj.value_type.indexOf("SDS") == 0) {
+                                        unit = 'µg/m³';
+                                        role = 'value.ppm';
+                                    } else if (unitList.hasOwnProperty(obj.value_type)) {
+                                        unit = unitList[obj.value_type];
+                                        role = roleList[obj.value_type];
+                                    }
+
+                                    self.setObjectNotExists(path + obj.value_type, {
+                                        type: 'state',
+                                        common: {
+                                            name: obj.value_type,
+                                            type: 'number',
+                                            role: role,
+                                            unit: unit,
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + obj.value_type, {val: obj.value, ack: true});
                                 }
-
-                                self.setObjectNotExists(path + obj.value_type, {
-                                    type: 'state',
-                                    common: {
-                                        name: obj.value_type,
-                                        type: 'number',
-                                        role: role,
-                                        unit: unit,
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + obj.value_type, {val: obj.value, ack: true});
+                            } else {
+                                self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                             }
-                        } else {
-                            self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
+        
                         }
-    
-                    } else {
+                    }
+
+                    if (error) {
                         self.log.warn(error);
                     }
                 }
@@ -125,111 +145,131 @@ class Luftdaten extends utils.Adapter {
             request(
                 {
                     url: 'http://api.luftdaten.info/v1/sensor/' + sensorIdentifier + '/',
-                    json: true
+                    json: true,
+                    time: true,
+                    timeout: 5000
                 },
                 function (error, response, content) {
                     self.log.debug('remote request done');
 
-                    self.setObjectNotExists(path + 'responseCode', {
-                        type: 'state',
-                        common: {
-                            name: 'responseCode',
-                            type: 'number',
-                            role: 'value',
-                            read: true,
-                            write: false
-                        },
-                        native: {}
-                    });
-                    self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
+                    if (response) {
+                        self.setObjectNotExists(path + 'responseCode', {
+                            type: 'state',
+                            common: {
+                                name: 'responseCode',
+                                type: 'number',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
 
-                    if (!error && response.statusCode == 200) {
+                        self.setObjectNotExists(path + 'responseTime', {
+                            type: 'state',
+                            common: {
+                                name: 'responseTime',
+                                type: 'number',
+                                role: 'value',
+                                unit: 'ms',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
 
-                        if (content && Array.isArray(content)) {
-                            var sensorData = content[0];
+                        if (!error && response.statusCode == 200) {
+    
+                            if (content && Array.isArray(content)) {
+                                var sensorData = content[0];
 
-                            for (var key in sensorData.sensordatavalues) {
-                                var obj = sensorData.sensordatavalues[key];
+                                for (var key in sensorData.sensordatavalues) {
+                                    var obj = sensorData.sensordatavalues[key];
 
-                                self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
-                                    type: 'state',
-                                    common: {
-                                        name: 'SDS_' + obj.value_type,
-                                        type: 'number',
-                                        role: 'value.ppm',
-                                        unit: 'µg/m³',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'SDS_' + obj.value_type, {val: obj.value, ack: true});
+                                    self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
+                                        type: 'state',
+                                        common: {
+                                            name: 'SDS_' + obj.value_type,
+                                            type: 'number',
+                                            role: 'value.ppm',
+                                            unit: 'µg/m³',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'SDS_' + obj.value_type, {val: obj.value, ack: true});
+                                }
+
+                                if (sensorData.hasOwnProperty('location')) {
+    
+                                    self.setObjectNotExists(path + 'location', {
+                                        type: 'channel',
+                                        common: {
+                                            name: 'Location',
+                                            role: 'value.gps'
+                                        },
+                                        native: {}
+                                    });
+
+                                    self.setObjectNotExists(path + 'location.longitude', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Longtitude',
+                                            type: 'number',
+                                            role: 'value.gps.longitude',
+                                            unit: '°',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'location.longitude', {val: sensorData.location.longitude, ack: true});
+
+                                    self.setObjectNotExists(path + 'location.latitude', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Latitude',
+                                            type: 'number',
+                                            role: 'value.gps.latitude',
+                                            unit: '°',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'location.latitude', {val: sensorData.location.latitude, ack: true});
+
+                                    self.setObjectNotExists(path + 'location.altitude', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Altitude',
+                                            type: 'number',
+                                            role: 'value.gps.elevation',
+                                            unit: 'm',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
+                                }
+                            } else {
+                                self.log.warn('Response has no valid content. Check sensor id and try again.');
                             }
-
-                            if (sensorData.hasOwnProperty('location')) {
-
-                                self.setObjectNotExists(path + 'location', {
-                                    type: 'channel',
-                                    common: {
-                                        name: 'Location',
-                                        role: 'value.gps'
-                                    },
-                                    native: {}
-                                });
-
-                                self.setObjectNotExists(path + 'location.longitude', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Longtitude',
-                                        type: 'number',
-                                        role: 'value.gps.longitude',
-                                        unit: '°',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'location.longitude', {val: sensorData.location.longitude, ack: true});
-
-                                self.setObjectNotExists(path + 'location.latitude', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Latitude',
-                                        type: 'number',
-                                        role: 'value.gps.latitude',
-                                        unit: '°',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'location.latitude', {val: sensorData.location.latitude, ack: true});
-
-                                self.setObjectNotExists(path + 'location.altitude', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Altitude',
-                                        type: 'number',
-                                        role: 'value.gps.elevation',
-                                        unit: 'm',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
-                            }
-                        } else {
-                            self.log.warn('Response has no valid content. Check sensor id and try again.');
                         }
-                    } else {
+                    }
+
+                    if (error) {
                         self.log.warn(error);
                     }
                 }
             );
         }
 
-        setTimeout(this.stop.bind(this), 10000);
+        setTimeout(this.stop.bind(this), 15000);
     }
 
     onUnload(callback) {
