@@ -51,26 +51,37 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.9
+
+* (klein0r) improved logging
+
 ### 0.0.8
+
 * (klein0r) added response time and units
 
 ### 0.0.7
+
 * (klein0r) merged pull requests - thanks a lot for contribution
 
 ### 0.0.6
+
 * (klein0r) changed type to weather
 
 ### 0.0.5
+
 * (klein0r) fixed issues when sensor is not available
 * (klein0r) added location information for remote sensors
 
 ### 0.0.4
+
 * (pix) path is IP if sensor is local
 
 ### 0.0.3
+
 * (pix) path and sensor name added
 
 ### 0.0.1
+
 * (klein0r) initial release
 
 ## License
