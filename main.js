@@ -24,9 +24,7 @@ class Luftdaten extends utils.Adapter {
         let sensorName = (this.config.sensorName === "") ? sensorIdentifier : this.config.sensorName;
         let path = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') + '.' : sensorIdentifier + '.';
 
-        this.log.debug('sensor type: ' + sensorType);
-        this.log.debug('sensor identifier: ' + sensorIdentifier);
-        this.log.debug('sensor name: ' + sensorName);
+        this.log.debug('sensor type: ' + sensorType + ', sensor identifier: ' + sensorIdentifier + ', sensor name: ' + sensorName);
 
         this.setObjectNotExists(path + 'name', {
             type: 'state',
@@ -41,19 +39,21 @@ class Luftdaten extends utils.Adapter {
         this.setState(path + 'name', {val: sensorName, ack: true});
 
         if (sensorType == 'local') {
-            this.log.debug('local request');
+            this.log.debug('local request started');
 
             request(
                 {
                     url: 'http://' + sensorIdentifier + '/data.json',
                     json: true,
                     time: true,
-                    timeout: 5000
+                    timeout: 4500
                 },
-                function (error, response, content) {
+                (error, response, content) => {
                     self.log.debug('local request done');
 
                     if (response) {
+                        self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
+
                         self.setObjectNotExists(path + 'responseCode', {
                             type: 'state',
                             common: {
@@ -133,27 +133,27 @@ class Luftdaten extends utils.Adapter {
                             }
         
                         }
-                    }
-
-                    if (error) {
+                    } else if (error) {
                         self.log.warn(error);
                     }
                 }
             );
         } else if (sensorType == 'remote') {
-            this.log.debug('remote request');
+            this.log.debug('remote request started');
 
             request(
                 {
                     url: 'http://api.luftdaten.info/v1/sensor/' + sensorIdentifier + '/',
                     json: true,
                     time: true,
-                    timeout: 5000
+                    timeout: 4500
                 },
-                function (error, response, content) {
+                (error, response, content) => {
                     self.log.debug('remote request done');
 
                     if (response) {
+                        self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
+
                         self.setObjectNotExists(path + 'responseCode', {
                             type: 'state',
                             common: {
@@ -261,16 +261,14 @@ class Luftdaten extends utils.Adapter {
                                 self.log.warn('Response has no valid content. Check sensor id and try again.');
                             }
                         }
-                    }
-
-                    if (error) {
+                    } else if (error) {
                         self.log.warn(error);
                     }
                 }
             );
         }
 
-        setTimeout(this.stop.bind(this), 15000);
+        setTimeout(this.stop.bind(this), 10000);
     }
 
     onUnload(callback) {
