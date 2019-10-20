@@ -34,29 +34,38 @@
         },
         "title": "Luftdaten.info",
         "titleLang": {
-            "en": "Luftdaten",
-            "de": "Luftdaten"
+            "en": "Luftdaten.info",
+            "de": "Luftdaten.info"
         },
         "desc": {
-            "en": "Luftdaten",
-            "de": "Luftdaten"
+            "en": "Loads current air quality data from a local or remote sensor",
+            "de": "Lädt aktuelle Luftqualitätsdaten eines lokalen oder Cloud-Sensors"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
         ],
-        "platform": "Javascript/Node.js",
-        "mode": "schedule",
-        "schedule": "*/5 * * * *",
-        "icon": "luftdaten.png",
-        "materialize": true,
-        "enabled": true,
-        "compact": true,
-        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
-        "keywords": ["luftdaten"],
+        "keywords": [
+            "web",
+            "weather",
+            "air",
+            "quality"
+        ],
         "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "luftdaten.png",
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
+        "enabled": true,
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
-        "type": "weather"
+        "mode": "schedule",
+        "schedule": "*/5 * * * *",
+        "type": "weather",
+        "compact": true,
+        "materialize": true,
+        "dependencies": [
+            { "js-controller": ">=1.4.2" }
+        ]
     },
     "native": {
     },
