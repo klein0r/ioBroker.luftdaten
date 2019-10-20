@@ -14,6 +14,7 @@ class Luftdaten extends utils.Adapter {
             name: 'luftdaten',
         });
         this.on('ready', this.onReady.bind(this));
+        this.on('unload', this.onUnload.bind(this));
     }
 
     async onReady() {
