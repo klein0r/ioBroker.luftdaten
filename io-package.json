@@ -59,7 +59,7 @@
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
         "mode": "schedule",
-        "schedule": "*/5 * * * *",
+        "schedule": "*/15 * * * *",
         "type": "weather",
         "compact": true,
         "materialize": true,
