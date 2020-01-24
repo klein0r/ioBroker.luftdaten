@@ -51,6 +51,14 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.10
+
+* (klein0r) changed API url
+
+### 0.0.9
+
+* (klein0r) minor bugfixes
+
 ### 0.0.9
 
 * (klein0r) improved logging

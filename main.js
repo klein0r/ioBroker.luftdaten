@@ -146,7 +146,7 @@ class Luftdaten extends utils.Adapter {
 
                 request(
                     {
-                        url: 'http://api.luftdaten.info/v1/sensor/' + sensorIdentifier + '/',
+                        url: 'https://data.sensor.community/airrohr/v1/sensor/' + sensorIdentifier + '/',
                         json: true,
                         time: true,
                         timeout: 4500

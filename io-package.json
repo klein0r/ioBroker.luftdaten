@@ -1,8 +1,16 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "news": {
+            "0.0.10": {
+                "en": "Changed API url",
+                "de": "API-Url geändert"
+            },
+            "0.0.9": {
+                "en": "Improved logging",
+                "de": "Logging verbessert"
+            },
             "0.0.8": {
                 "en": "Merged pull requests, minor fixes",
                 "de": "Pull Requsts hinzugefügt, kleine Fixes"
