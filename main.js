@@ -27,6 +27,22 @@ class Luftdaten extends utils.Adapter {
         if (sensorIdentifier && sensorName) {
             const path = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') + '.' : sensorIdentifier + '.';
 
+            const unitList = {
+                temperature: '°C',
+                humidity: '%',
+                signal: 'dBa',
+                min_micro: 'µs',
+                max_micro: 'µs'
+            };
+
+            const roleList = {
+                temperature: 'value.temperature',
+                humidity: 'value.humidity',
+                signal: 'value',
+                min_micro: 'value',
+                max_micro: 'value'
+            };
+
             this.log.debug('sensor type: ' + sensorType + ', sensor identifier: ' + sensorIdentifier + ', sensor name: ' + sensorName);
 
             this.setObjectNotExists(path + 'name', {
@@ -87,22 +103,6 @@ class Luftdaten extends utils.Adapter {
                             if (!error && response.statusCode == 200) {
 
                                 if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
-
-                                    const unitList = {
-                                        temperature: '°C',
-                                        humidity: '%',
-                                        signal: 'dBa',
-                                        min_micro: 'µs',
-                                        max_micro: 'µs'
-                                    };
-
-                                    const roleList = {
-                                        temperature: 'value.temperature',
-                                        humidity: 'value.humidity',
-                                        signal: 'value',
-                                        min_micro: 'value',
-                                        max_micro: 'value'
-                                    };
 
                                     for (const key in content.sensordatavalues) {
                                         const obj = content.sensordatavalues[key];
@@ -192,13 +192,24 @@ class Luftdaten extends utils.Adapter {
                                     for (const key in sensorData.sensordatavalues) {
                                         const obj = sensorData.sensordatavalues[key];
 
+                                        let unit = null;
+                                        let role = 'value';
+
+                                        if (obj.value_type.indexOf('SDS') == 0) {
+                                            unit = 'µg/m³';
+                                            role = 'value.ppm';
+                                        } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
+                                            unit = unitList[obj.value_type];
+                                            role = roleList[obj.value_type];
+                                        }
+
                                         self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
                                             type: 'state',
                                             common: {
                                                 name: 'SDS_' + obj.value_type,
                                                 type: 'number',
-                                                role: 'value.ppm',
-                                                unit: 'µg/m³',
+                                                role: role,
+                                                unit: unit,
                                                 read: true,
                                                 write: false
                                             },

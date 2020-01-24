@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "news": {
+            "0.0.11": {
+                "en": "Fixed units of states",
+                "de": "Einheiten der Datenpunkte korrigiert"
+            },
             "0.0.10": {
                 "en": "Changed API url",
                 "de": "API-Url geändert"
@@ -67,6 +71,7 @@
         "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
         "loglevel": "info",
         "mode": "schedule",
+        "allowInit": true,
         "schedule": "*/15 * * * *",
         "type": "weather",
         "compact": true,

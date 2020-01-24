@@ -51,6 +51,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.11
+
+* (klein0r) fixed units of states
+
 ### 0.0.10
 
 * (klein0r) changed API url
