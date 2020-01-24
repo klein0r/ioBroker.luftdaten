@@ -28,6 +28,8 @@ class Luftdaten extends utils.Adapter {
             const path = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') + '.' : sensorIdentifier + '.';
 
             const unitList = {
+                P1: 'µg/m³',
+                P2: 'µg/m³',
                 temperature: '°C',
                 humidity: '%',
                 signal: 'dBa',
@@ -36,6 +38,8 @@ class Luftdaten extends utils.Adapter {
             };
 
             const roleList = {
+                P1: 'value.ppm',
+                P2: 'value.ppm',
                 temperature: 'value.temperature',
                 humidity: 'value.humidity',
                 signal: 'value',
@@ -110,7 +114,7 @@ class Luftdaten extends utils.Adapter {
                                         let unit = null;
                                         let role = 'value';
 
-                                        if (obj.value_type.indexOf('SDS') == 0) {
+                                        if (obj.value_type.indexOf('SDS_') == 0) {
                                             unit = 'µg/m³';
                                             role = 'value.ppm';
                                         } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
@@ -195,10 +199,7 @@ class Luftdaten extends utils.Adapter {
                                         let unit = null;
                                         let role = 'value';
 
-                                        if (obj.value_type.indexOf('SDS') == 0) {
-                                            unit = 'µg/m³';
-                                            role = 'value.ppm';
-                                        } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
+                                        if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
                                             unit = unitList[obj.value_type];
                                             role = roleList[obj.value_type];
                                         }
@@ -206,7 +207,7 @@ class Luftdaten extends utils.Adapter {
                                         self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
                                             type: 'state',
                                             common: {
-                                                name: 'SDS_' + obj.value_type,
+                                                name: obj.value_type,
                                                 type: 'number',
                                                 role: role,
                                                 unit: unit,
