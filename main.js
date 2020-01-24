@@ -134,7 +134,7 @@ class Luftdaten extends utils.Adapter {
                                             },
                                             native: {}
                                         });
-                                        self.setState(path + obj.value_type, {val: obj.value, ack: true});
+                                        self.setState(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                     }
                                 } else {
                                     self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
@@ -216,7 +216,7 @@ class Luftdaten extends utils.Adapter {
                                             },
                                             native: {}
                                         });
-                                        self.setState(path + 'SDS_' + obj.value_type, {val: obj.value, ack: true});
+                                        self.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                     }
 
                                     if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
