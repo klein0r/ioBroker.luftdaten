@@ -105,7 +105,6 @@ class Luftdaten extends utils.Adapter {
                             self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
 
                             if (!error && response.statusCode == 200) {
-
                                 if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
                                     for (const key in content.sensordatavalues) {
                                         const obj = content.sensordatavalues[key];
@@ -217,6 +216,8 @@ class Luftdaten extends utils.Adapter {
                                             });
                                             self.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                         }
+                                    } else {
+                                        self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                                     }
 
                                     if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
