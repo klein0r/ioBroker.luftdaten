@@ -107,7 +107,6 @@ class Luftdaten extends utils.Adapter {
                             if (!error && response.statusCode == 200) {
 
                                 if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
-
                                     for (const key in content.sensordatavalues) {
                                         const obj = content.sensordatavalues[key];
 
@@ -189,34 +188,35 @@ class Luftdaten extends utils.Adapter {
                             self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
 
                             if (!error && response.statusCode == 200) {
-
                                 if (content && Array.isArray(content)) {
                                     const sensorData = content[0];
 
-                                    for (const key in sensorData.sensordatavalues) {
-                                        const obj = sensorData.sensordatavalues[key];
-
-                                        let unit = null;
-                                        let role = 'value';
-
-                                        if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
-                                            unit = unitList[obj.value_type];
-                                            role = roleList[obj.value_type];
+                                    if (Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
+                                        for (const key in sensorData.sensordatavalues) {
+                                            const obj = sensorData.sensordatavalues[key];
+    
+                                            let unit = null;
+                                            let role = 'value';
+    
+                                            if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
+                                                unit = unitList[obj.value_type];
+                                                role = roleList[obj.value_type];
+                                            }
+    
+                                            self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
+                                                type: 'state',
+                                                common: {
+                                                    name: obj.value_type,
+                                                    type: 'number',
+                                                    role: role,
+                                                    unit: unit,
+                                                    read: true,
+                                                    write: false
+                                                },
+                                                native: {}
+                                            });
+                                            self.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                         }
-
-                                        self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
-                                            type: 'state',
-                                            common: {
-                                                name: obj.value_type,
-                                                type: 'number',
-                                                role: role,
-                                                unit: unit,
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                     }
 
                                     if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
