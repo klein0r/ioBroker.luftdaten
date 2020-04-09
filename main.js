@@ -272,6 +272,19 @@ class Luftdaten extends utils.Adapter {
                                             native: {}
                                         });
                                         self.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
+
+                                        self.setObjectNotExists(path + 'timestamp', {
+                                            type: 'state',
+                                            common: {
+                                                name: 'Last Update',
+                                                type: 'string',
+                                                role: 'date',
+                                                read: true,
+                                                write: false
+                                            },
+                                            native: {}
+                                        });
+                                        self.setState(path + 'timestamp', {val: sensorData.timestamp, ack: true});
                                     }
                                 } else {
                                     self.log.warn('Response has no valid content. Check sensor id and try again.');
