@@ -79,6 +79,8 @@
         "schedule": "*/15 * * * *",
         "type": "weather",
         "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
         "materialize": true,
         "dependencies": [
             { "js-controller": ">=1.4.2" }
