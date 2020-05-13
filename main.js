@@ -193,15 +193,15 @@ class Luftdaten extends utils.Adapter {
                                     if (Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
                                         for (const key in sensorData.sensordatavalues) {
                                             const obj = sensorData.sensordatavalues[key];
-    
+
                                             let unit = null;
                                             let role = 'value';
-    
+
                                             if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
                                                 unit = unitList[obj.value_type];
                                                 role = roleList[obj.value_type];
                                             }
-    
+
                                             self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
                                                 type: 'state',
                                                 common: {
