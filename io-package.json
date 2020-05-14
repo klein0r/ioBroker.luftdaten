@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "news": {
+            "0.0.13": {
+                "en": "Added missing translations",
+                "de": "Fehlende Übersetzungen hinzugefügt"
+            },
             "0.0.12": {
                 "en": "Minor bugfixes",
                 "de": "Kleinere Bugfixes"
