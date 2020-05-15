@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "news": {
+            "0.0.15": {
+                "en": "setTimeout found in main.js, but no clearTimeout detected",
+                "de": "setTimeout found in main.js, but no clearTimeout detected"
+            },
             "0.0.14": {
                 "en": "Fixed sensor data check issue",
                 "de": "Fehlerhafte Sensor-Prüfung gefixt"

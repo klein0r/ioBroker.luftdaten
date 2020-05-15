@@ -51,6 +51,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.15
+
+* (klein0r) setTimeout found in main.js, but no clearTimeout detected
+
 ### 0.0.14
 
 * (klein0r) Fixed sensor data check issue

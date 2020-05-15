@@ -3,16 +3,20 @@
 /* jslint node: true */
 'use strict';
 
-const utils = require('@iobroker/adapter-core');
-const request = require('request');
+const utils       = require('@iobroker/adapter-core');
+const request     = require('request');
+const adapterName = require('./package.json').name.split('.').pop();
 
 class Luftdaten extends utils.Adapter {
 
     constructor(options) {
         super({
             ...options,
-            name: 'luftdaten',
+            name: adapterName,
         });
+
+        this.killTimeout = null;
+
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
@@ -297,11 +301,17 @@ class Luftdaten extends utils.Adapter {
             this.log.debug('sensor type and/or sensor identifier not defined');
         }
 
-        setTimeout(this.stop.bind(this), 10000);
+        this.killTimeout = setTimeout(this.stop.bind(this), 10000);
     }
 
     onUnload(callback) {
         try {
+
+            if (this.killTimeout) {
+                this.log.debug('clearing kill timeout');
+                clearTimeout(this.killTimeout);
+            }
+
             this.log.debug('cleaned everything up...');
             callback();
         } catch (e) {
