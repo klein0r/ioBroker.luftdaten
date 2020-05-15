@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.13",
+        "version": "0.0.14",
         "news": {
+            "0.0.14": {
+                "en": "Fixed sensor data check issue",
+                "de": "Fehlerhafte Sensor-Prüfung gefixt"
+            },
             "0.0.13": {
                 "en": "Added missing translations",
                 "de": "Fehlende Übersetzungen hinzugefügt"

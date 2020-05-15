@@ -51,6 +51,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 0.0.14
+
+* (klein0r) Fixed sensor data check issue
+
 ### 0.0.13
 
 * (klein0r) Added missing translations

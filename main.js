@@ -190,7 +190,7 @@ class Luftdaten extends utils.Adapter {
                                 if (content && Array.isArray(content)) {
                                     const sensorData = content[0];
 
-                                    if (Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
+                                    if (Object.prototype.hasOwnProperty.call(sensorData, 'sensordatavalues')) {
                                         for (const key in sensorData.sensordatavalues) {
                                             const obj = sensorData.sensordatavalues[key];
 
@@ -221,7 +221,6 @@ class Luftdaten extends utils.Adapter {
                                     }
 
                                     if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
-        
                                         self.setObjectNotExists(path + 'location', {
                                             type: 'channel',
                                             common: {
@@ -286,8 +285,6 @@ class Luftdaten extends utils.Adapter {
                                         });
                                         self.setState(path + 'timestamp', {val: sensorData.timestamp, ack: true});
                                     }
-                                } else {
-                                    self.log.warn('Response has no valid content. Check sensor id and try again.');
                                 }
                             }
                         } else if (error) {
