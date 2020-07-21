@@ -191,10 +191,10 @@ class Luftdaten extends utils.Adapter {
                             self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
 
                             if (!error && response.statusCode == 200) {
-                                if (content && Array.isArray(content)) {
+                                if (content && Array.isArray(content) && content.length > 0) {
                                     const sensorData = content[0];
 
-                                    if (Object.prototype.hasOwnProperty.call(sensorData, 'sensordatavalues')) {
+                                    if (sensorData && Object.prototype.hasOwnProperty.call(sensorData, 'sensordatavalues')) {
                                         for (const key in sensorData.sensordatavalues) {
                                             const obj = sensorData.sensordatavalues[key];
 

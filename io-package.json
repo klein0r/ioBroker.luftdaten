@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "news": {
+            "0.0.16": {
+                "en": "Minor bugfixes",
+                "de": "Kleinere Bugfixes"
+            },
             "0.0.15": {
                 "en": "setTimeout found in main.js, but no clearTimeout detected",
                 "de": "setTimeout found in main.js, but no clearTimeout detected"
