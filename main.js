@@ -36,7 +36,9 @@ class Luftdaten extends utils.Adapter {
                 P2: 'µg/m³',
                 temperature: '°C',
                 humidity: '%',
-                signal: 'dBa',
+                pressure: 'Pa',
+                noise: 'dB(A)',
+                signal: 'dB(A)',
                 min_micro: 'µs',
                 max_micro: 'µs'
             };
@@ -46,6 +48,8 @@ class Luftdaten extends utils.Adapter {
                 P2: 'value.ppm',
                 temperature: 'value.temperature',
                 humidity: 'value.humidity',
+                pressure: 'value.pressure',
+                noise: 'value',
                 signal: 'value',
                 min_micro: 'value',
                 max_micro: 'value'
@@ -119,6 +123,18 @@ class Luftdaten extends utils.Adapter {
                                         if (obj.value_type.indexOf('SDS_') == 0) {
                                             unit = 'µg/m³';
                                             role = 'value.ppm';
+                                        } else if (obj.value_type.indexOf('temperature') >= 0) {
+                                            unit = '°C';
+                                            role = 'value.temperature';
+                                        } else if (obj.value_type.indexOf('humidity') >= 0) {
+                                            unit = '%';
+                                            role = 'value.humidity';
+                                        } else if (obj.value_type.indexOf('pressure') >= 0) {
+                                            unit = 'Pa';
+                                            role = 'value.pressure';
+                                        } else if (obj.value_type.indexOf('noise') >= 0) {
+                                            unit = 'dB(A)';
+                                            role = 'value';
                                         } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
                                             unit = unitList[obj.value_type];
                                             role = roleList[obj.value_type];
