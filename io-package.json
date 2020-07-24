@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "news": {
+            "0.0.18": {
+                "en": "Added units for pressure and noise",
+                "de": "Einheiten für Luftdruck und Lautstärke hinzugefügt"
+            },
             "0.0.17": {
                 "en": "Added link to sensor map",
                 "de": "Link zur Sensor-Karte hinzugefügt"
