@@ -3,8 +3,8 @@
 /* jslint node: true */
 'use strict';
 
-const utils       = require('@iobroker/adapter-core');
-const request     = require('request');
+const utils = require('@iobroker/adapter-core');
+const axios = require('axios');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Luftdaten extends utils.Adapter {
@@ -22,8 +22,6 @@ class Luftdaten extends utils.Adapter {
     }
 
     async onReady() {
-        const self = this;
-
         const sensorType = this.config.sensorType;
         const sensorIdentifier = this.config.sensorIdentifier;
         const sensorName = (this.config.sensorName === '') ? sensorIdentifier : this.config.sensorName;
@@ -37,6 +35,7 @@ class Luftdaten extends utils.Adapter {
                 temperature: '°C',
                 humidity: '%',
                 pressure: 'Pa',
+                pressure_at_sealevel: 'Pa',
                 noise: 'dB(A)',
                 signal: 'dB(A)',
                 min_micro: 'µs',
@@ -49,6 +48,7 @@ class Luftdaten extends utils.Adapter {
                 temperature: 'value.temperature',
                 humidity: 'value.humidity',
                 pressure: 'value.pressure',
+                pressure_at_sealevel: 'value.pressure',
                 noise: 'value',
                 signal: 'value',
                 min_micro: 'value',
@@ -72,245 +72,244 @@ class Luftdaten extends utils.Adapter {
             if (sensorType == 'local') {
                 this.log.debug('local request started');
 
-                request(
-                    {
-                        url: 'http://' + sensorIdentifier + '/data.json',
-                        json: true,
-                        time: true,
-                        timeout: 4500
-                    },
-                    (error, response, content) => {
-                        self.log.debug('local request done');
+                await axios({
+                    method: 'get',
+                    baseURL: 'http://' + sensorIdentifier + '/',
+                    url: '/data.json',
+                    responseType: 'json'
+                }).then(
+                    function (response) {
+                        const content = response.data;
 
-                        if (response) {
-                            self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
+                        this.log.debug('local request done');
+                        this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                            self.setObjectNotExists(path + 'responseCode', {
-                                type: 'state',
-                                common: {
-                                    name: 'responseCode',
-                                    type: 'number',
-                                    role: 'value',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-                            self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
+                        this.setObjectNotExists(path + 'responseCode', {
+                            type: 'state',
+                            common: {
+                                name: 'responseCode',
+                                type: 'number',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        this.setState(path + 'responseCode', {val: response.status, ack: true});
 
-                            self.setObjectNotExists(path + 'responseTime', {
-                                type: 'state',
-                                common: {
-                                    name: 'responseTime',
-                                    type: 'number',
-                                    role: 'value',
-                                    unit: 'ms',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-                            self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
+                        if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
+                            for (const key in content.sensordatavalues) {
+                                const obj = content.sensordatavalues[key];
 
-                            if (!error && response.statusCode == 200) {
-                                if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
-                                    for (const key in content.sensordatavalues) {
-                                        const obj = content.sensordatavalues[key];
+                                let unit = null;
+                                let role = 'value';
 
-                                        let unit = null;
-                                        let role = 'value';
-
-                                        if (obj.value_type.indexOf('SDS_') == 0) {
-                                            unit = 'µg/m³';
-                                            role = 'value.ppm';
-                                        } else if (obj.value_type.indexOf('temperature') >= 0) {
-                                            unit = '°C';
-                                            role = 'value.temperature';
-                                        } else if (obj.value_type.indexOf('humidity') >= 0) {
-                                            unit = '%';
-                                            role = 'value.humidity';
-                                        } else if (obj.value_type.indexOf('pressure') >= 0) {
-                                            unit = 'Pa';
-                                            role = 'value.pressure';
-                                        } else if (obj.value_type.indexOf('noise') >= 0) {
-                                            unit = 'dB(A)';
-                                            role = 'value';
-                                        } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
-                                            unit = unitList[obj.value_type];
-                                            role = roleList[obj.value_type];
-                                        }
-
-                                        self.setObjectNotExists(path + obj.value_type, {
-                                            type: 'state',
-                                            common: {
-                                                name: obj.value_type,
-                                                type: 'number',
-                                                role: role,
-                                                unit: unit,
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
-                                    }
-                                } else {
-                                    self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
+                                if (obj.value_type.indexOf('SDS_') == 0) {
+                                    unit = 'µg/m³';
+                                    role = 'value.ppm';
+                                } else if (obj.value_type.indexOf('temperature') >= 0) {
+                                    unit = '°C';
+                                    role = 'value.temperature';
+                                } else if (obj.value_type.indexOf('humidity') >= 0) {
+                                    unit = '%';
+                                    role = 'value.humidity';
+                                } else if (obj.value_type.indexOf('pressure') >= 0) {
+                                    unit = 'Pa';
+                                    role = 'value.pressure';
+                                } else if (obj.value_type.indexOf('noise') >= 0) {
+                                    unit = 'dB(A)';
+                                    role = 'value';
+                                } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
+                                    unit = unitList[obj.value_type];
+                                    role = roleList[obj.value_type];
                                 }
+
+                                this.setObjectNotExists(path + obj.value_type, {
+                                    type: 'state',
+                                    common: {
+                                        name: obj.value_type,
+                                        type: 'number',
+                                        role: role,
+                                        unit: unit,
+                                        read: true,
+                                        write: false
+                                    },
+                                    native: {}
+                                });
+                                this.setState(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
                             }
-                        } else if (error) {
-                            self.log.warn(error);
+                        } else {
+                            this.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                         }
-                    }
+
+                    }.bind(this)
+                ).catch(
+                    function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+
+                            this.log.warn('received error ' + error.response.status + ' response from local sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                            // http.ClientRequest in node.js<div></div>
+                            this.log.error(error.message);
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            this.log.error(error.message);
+                        }
+                    }.bind(this)
                 );
+
             } else if (sensorType == 'remote') {
                 this.log.debug('remote request started');
 
-                request(
-                    {
-                        url: 'https://data.sensor.community/airrohr/v1/sensor/' + sensorIdentifier + '/',
-                        json: true,
-                        time: true,
-                        timeout: 4500
-                    },
-                    (error, response, content) => {
-                        self.log.debug('remote request done');
+                await axios({
+                    method: 'get',
+                    baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
+                    url: '/' + sensorIdentifier + '/',
+                    responseType: 'json'
+                }).then(
+                    function (response) {
+                        const content = response.data;
 
-                        if (response) {
-                            self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
+                        this.log.debug('remote request done');
+                        this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                            self.setObjectNotExists(path + 'responseCode', {
-                                type: 'state',
-                                common: {
-                                    name: 'responseCode',
-                                    type: 'number',
-                                    role: 'value',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-                            self.setState(path + 'responseCode', {val: response.statusCode, ack: true});
+                        this.setObjectNotExists(path + 'responseCode', {
+                            type: 'state',
+                            common: {
+                                name: 'responseCode',
+                                type: 'number',
+                                role: 'value',
+                                read: true,
+                                write: false
+                            },
+                            native: {}
+                        });
+                        this.setState(path + 'responseCode', {val: response.status, ack: true});
 
-                            self.setObjectNotExists(path + 'responseTime', {
-                                type: 'state',
-                                common: {
-                                    name: 'responseTime',
-                                    type: 'number',
-                                    role: 'value',
-                                    unit: 'ms',
-                                    read: true,
-                                    write: false
-                                },
-                                native: {}
-                            });
-                            self.setState(path + 'responseTime', {val: parseInt(response.timingPhases.total), ack: true});
+                        if (content && Array.isArray(content) && content.length > 0) {
+                            const sensorData = content[0];
 
-                            if (!error && response.statusCode == 200) {
-                                if (content && Array.isArray(content) && content.length > 0) {
-                                    const sensorData = content[0];
+                            if (sensorData && Object.prototype.hasOwnProperty.call(sensorData, 'sensordatavalues')) {
+                                for (const key in sensorData.sensordatavalues) {
+                                    const obj = sensorData.sensordatavalues[key];
 
-                                    if (sensorData && Object.prototype.hasOwnProperty.call(sensorData, 'sensordatavalues')) {
-                                        for (const key in sensorData.sensordatavalues) {
-                                            const obj = sensorData.sensordatavalues[key];
+                                    let unit = null;
+                                    let role = 'value';
 
-                                            let unit = null;
-                                            let role = 'value';
-
-                                            if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
-                                                unit = unitList[obj.value_type];
-                                                role = roleList[obj.value_type];
-                                            }
-
-                                            self.setObjectNotExists(path + 'SDS_' + obj.value_type, {
-                                                type: 'state',
-                                                common: {
-                                                    name: obj.value_type,
-                                                    type: 'number',
-                                                    role: role,
-                                                    unit: unit,
-                                                    read: true,
-                                                    write: false
-                                                },
-                                                native: {}
-                                            });
-                                            self.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
-                                        }
-                                    } else {
-                                        self.log.warn('Response has no valid content. Check hostname/IP address and try again.');
+                                    if (obj.value_type.indexOf('noise') >= 0) {
+                                        unit = 'dB(A)';
+                                        role = 'value';
+                                    } else if (Object.prototype.hasOwnProperty.call(unitList, obj.value_type)) {
+                                        unit = unitList[obj.value_type];
+                                        role = roleList[obj.value_type];
                                     }
 
-                                    if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
-                                        self.setObjectNotExists(path + 'location', {
-                                            type: 'channel',
-                                            common: {
-                                                name: 'Location',
-                                                role: 'value.gps'
-                                            },
-                                            native: {}
-                                        });
-
-                                        self.setObjectNotExists(path + 'location.longitude', {
-                                            type: 'state',
-                                            common: {
-                                                name: 'Longtitude',
-                                                type: 'number',
-                                                role: 'value.gps.longitude',
-                                                unit: '°',
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + 'location.longitude', {val: sensorData.location.longitude, ack: true});
-
-                                        self.setObjectNotExists(path + 'location.latitude', {
-                                            type: 'state',
-                                            common: {
-                                                name: 'Latitude',
-                                                type: 'number',
-                                                role: 'value.gps.latitude',
-                                                unit: '°',
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + 'location.latitude', {val: sensorData.location.latitude, ack: true});
-
-                                        self.setObjectNotExists(path + 'location.altitude', {
-                                            type: 'state',
-                                            common: {
-                                                name: 'Altitude',
-                                                type: 'number',
-                                                role: 'value.gps.elevation',
-                                                unit: 'm',
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
-
-                                        self.setObjectNotExists(path + 'timestamp', {
-                                            type: 'state',
-                                            common: {
-                                                name: 'Last Update',
-                                                type: 'string',
-                                                role: 'date',
-                                                read: true,
-                                                write: false
-                                            },
-                                            native: {}
-                                        });
-                                        self.setState(path + 'timestamp', {val: sensorData.timestamp, ack: true});
-                                    }
+                                    this.setObjectNotExists(path + 'SDS_' + obj.value_type, {
+                                        type: 'state',
+                                        common: {
+                                            name: obj.value_type,
+                                            type: 'number',
+                                            role: role,
+                                            unit: unit,
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    this.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                 }
+                            } else {
+                                this.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                             }
-                        } else if (error) {
-                            self.log.warn(error);
+
+                            if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
+                                this.setObjectNotExists(path + 'location', {
+                                    type: 'channel',
+                                    common: {
+                                        name: 'Location',
+                                        role: 'value.gps'
+                                    },
+                                    native: {}
+                                });
+
+                                this.setObjectNotExists(path + 'location.longitude', {
+                                    type: 'state',
+                                    common: {
+                                        name: 'Longtitude',
+                                        type: 'number',
+                                        role: 'value.gps.longitude',
+                                        unit: '°',
+                                        read: true,
+                                        write: false
+                                    },
+                                    native: {}
+                                });
+                                this.setState(path + 'location.longitude', {val: sensorData.location.longitude, ack: true});
+
+                                this.setObjectNotExists(path + 'location.latitude', {
+                                    type: 'state',
+                                    common: {
+                                        name: 'Latitude',
+                                        type: 'number',
+                                        role: 'value.gps.latitude',
+                                        unit: '°',
+                                        read: true,
+                                        write: false
+                                    },
+                                    native: {}
+                                });
+                                this.setState(path + 'location.latitude', {val: sensorData.location.latitude, ack: true});
+
+                                this.setObjectNotExists(path + 'location.altitude', {
+                                    type: 'state',
+                                    common: {
+                                        name: 'Altitude',
+                                        type: 'number',
+                                        role: 'value.gps.elevation',
+                                        unit: 'm',
+                                        read: true,
+                                        write: false
+                                    },
+                                    native: {}
+                                });
+                                this.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
+
+                                this.setObjectNotExists(path + 'timestamp', {
+                                    type: 'state',
+                                    common: {
+                                        name: 'Last Update',
+                                        type: 'string',
+                                        role: 'date',
+                                        read: true,
+                                        write: false
+                                    },
+                                    native: {}
+                                });
+                                this.setState(path + 'timestamp', {val: sensorData.timestamp, ack: true});
+                            }
+                        } else {
+                            this.log.warn('Response was empty');
                         }
-                    }
+                    }.bind(this)
+                ).catch(
+                    function (error) {
+                        if (error.response) {
+                            // The request was made and the server responded with a status code
+
+                            this.log.warn('received error ' + error.response.status + ' response from remote sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
+                        } else if (error.request) {
+                            // The request was made but no response was received
+                            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                            // http.ClientRequest in node.js
+                            this.log.error(error.message);
+                        } else {
+                            // Something happened in setting up the request that triggered an Error
+                            this.log.error(error.message);
+                        }
+                    }.bind(this)
                 );
             }
         } else {

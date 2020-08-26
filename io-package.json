@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "0.0.18",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "First stable release",
+                "de": "Erster stable Release"
+            },
             "0.0.18": {
                 "en": "Added units for pressure and noise",
                 "de": "Einheiten für Luftdruck und Lautstärke hinzugefügt"
@@ -100,7 +104,7 @@
         "loglevel": "info",
         "mode": "schedule",
         "allowInit": true,
-        "schedule": "*/15 * * * *",
+        "schedule": "*/30 * * * *",
         "type": "weather",
         "compact": true,
         "connectionType": "cloud",
