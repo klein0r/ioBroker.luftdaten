@@ -112,7 +112,12 @@
         "materialize": true,
         "dependencies": [
             { "js-controller": ">=1.4.2" }
-        ]
+        ],
+        "plugins": {
+            "sentry": {
+                "dsn": "https://baf35e4e423d409bbec94cb01b55257e@sentry.iobroker.net/103"
+            }
+        }
     },
     "native": {
     },
