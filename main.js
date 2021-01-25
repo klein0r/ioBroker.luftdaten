@@ -57,34 +57,33 @@ class Luftdaten extends utils.Adapter {
 
             this.log.debug('sensor type: ' + sensorType + ', sensor identifier: ' + sensorIdentifier + ', sensor name: ' + sensorName);
 
-            this.setObjectNotExists(path + 'name', {
+            await this.setObjectNotExistsAsync(path + 'name', {
                 type: 'state',
                 common: {
-                    name: 'name',
+                    name: 'Sensor name',
                     type: 'string',
                     role: 'text'
                 },
                 native: {}
             });
-
             this.setState(path + 'name', {val: sensorName, ack: true});
 
             if (sensorType == 'local') {
                 this.log.debug('local request started');
 
-                await axios({
+                axios({
                     method: 'get',
                     baseURL: 'http://' + sensorIdentifier + '/',
                     url: '/data.json',
                     responseType: 'json'
                 }).then(
-                    function (response) {
+                    async (response) => {
                         const content = response.data;
 
                         this.log.debug('local request done');
                         this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                        this.setObjectNotExists(path + 'responseCode', {
+                        await this.setObjectNotExistsAsync(path + 'responseCode', {
                             type: 'state',
                             common: {
                                 name: 'responseCode',
@@ -124,7 +123,7 @@ class Luftdaten extends utils.Adapter {
                                     role = roleList[obj.value_type];
                                 }
 
-                                this.setObjectNotExists(path + obj.value_type, {
+                                await this.setObjectNotExistsAsync(path + obj.value_type, {
                                     type: 'state',
                                     common: {
                                         name: obj.value_type,
@@ -142,9 +141,9 @@ class Luftdaten extends utils.Adapter {
                             this.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                         }
 
-                    }.bind(this)
+                    }
                 ).catch(
-                    function (error) {
+                    (error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
@@ -158,25 +157,25 @@ class Luftdaten extends utils.Adapter {
                             // Something happened in setting up the request that triggered an Error
                             this.log.error(error.message);
                         }
-                    }.bind(this)
+                    }
                 );
 
             } else if (sensorType == 'remote') {
                 this.log.debug('remote request started');
 
-                await axios({
+                axios({
                     method: 'get',
                     baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
                     url: '/' + sensorIdentifier + '/',
                     responseType: 'json'
                 }).then(
-                    function (response) {
+                    async (response) => {
                         const content = response.data;
 
                         this.log.debug('remote request done');
                         this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                        this.setObjectNotExists(path + 'responseCode', {
+                        await this.setObjectNotExistsAsync(path + 'responseCode', {
                             type: 'state',
                             common: {
                                 name: 'responseCode',
@@ -207,7 +206,7 @@ class Luftdaten extends utils.Adapter {
                                         role = roleList[obj.value_type];
                                     }
 
-                                    this.setObjectNotExists(path + 'SDS_' + obj.value_type, {
+                                    await this.setObjectNotExistsAsync(path + 'SDS_' + obj.value_type, {
                                         type: 'state',
                                         common: {
                                             name: obj.value_type,
@@ -226,7 +225,7 @@ class Luftdaten extends utils.Adapter {
                             }
 
                             if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
-                                this.setObjectNotExists(path + 'location', {
+                                await this.setObjectNotExistsAsync(path + 'location', {
                                     type: 'channel',
                                     common: {
                                         name: 'Location',
@@ -235,7 +234,7 @@ class Luftdaten extends utils.Adapter {
                                     native: {}
                                 });
 
-                                this.setObjectNotExists(path + 'location.longitude', {
+                                await this.setObjectNotExistsAsync(path + 'location.longitude', {
                                     type: 'state',
                                     common: {
                                         name: 'Longtitude',
@@ -249,7 +248,7 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 this.setState(path + 'location.longitude', {val: sensorData.location.longitude, ack: true});
 
-                                this.setObjectNotExists(path + 'location.latitude', {
+                                await this.setObjectNotExistsAsync(path + 'location.latitude', {
                                     type: 'state',
                                     common: {
                                         name: 'Latitude',
@@ -263,7 +262,7 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 this.setState(path + 'location.latitude', {val: sensorData.location.latitude, ack: true});
 
-                                this.setObjectNotExists(path + 'location.altitude', {
+                                await this.setObjectNotExistsAsync(path + 'location.altitude', {
                                     type: 'state',
                                     common: {
                                         name: 'Altitude',
@@ -277,7 +276,7 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 this.setState(path + 'location.altitude', {val: sensorData.location.altitude, ack: true});
 
-                                this.setObjectNotExists(path + 'timestamp', {
+                                await this.setObjectNotExistsAsync(path + 'timestamp', {
                                     type: 'state',
                                     common: {
                                         name: 'Last Update',
@@ -293,9 +292,9 @@ class Luftdaten extends utils.Adapter {
                         } else {
                             this.log.warn('Response was empty');
                         }
-                    }.bind(this)
+                    }
                 ).catch(
-                    function (error) {
+                    (error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
@@ -309,7 +308,7 @@ class Luftdaten extends utils.Adapter {
                             // Something happened in setting up the request that triggered an Error
                             this.log.error(error.message);
                         }
-                    }.bind(this)
+                    }
                 );
             }
         } else {
