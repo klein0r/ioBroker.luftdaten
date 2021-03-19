@@ -75,6 +75,7 @@ class Luftdaten extends utils.Adapter {
                     method: 'get',
                     baseURL: 'http://' + sensorIdentifier + '/',
                     url: '/data.json',
+                    timeout: 10000,
                     responseType: 'json'
                 }).then(
                     async (response) => {
@@ -167,6 +168,7 @@ class Luftdaten extends utils.Adapter {
                     method: 'get',
                     baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
                     url: '/' + sensorIdentifier.replace(/\D/g,'') + '/',
+                    timeout: 10000,
                     responseType: 'json'
                 }).then(
                     async (response) => {
@@ -315,7 +317,7 @@ class Luftdaten extends utils.Adapter {
             this.log.debug('sensor type and/or sensor identifier not defined');
         }
 
-        this.killTimeout = setTimeout(this.stop.bind(this), 10000);
+        this.killTimeout = setTimeout(this.stop.bind(this), 15000);
     }
 
     onUnload(callback) {
