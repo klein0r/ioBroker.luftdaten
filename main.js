@@ -27,7 +27,7 @@ class Luftdaten extends utils.Adapter {
         const sensorName = (this.config.sensorName === '') ? sensorIdentifier : this.config.sensorName;
 
         if (sensorIdentifier && sensorName) {
-            const path = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') + '.' : sensorIdentifier + '.';
+            const path = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') + '.' : sensorIdentifier.replace(/\D/g,'') + '.';
 
             const unitList = {
                 P1: 'µg/m³',
@@ -166,7 +166,7 @@ class Luftdaten extends utils.Adapter {
                 axios({
                     method: 'get',
                     baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
-                    url: '/' + sensorIdentifier + '/',
+                    url: '/' + sensorIdentifier.replace(/\D/g,'') + '/',
                     responseType: 'json'
                 }).then(
                     async (response) => {

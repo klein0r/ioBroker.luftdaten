@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "Remove non-numeric characters from sensor id",
+                "de": "Alle nicht-numerischen Zeichen aus der Sensor-ID entfernen"
+            },
             "1.0.2": {
                 "en": "Fixed async object creation",
                 "de": "Asynchrone Objekterstellung korrigiert"
@@ -14,74 +18,6 @@
             "1.0.0": {
                 "en": "First stable release",
                 "de": "Erster stable Release"
-            },
-            "0.0.18": {
-                "en": "Added units for pressure and noise",
-                "de": "Einheiten für Luftdruck und Lautstärke hinzugefügt"
-            },
-            "0.0.17": {
-                "en": "Added link to sensor map",
-                "de": "Link zur Sensor-Karte hinzugefügt"
-            },
-            "0.0.16": {
-                "en": "Minor bugfixes",
-                "de": "Kleinere Bugfixes"
-            },
-            "0.0.15": {
-                "en": "setTimeout found in main.js, but no clearTimeout detected",
-                "de": "setTimeout found in main.js, but no clearTimeout detected"
-            },
-            "0.0.14": {
-                "en": "Fixed sensor data check issue",
-                "de": "Fehlerhafte Sensor-Prüfung gefixt"
-            },
-            "0.0.13": {
-                "en": "Added missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt"
-            },
-            "0.0.12": {
-                "en": "Minor bugfixes",
-                "de": "Kleinere Bugfixes"
-            },
-            "0.0.11": {
-                "en": "Fixed units of states",
-                "de": "Einheiten der Datenpunkte korrigiert"
-            },
-            "0.0.10": {
-                "en": "Changed API url",
-                "de": "API-Url geändert"
-            },
-            "0.0.9": {
-                "en": "Improved logging",
-                "de": "Logging verbessert"
-            },
-            "0.0.8": {
-                "en": "Merged pull requests, minor fixes",
-                "de": "Pull Requsts hinzugefügt, kleine Fixes"
-            },
-            "0.0.7": {
-                "en": "Merged pull requests, updated documentation and added units",
-                "de": "Pull Requsts hinzugefügt, Dokumentation angepasst und Einheiten hinzugefügt"
-            },
-            "0.0.6": {
-                "en": "Changed type to weather",
-                "de": "Typ zu Wetter geändert"
-            },
-            "0.0.5": {
-                "en": "Fixed issues when sensor is not available",
-                "de": "Probleme behoben, wenn Sensor nicht verfügbar ist"
-            },
-            "0.0.4": {
-                "en": "path can be ip if sensor type is local",
-                "de": "IP-Adresse als Pfad bei lokalem Sensor"
-            },
-            "0.0.3": {
-                "en": "added path an sensor name",
-                "de": "Objektpfad und Sensorname"
-            },
-            "0.0.2": {
-                "en": "initial adapter",
-                "de": "Initiale Version"
             }
         },
         "title": "Luftdaten.info",

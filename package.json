@@ -1,10 +1,11 @@
 {
   "name": "iobroker.luftdaten",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ioBroker Luftdaten Adapter",
   "author": {
     "name": "Matthias Kleine",
-    "email": "info@haus-automatisierung.com"
+    "email": "info@haus-automatisierung.com",
+    "url" : "https://haus-automatisierung.com/"
   },
   "contributors": [
     {
