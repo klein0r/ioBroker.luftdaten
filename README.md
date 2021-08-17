@@ -52,6 +52,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 2.0.1
+
+* (klein0r) Minor bug fixes
+
 ### 2.0.0
 
 * (klein0r) Updated admin interface to maintain multiple sensors in one instance

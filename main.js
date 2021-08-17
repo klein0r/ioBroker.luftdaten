@@ -51,8 +51,10 @@ class Luftdaten extends utils.Adapter {
 
                         const sensorName = await this.getSensorData(sensor);
 
-                        sensorsKeep.push(sensorName);
-                        this.log.debug('sensor found: ' + sensorName);
+                        if (sensorName) {
+                            sensorsKeep.push(sensorName);
+                            this.log.debug('sensor found: ' + sensorName);
+                        }
                     }
                 } else {
                     this.log.warn('No sensors configured');
@@ -114,10 +116,14 @@ class Luftdaten extends utils.Adapter {
 
             await this.setObjectNotExistsAsync(deviceName, {
                 type: 'device',
-                common: {
-                    name: 'Sensor ' + deviceName
-                },
+                common: {},
                 native: {}
+            });
+
+            this.extendObjectAsync(deviceName, {
+                common: {
+                    name: sensorName
+                }
             });
 
             await this.setObjectNotExistsAsync(path + 'name', {
@@ -335,14 +341,14 @@ class Luftdaten extends utils.Adapter {
                                     type: 'state',
                                     common: {
                                         name: 'Last Update',
-                                        type: 'string',
+                                        type: 'number',
                                         role: 'date',
                                         read: true,
                                         write: false
                                     },
                                     native: {}
                                 });
-                                this.setState(path + 'timestamp', {val: sensorData.timestamp, ack: true});
+                                this.setState(path + 'timestamp', {val: new Date(sensorData.timestamp).getTime(), ack: true});
                             }
                         } else {
                             this.log.warn('Response was empty');

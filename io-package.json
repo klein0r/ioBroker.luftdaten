@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "news": {
+            "2.0.1": {
+                "en": "Minor bug fixes",
+                "de": "Kleinere Bugfixes"
+            },
             "2.0.0": {
                 "en": "Updated admin interface to maintain multiple sensors in one instance",
                 "de": "Benutzeroberfläche angepasst, um mehrere Sensoren in einer Instanz verwalten zu können"
