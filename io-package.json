@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "1.0.3",
+        "version": "2.0.0",
         "news": {
+            "2.0.0": {
+                "en": "Updated admin interface to maintain multiple sensors in one instance",
+                "de": "Benutzeroberfläche angepasst, um mehrere Sensoren in einer Instanz verwalten zu können"
+            },
             "1.0.3": {
                 "en": "Remove non-numeric characters from sensor id",
                 "de": "Alle nicht-numerischen Zeichen aus der Sensor-ID entfernen"
@@ -56,7 +60,12 @@
         "materialize": true,
         "dependencies": [
             {
-                "js-controller": ">=2.0.0"
+                "js-controller": ">=3.3.0"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.19"
             }
         ],
         "plugins": {

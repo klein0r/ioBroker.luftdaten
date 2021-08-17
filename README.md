@@ -52,6 +52,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 2.0.0
+
+* (klein0r) Updated admin interface to maintain multiple sensors in one instance
+
 ### 1.0.3
 
 * (klein0r) Remove non-numeric characters from sensor id

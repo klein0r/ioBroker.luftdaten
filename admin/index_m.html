@@ -16,34 +16,29 @@
     <script type="text/javascript" src="words.js"></script>
 
     <script type="text/javascript">
-        // This will be called by the admin adapter when the settings page loads
         function load(settings, onChange) {
-            // example: select elements with id=key and class=value and insert value
             if (!settings) return;
             $('.value').each(function () {
                 var $key = $(this);
                 var id = $key.attr('id');
                 if ($key.attr('type') === 'checkbox') {
-                    // do not call onChange direct, because onChange could expect some arguments
                     $key.prop('checked', settings[id])
-                        .on('change', () => onChange())
-                        ;
+                        .on('change', () => onChange());
                 } else {
-                    // do not call onChange direct, because onChange could expect some arguments
                     $key.val(settings[id])
                         .on('change', () => onChange())
-                        .on('keyup', () => onChange())
-                        ;
+                        .on('keyup', () => onChange());
                 }
             });
+
             onChange(false);
-            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+
+            values2table('sensors', settings.sensors || [], onChange);
+
             if (M) M.updateTextFields();
         }
 
-        // This will be called by the admin adapter when the user presses the save button
         function save(callback) {
-            // example: select elements with class=value and build settings object
             var obj = {};
             $('.value').each(function () {
                 var $this = $(this);
@@ -53,6 +48,9 @@
                     obj[$this.attr('id')] = $this.val();
                 }
             });
+
+            obj.sensors = table2values('sensors');
+
             callback(obj);
         }
     </script>
@@ -66,23 +64,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12 m4">
-                    <select class="value" id="sensorType">
-                        <option value="remote" class="translate">Remote</option>
-                        <option value="local" class="translate">Local</option>
-                    </select>
-                    <label for="sensorType" class="translate">Sensor Type</label>
-                    <span class="translate">You can find remote sensors here</span>
-                </div>
-                <div class="input-field col s12 m4">
-                    <input class="value" id="sensorIdentifier" type="text">
-                    <label for="sensorIdentifier" class="translate">Sensor Identifier</label>
-                    <span class="translate">IP (when local) or ID (when remote)</span>
-                </div>
-                <div class="input-field col s12 m4">
-                    <input class="value" id="sensorName" type="text">
-                    <label for="sensorName" class="translate">Sensor Name</label>
-                    <span class="translate">Individual name for sensor</span>
+                <div class="col s12" id="sensors">
+                    <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                    <div class="table-values-div">
+                        <table class="table-values">
+                            <thead>
+                                <tr>
+                                    <th data-name="name" style="width: 35%" class="translate">Sensor Name</th>
+                                    <th data-name="type" style="width: 35%" data-type="select" data-options="remote/Remote;local/Local" class="translate">Sensor Type</th>
+                                    <th data-name="identifier" style="width: 35%" class="translate">Sensor Identifier</th>
+                                    <th data-buttons="delete" style="width: 10%"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="row">
