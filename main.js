@@ -367,11 +367,11 @@ class Luftdaten extends utils.Adapter {
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js
                             this.log.error(error.message);
-                            this.setState(path + 'responseCode', {val: error.response.status, ack: true});
+                            this.setState(path + 'responseCode', {val: -1, ack: true});
                         } else {
                             // Something happened in setting up the request that triggered an Error
                             this.log.error(error.message);
-                            this.setState(path + 'responseCode', {val: -1, ack: true});
+                            this.setState(path + 'responseCode', {val: -99, ack: true});
                         }
                     }
                 );
