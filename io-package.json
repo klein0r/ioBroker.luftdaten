@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "news": {
+            "2.0.2": {
+                "en": "Added timeout option",
+                "de": "Option für Timeout-Limit hinzugefügt"
+            },
             "2.0.1": {
                 "en": "Minor bug fixes",
                 "de": "Kleinere Bugfixes"
@@ -79,6 +83,7 @@
         }
     },
     "native": {
+        "requestTimeout": 10
     },
     "objects": [
     ]

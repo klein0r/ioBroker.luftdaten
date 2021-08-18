@@ -156,7 +156,7 @@ class Luftdaten extends utils.Adapter {
                     method: 'get',
                     baseURL: 'http://' + sensorIdentifier + '/',
                     url: '/data.json',
-                    timeout: 10000,
+                    timeout: this.config.requestTimeout * 1000,
                     responseType: 'json'
                 }).then(
                     async (response) => {
@@ -238,7 +238,7 @@ class Luftdaten extends utils.Adapter {
                     method: 'get',
                     baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
                     url: '/' + sensorIdentifier.replace(/\D/g,'') + '/',
-                    timeout: 10000,
+                    timeout: this.config.requestTimeout * 1000,
                     responseType: 'json'
                 }).then(
                     async (response) => {

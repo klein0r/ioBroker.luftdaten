@@ -85,5 +85,29 @@ systemDictionary = {
         "es": "Nombre individual para sensor",
         "pl": "Indywidualna nazwa czujnika",
         "zh-cn": "传感器的个人名称"
+    },
+    "Request Timeout": {
+        "en": "Request Timeout",
+        "de": "Zeitüberschreitung der Anforderung",
+        "ru": "Тайм-аут запроса",
+        "pt": "Solicitar tempo limite",
+        "nl": "Verzoek time-out",
+        "fr": "Délai d'attente de la demande",
+        "it": "Richiedi timeout",
+        "es": "Pide tiempo fuera",
+        "pl": "Limit czasu żądania",
+        "zh-cn": "请求超时"
+    },
+    "in Seconds": {
+        "en": "in Seconds",
+        "de": "in Sekunden",
+        "ru": "в секундах",
+        "pt": "em segundos",
+        "nl": "in seconden",
+        "fr": "en secondes",
+        "it": "in secondi",
+        "es": "en segundos",
+        "pl": "w sekundy",
+        "zh-cn": "马上"
     }
 };
