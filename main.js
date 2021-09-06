@@ -112,6 +112,12 @@ class Luftdaten extends utils.Adapter {
             const deviceName = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
             const path = deviceName + '.';
 
+            if (!deviceName) {
+                this.log.error('Device name is empty. Check configuration.');
+
+                return null;
+            }
+
             this.log.debug('sensor type: ' + sensorType + ', sensor identifier: ' + sensorIdentifier + ', sensor name: ' + sensorName);
 
             await this.setObjectNotExistsAsync(deviceName, {
