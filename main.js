@@ -225,14 +225,17 @@ class Luftdaten extends utils.Adapter {
                             // The request was made and the server responded with a status code
 
                             this.log.warn('received error ' + error.response.status + ' response from local sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
+                            this.setState(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js<div></div>
-                            this.log.error(error.message);
+                            this.log.info(error.message);
+                            this.setState(path + 'responseCode', {val: -1, ack: true});
                         } else {
                             // Something happened in setting up the request that triggered an Error
-                            this.log.error(error.message);
+                            this.log.info(error.message);
+                            this.setState(path + 'responseCode', {val: -99, ack: true});
                         }
                     }
                 );
@@ -367,16 +370,15 @@ class Luftdaten extends utils.Adapter {
 
                             this.log.warn('received error ' + error.response.status + ' response from remote sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
                             this.setState(path + 'responseCode', {val: error.response.status, ack: true});
-
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js
-                            this.log.error(error.message);
+                            this.log.info(error.message);
                             this.setState(path + 'responseCode', {val: -1, ack: true});
                         } else {
                             // Something happened in setting up the request that triggered an Error
-                            this.log.error(error.message);
+                            this.log.info(error.message);
                             this.setState(path + 'responseCode', {val: -99, ack: true});
                         }
                     }
