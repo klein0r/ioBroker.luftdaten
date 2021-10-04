@@ -57,7 +57,7 @@ class Luftdaten extends utils.Adapter {
                         }
                     }
                 } else {
-                    this.log.warn('No sensors configured');
+                    this.log.error('No sensors configured');
                 }
 
                 // Delete non existent sensors
@@ -214,10 +214,7 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 this.setState(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
                             }
-                        } else {
-                            this.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                         }
-
                     }
                 ).catch(
                     (error) => {
@@ -290,8 +287,6 @@ class Luftdaten extends utils.Adapter {
                                     });
                                     this.setState(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                 }
-                            } else {
-                                this.log.warn('Response has no valid content. Check hostname/IP address and try again.');
                             }
 
                             if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
@@ -359,8 +354,6 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 this.setState(path + 'timestamp', {val: new Date(sensorData.timestamp).getTime(), ack: true});
                             }
-                        } else {
-                            this.log.warn('Response was empty');
                         }
                     }
                 ).catch(

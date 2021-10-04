@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "2.0.2",
+        "version": "2.0.3",
         "news": {
+            "2.0.3": {
+                "en": "Fixed error logging",
+                "de": "Fehler-Logging behoben"
+            },
             "2.0.2": {
                 "en": "Added timeout option",
                 "de": "Option für Timeout-Limit hinzugefügt"
