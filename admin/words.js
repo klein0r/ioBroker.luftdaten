@@ -2,6 +2,30 @@
 'use strict';
 
 systemDictionary = {
+    "Options": {
+        "en": "Options",
+        "de": "Einstellungen",
+        "ru": "Настройки",
+        "pt": "Opções",
+        "nl": "opties",
+        "fr": "Options",
+        "it": "Opzioni",
+        "es": "Opciones",
+        "pl": "Opcje",
+        "zh-cn": "选项"
+    },
+    "Sensors": {
+        "en": "Sensors",
+        "de": "Sensoren",
+        "ru": "Датчики",
+        "pt": "Sensores",
+        "nl": "Sensoren",
+        "fr": "Capteurs",
+        "it": "Sensori",
+        "es": "Sensores",
+        "pl": "Czujniki",
+        "zh-cn": "传感器"
+    },
     "Sensor Type": {
         "en": "Sensor Type",
         "de": "Sensorart",

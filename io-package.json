@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "luftdaten",
-        "version": "2.0.3",
+        "version": "2.1.0",
         "news": {
+            "2.1.0": {
+                "en": "Admin 5 Support",
+                "de": "Admin 5 Support"
+            },
             "2.0.3": {
                 "en": "Fixed error logging",
                 "de": "Fehler-Logging behoben"
@@ -70,6 +74,9 @@
         "connectionType": "cloud",
         "dataSource": "poll",
         "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
         "dependencies": [
             {
                 "js-controller": ">=3.3.0"

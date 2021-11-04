@@ -1,0 +1,13 @@
+{
+    "IP (when local) or ID (when remote)": "IP (когда локально) или ID (когда удаленно)",
+    "Individual name for sensor": "Индивидуальное имя для датчика",
+    "Local": "Местный",
+    "Options": "Настройки",
+    "Remote": "Дистанционный пульт",
+    "Request Timeout": "Тайм-аут запроса",
+    "Sensor Identifier": "Идентификатор датчика",
+    "Sensor Type": "Тип датчика",
+    "Sensors": "Датчики",
+    "You can find remote sensors here": "Вы можете найти удаленные датчики <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>здесь</a>",
+    "in Seconds": "в секундах"
+}

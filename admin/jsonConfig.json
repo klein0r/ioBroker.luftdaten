@@ -1,0 +1,96 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_options": {
+            "type": "panel",
+            "label": "Options",
+            "items": {
+                "requestTimeout": {
+                    "type": "number",
+                    "min": 0,
+                    "max": 120,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "Request Timeout",
+                    "help": "in Seconds"
+                }
+            }
+        },
+        "_advanced": {
+            "type": "panel",
+            "label": "Sensors",
+            "items": {
+                "sensors": {
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "Sensors",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "name",
+                            "width": "30%",
+                            "title": "Sensor Name",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        },
+                        {
+                            "type": "select",
+                            "options": [
+                                {
+                                    "label": {
+                                        "en": "Remote",
+                                        "de": "Remote",
+                                        "ru": "Дистанционный пульт",
+                                        "pt": "Controlo remoto",
+                                        "nl": "Afgelegen",
+                                        "fr": "Éloigné",
+                                        "it": "A distanza",
+                                        "es": "Remoto",
+                                        "pl": "Zdalny",
+                                        "zh-cn": "远程"
+                                    },
+                                    "value": "remote"
+                                },
+                                {
+                                    "label": {
+                                        "en": "Local",
+                                        "de": "Lokal",
+                                        "ru": "Местный",
+                                        "pt": "Local",
+                                        "nl": "Lokaal",
+                                        "fr": "Local",
+                                        "it": "Locale",
+                                        "es": "Local",
+                                        "pl": "Lokalny",
+                                        "zh-cn": "本地"
+                                    },
+                                    "value": "local"
+                                }
+                            ],
+                            "attr": "type",
+                            "width": "30%",
+                            "title": "Sensor Type",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "identifier",
+                            "width": "50%",
+                            "title": "Sensor Identifier",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

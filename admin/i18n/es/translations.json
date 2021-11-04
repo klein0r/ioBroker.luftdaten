@@ -1,0 +1,13 @@
+{
+    "IP (when local) or ID (when remote)": "IP (cuando es local) o ID (cuando es remoto)",
+    "Individual name for sensor": "Nombre individual para sensor",
+    "Local": "Local",
+    "Options": "Opciones",
+    "Remote": "Remoto",
+    "Request Timeout": "Pide tiempo fuera",
+    "Sensor Identifier": "Identificador del sensor",
+    "Sensor Type": "Tipo de sensor",
+    "Sensors": "Sensores",
+    "You can find remote sensors here": "Puedes encontrar sensores remotos <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>aquí</a>",
+    "in Seconds": "en segundos"
+}

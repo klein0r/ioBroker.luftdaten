@@ -1,0 +1,13 @@
+{
+    "IP (when local) or ID (when remote)": "IP（本地时）或ID（远程时）",
+    "Individual name for sensor": "传感器的个人名称",
+    "Local": "本地",
+    "Options": "选项",
+    "Remote": "远程",
+    "Request Timeout": "请求超时",
+    "Sensor Identifier": "传感器标识符",
+    "Sensor Type": "传感器类型",
+    "Sensors": "传感器",
+    "You can find remote sensors here": "您可以<a target='_blank' href='http://deutschland.maps.luftdaten.info/'>在这里</a>找到远程传感器",
+    "in Seconds": "马上"
+}

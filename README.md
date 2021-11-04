@@ -52,6 +52,10 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+### 2.1.0
+
+* (klein0r) Admin 5 Support
+
 ### 2.0.3
 
 * (klein0r) Fixed error logging
