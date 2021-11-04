@@ -32,7 +32,7 @@
                         {
                             "type": "text",
                             "attr": "name",
-                            "width": "30%",
+                            "width": "40%",
                             "title": "Sensor Name",
                             "filter": true,
                             "sort": true,
@@ -73,7 +73,7 @@
                                 }
                             ],
                             "attr": "type",
-                            "width": "30%",
+                            "width": "20%",
                             "title": "Sensor Type",
                             "filter": false,
                             "sort": false,
@@ -82,7 +82,7 @@
                         {
                             "type": "text",
                             "attr": "identifier",
-                            "width": "50%",
+                            "width": "40%",
                             "title": "Sensor Identifier",
                             "filter": false,
                             "sort": false,
