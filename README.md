@@ -60,6 +60,11 @@ Wait some minutes until the cronjob collects the data for the first time.
 
 ## Changelog
 
+<!--
+  Placeholder for the next version (at the beginning of the line):
+  ### **WORK IN PROGRESS**
+-->
+
 ### 2.1.1
 
 * (klein0r) Fixed missing translations
