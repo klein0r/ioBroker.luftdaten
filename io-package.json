@@ -64,7 +64,6 @@
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "main": "main.js",
         "icon": "luftdaten.png",
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
         "enabled": true,
@@ -77,7 +76,6 @@
         "compact": true,
         "connectionType": "cloud",
         "dataSource": "poll",
-        "materialize": true,
         "adminUI": {
             "config": "json"
         },
