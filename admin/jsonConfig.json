@@ -42,10 +42,21 @@
                             "type": "text",
                             "attr": "name",
                             "width": "40%",
-                            "title": "Sensor Name",
+                            "title": {
+                                "en": "Sensor Name",
+                                "de": "Sensorname",
+                                "ru": "Имя датчика",
+                                "pt": "Nome do Sensor",
+                                "nl": "Sensornaam:",
+                                "fr": "Nom du capteur",
+                                "it": "Nome del sensore",
+                                "es": "Nombre del sensor",
+                                "pl": "Nazwa czujnika",
+                                "zh-cn": "传感器名称"
+                            },
                             "filter": true,
                             "sort": true,
-                            "default": ""
+                            "default": "My City"
                         },
                         {
                             "type": "select",
@@ -83,16 +94,38 @@
                             ],
                             "attr": "type",
                             "width": "20%",
-                            "title": "Sensor Type",
+                            "title": {
+                                "en": "Sensor Type",
+                                "de": "Sensorart",
+                                "ru": "Тип датчика",
+                                "pt": "Tipo de Sensor",
+                                "nl": "Sensortype:",
+                                "fr": "Type de capteur",
+                                "it": "Tipo di sensore",
+                                "es": "Tipo de sensor",
+                                "pl": "Typ czujnika",
+                                "zh-cn": "传感器类型"
+                            },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": "remote"
                         },
                         {
                             "type": "text",
                             "attr": "identifier",
                             "width": "40%",
-                            "title": "Sensor Identifier",
+                            "title": {
+                                "en": "Sensor Identifier",
+                                "de": "Sensorkennung",
+                                "ru": "Идентификатор датчика",
+                                "pt": "Identificador de Sensor",
+                                "nl": "Sensor-ID",
+                                "fr": "Identificateur de capteur",
+                                "it": "Identificatore del sensore",
+                                "es": "Identificador de sensor",
+                                "pl": "Identyfikator czujnika",
+                                "zh-cn": "传感器标识符"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""
