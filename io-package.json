@@ -5,57 +5,161 @@
         "news": {
             "2.1.2": {
                 "en": "Translated admin tab table headers",
-                "de": "Admin Tab übersetzt"
+                "de": "Admin Tab übersetzt",
+                "ru": "Переведены заголовки таблицы вкладки администратора",
+                "pt": "Cabeçalhos de tabela da guia de administração traduzidos",
+                "nl": "Vertaalde tabelkoppen van het beheerderstabblad",
+                "fr": "En-têtes de tableau des onglets d'administration traduits",
+                "it": "Intestazioni della tabella della scheda amministratore tradotte",
+                "es": "Encabezados de tabla de pestañas de administración traducidos",
+                "pl": "Przetłumaczone nagłówki tabeli karty administratora",
+                "zh-cn": "翻译的管理标签表标题"
             },
             "2.1.1": {
                 "en": "Fixed missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt"
+                "de": "Fehlende Übersetzungen hinzugefügt",
+                "ru": "Исправлены отсутствующие переводы",
+                "pt": "Traduções em falta corrigidas",
+                "nl": "Ontbrekende vertalingen verholpen",
+                "fr": "Correction des traductions manquantes",
+                "it": "Risolte le traduzioni mancanti",
+                "es": "Se corrigieron las traducciones faltantes",
+                "pl": "Naprawiono brakujące tłumaczenia",
+                "zh-cn": "修复了丢失的翻译"
             },
             "2.1.0": {
                 "en": "Admin 5 Support",
-                "de": "Admin 5 Support"
+                "de": "Admin 5 Support",
+                "ru": "Admin 5 Поддержка",
+                "pt": "Suporte Admin 5",
+                "nl": "Beheerder 5 Ondersteuning",
+                "fr": "Assistance administrateur 5",
+                "it": "Supporto amministratore 5",
+                "es": "Soporte Admin 5",
+                "pl": "Wsparcie administratora 5",
+                "zh-cn": "管理员 5 支持"
             },
             "2.0.3": {
                 "en": "Fixed error logging",
-                "de": "Fehler-Logging behoben"
+                "de": "Fehler-Logging behoben",
+                "ru": "Исправлено ведение журнала ошибок",
+                "pt": "Registro de erro corrigido",
+                "nl": "Vaste foutregistratie",
+                "fr": "Correction de la journalisation des erreurs",
+                "it": "Risolto errore di registrazione",
+                "es": "Registro de errores fijos",
+                "pl": "Naprawiono rejestrowanie błędów",
+                "zh-cn": "修复错误记录"
             },
             "2.0.2": {
                 "en": "Added timeout option",
-                "de": "Option für Timeout-Limit hinzugefügt"
+                "de": "Option für Timeout-Limit hinzugefügt",
+                "ru": "Добавлена ​​опция тайм-аута",
+                "pt": "Adicionada opção de tempo limite",
+                "nl": "Time-outoptie toegevoegd",
+                "fr": "Ajout d'une option de délai d'attente",
+                "it": "Aggiunta opzione di timeout",
+                "es": "Opción de tiempo de espera agregada",
+                "pl": "Dodano opcję limitu czasu",
+                "zh-cn": "添加超时选项"
             },
             "2.0.1": {
                 "en": "Minor bug fixes",
-                "de": "Kleinere Bugfixes"
+                "de": "Kleinere Bugfixes",
+                "ru": "Устранение небольших багов",
+                "pt": "Pequenas correções de bugs",
+                "nl": "Kleine bugfixes",
+                "fr": "Corrections de bugs mineurs",
+                "it": "Correzioni di bug minori",
+                "es": "Correcciones de errores menores",
+                "pl": "Naprawy niewielkich błędów",
+                "zh-cn": "修正了一些小错误"
             },
             "2.0.0": {
                 "en": "Updated admin interface to maintain multiple sensors in one instance",
-                "de": "Benutzeroberfläche angepasst, um mehrere Sensoren in einer Instanz verwalten zu können"
+                "de": "Benutzeroberfläche angepasst, um mehrere Sensoren in einer Instanz verwalten zu können",
+                "ru": "Обновлен интерфейс администратора для поддержки нескольких датчиков в одном экземпляре.",
+                "pt": "Interface de administração atualizada para manter vários sensores em uma instância",
+                "nl": "Bijgewerkte beheerdersinterface om meerdere sensoren in één instantie te onderhouden",
+                "fr": "Interface d'administration mise à jour pour maintenir plusieurs capteurs dans une seule instance",
+                "it": "Interfaccia di amministrazione aggiornata per mantenere più sensori in un'unica istanza",
+                "es": "Interfaz de administración actualizada para mantener múltiples sensores en una instancia",
+                "pl": "Zaktualizowany interfejs administratora, aby utrzymać wiele czujników w jednej instancji",
+                "zh-cn": "更新管理界面以在一个实例中维护多个传感器"
             },
             "1.0.3": {
                 "en": "Remove non-numeric characters from sensor id",
-                "de": "Alle nicht-numerischen Zeichen aus der Sensor-ID entfernen"
+                "de": "Alle nicht-numerischen Zeichen aus der Sensor-ID entfernen",
+                "ru": "Удалите нечисловые символы из идентификатора датчика",
+                "pt": "Remova os caracteres não numéricos da id do sensor",
+                "nl": "Verwijder niet-numerieke tekens uit sensor-ID",
+                "fr": "Supprimer les caractères non numériques de l'identifiant du capteur",
+                "it": "Rimuovi i caratteri non numerici dall'ID sensore",
+                "es": "Eliminar caracteres no numéricos de la identificación del sensor",
+                "pl": "Usuń znaki nienumeryczne z identyfikatora czujnika",
+                "zh-cn": "从传感器 ID 中删除非数字字符"
             },
             "1.0.2": {
                 "en": "Fixed async object creation",
-                "de": "Asynchrone Objekterstellung korrigiert"
+                "de": "Asynchrone Objekterstellung korrigiert",
+                "ru": "Исправлено создание асинхронного объекта",
+                "pt": "Criação de objeto assíncrono corrigido",
+                "nl": "Vaste asynchrone objectcreatie",
+                "fr": "Correction de la création d'objets asynchrone",
+                "it": "Risolto il problema con la creazione di oggetti asincroni",
+                "es": "Creación de objetos asíncronos fijos",
+                "pl": "Naprawiono tworzenie obiektów asynchronicznych",
+                "zh-cn": "固定异步对象创建"
             },
             "1.0.1": {
                 "en": "Added iobroker sentry",
-                "de": "iobroker sentry hinzugefügt"
+                "de": "iobroker sentry hinzugefügt",
+                "ru": "Добавлен часовой iobroker",
+                "pt": "Adicionada sentinela iobroker",
+                "nl": "Iobroker schildwacht toegevoegd",
+                "fr": "Sentinelle iobroker ajoutée",
+                "it": "Aggiunto sentinella iobroker",
+                "es": "Se agregó un centinela de iobroker.",
+                "pl": "Dodano działko iobrokera",
+                "zh-cn": "添加了iobroker哨兵"
             },
             "1.0.0": {
                 "en": "First stable release",
-                "de": "Erster stable Release"
+                "de": "Erster stable Release",
+                "ru": "Первый стабильный выпуск",
+                "pt": "Primeira versão estável",
+                "nl": "Eerste stabiele release",
+                "fr": "Première version stable",
+                "it": "Prima versione stabile",
+                "es": "Primera versión estable",
+                "pl": "Pierwsze stabilne wydanie",
+                "zh-cn": "第一个稳定版本"
             }
         },
         "title": "Luftdaten.info",
         "titleLang": {
             "en": "Luftdaten.info",
-            "de": "Luftdaten.info"
+            "de": "Luftdaten.info",
+            "ru": "Luftdaten.info",
+            "pt": "Luftdaten.info",
+            "nl": "Luftdaten.info",
+            "fr": "Luftdaten.info",
+            "it": "Luftdaten.info",
+            "es": "Luftdaten.info",
+            "pl": "Luftdaten.info",
+            "zh-cn": "Luftdaten.info"
         },
         "desc": {
             "en": "Loads current air quality data from a local or remote sensor",
-            "de": "Lädt aktuelle Luftqualitätsdaten eines lokalen oder Cloud-Sensors"
+            "de": "Lädt aktuelle Luftqualitätsdaten eines lokalen oder Cloud-Sensors",
+            "ru": "Загружает текущие данные о качестве воздуха с местного или удаленного датчика",
+            "pt": "Carrega dados atuais de qualidade do ar de um sensor local ou remoto",
+            "nl": "Laadt huidige luchtkwaliteitsgegevens van een lokale of externe sensor",
+            "fr": "Charge les données actuelles sur la qualité de l'air à partir d'un capteur local ou distant",
+            "it": "Carica i dati attuali sulla qualità dell'aria da un sensore locale o remoto",
+            "es": "Carga datos actuales de la calidad del aire desde un sensor local o remoto",
+            "pl": "Ładuje aktualne dane o jakości powietrza z lokalnego lub zdalnego czujnika",
+            "zh-cn": "从本地或远程传感器加载当前的空气质量数据"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -102,6 +206,5 @@
     "native": {
         "requestTimeout": 10
     },
-    "objects": [
-    ]
+    "objects": []
 }
