@@ -152,7 +152,7 @@ class Luftdaten extends utils.Adapter {
                 },
                 native: {}
             });
-            await this.setStateAsync(path + 'name', sensorName, true);
+            await this.setStateAsync(path + 'name', {val: sensorName, ack: true});
 
             await this.setObjectNotExistsAsync(path + 'responseCode', {
                 type: 'state',
@@ -193,7 +193,7 @@ class Luftdaten extends utils.Adapter {
                         this.log.debug('local request done');
                         this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                        await this.setStateAsync(path + 'responseCode', response.status, true);
+                        await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
                         if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
                             for (const key in content.sensordatavalues) {
@@ -234,7 +234,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {}
                                 });
-                                await this.setStateAsync(path + obj.value_type, parseFloat(obj.value), true);
+                                await this.setStateAsync(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
                             }
                         }
                     }
@@ -244,7 +244,7 @@ class Luftdaten extends utils.Adapter {
                             // The request was made and the server responded with a status code
 
                             this.log.warn('received error ' + error.response.status + ' response from local sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
-                            this.setStateAsync(path + 'responseCode', error.response.status, true);
+                            this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -275,7 +275,7 @@ class Luftdaten extends utils.Adapter {
                         this.log.debug('remote request done');
                         this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
 
-                        await this.setStateAsync(path + 'responseCode', response.status, true);
+                        await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
                         if (content && Array.isArray(content) && content.length > 0) {
                             const sensorData = content[0];
@@ -307,7 +307,7 @@ class Luftdaten extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    await this.setStateAsync(path + 'SDS_' + obj.value_type, parseFloat(obj.value), true);
+                                    await this.setStateAsync(path + 'SDS_' + obj.value_type, {val: parseFloat(obj.value), ack: true});
                                 }
                             }
 
@@ -355,7 +355,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {}
                                 });
-                                await this.setStateAsync(path + 'location.longitude', parseFloat(sensorData.location.longitude), true);
+                                await this.setStateAsync(path + 'location.longitude', {val: parseFloat(sensorData.location.longitude), ack: true});
 
                                 await this.setObjectNotExistsAsync(path + 'location.latitude', {
                                     type: 'state',
@@ -380,7 +380,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {}
                                 });
-                                await this.setStateAsync(path + 'location.latitude', parseFloat(sensorData.location.latitude), true);
+                                await this.setStateAsync(path + 'location.latitude', {val: parseFloat(sensorData.location.latitude), ack: true});
 
                                 await this.setObjectNotExistsAsync(path + 'location.altitude', {
                                     type: 'state',
@@ -405,7 +405,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {}
                                 });
-                                await this.setStateAsync(path + 'location.altitude', parseFloat(sensorData.location.altitude), true);
+                                await this.setStateAsync(path + 'location.altitude', {val: parseFloat(sensorData.location.altitude), ack: true});
 
                                 await this.setObjectNotExistsAsync(path + 'timestamp', {
                                     type: 'state',
@@ -429,7 +429,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {}
                                 });
-                                await this.setStateAsync(path + 'timestamp', new Date(sensorData.timestamp).getTime(), true);
+                                await this.setStateAsync(path + 'timestamp', {val: new Date(sensorData.timestamp).getTime(), ack: true});
                             }
                         }
                     }
@@ -439,7 +439,7 @@ class Luftdaten extends utils.Adapter {
                             // The request was made and the server responded with a status code
 
                             this.log.warn('received error ' + error.response.status + ' response from remote sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
-                            this.setStateAsync(path + 'responseCode', error.response.status, true);
+                            this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
