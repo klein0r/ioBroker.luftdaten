@@ -69,7 +69,6 @@
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*).json",
     "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
-    "admin/build/",
     "lib/",
     "www/",
     "io-package.json",
@@ -77,9 +76,6 @@
     "main.js"
   ],
   "scripts": {
-    "watch:parcel": "parcel admin/src/index.jsx -d admin/build",
-    "build:parcel": "parcel build admin/src/index.jsx -d admin/build",
-    "build": "npm run build:parcel",
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit",
