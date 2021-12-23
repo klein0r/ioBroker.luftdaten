@@ -64,8 +64,7 @@ Wait some minutes until the cronjob collects the data for the first time.
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.1.3 (2021-12-23)
 
 * (klein0r) Updated dependencies
 
