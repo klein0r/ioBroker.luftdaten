@@ -118,12 +118,11 @@ class Luftdaten extends utils.Adapter {
                 return null;
             }
 
-            this.log.debug('sensor type: ' + sensorType + ', sensor identifier: ' + sensorIdentifier + ', sensor name: ' + sensorName);
+            this.log.debug(`sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensorIdentifier}", device: "${deviceName}"`);
 
             await this.setObjectNotExistsAsync(deviceName, {
                 type: 'device',
-                common: {},
-                native: {}
+                common: {}
             });
 
             this.extendObjectAsync(deviceName, {
@@ -328,8 +327,7 @@ class Luftdaten extends utils.Adapter {
                                             'zh-cn': '地点'
                                         },
                                         role: 'value.gps'
-                                    },
-                                    native: {}
+                                    }
                                 });
 
                                 await this.setObjectNotExistsAsync(path + 'location.longitude', {
