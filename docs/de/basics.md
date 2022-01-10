@@ -19,7 +19,7 @@ Warte einige Sekunden, bis die Daten das erste Mal vom Sensor abgeholt werden.
 
 ### Remote
 
-1. Wähle einen Sensor von der offiziellen Karte: [deutschland.maps.sensor.community](https://deutschland.maps.sensor.community/)
+1. Wähle einen Sensor von der offiziellen Karte: [sensor.community](https://sensor.community/en/)
 2. Klicke auf den Sensor und kopiere die ID (#XXXXX)
 3. Erstelle eine neue Instanz des Adapters
 4. Wähle einen beliebigen Sensornamen und füge ihn in die erste Spalte ein

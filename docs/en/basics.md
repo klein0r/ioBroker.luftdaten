@@ -19,7 +19,7 @@ Wait some seconds until the cronjob collects the data for the first time.
 
 ### Remote
 
-1. Choose one of the sensors on the official map: [deutschland.maps.sensor.community](https://deutschland.maps.sensor.community/)
+1. Choose one of the sensors on the official map: [sensor.community](https://sensor.community/en/)
 2. Click on the sensor and copy the ID (#XXXXX)
 3. Create a new instance of the adapter
 4. Type a custom name in the first table column
