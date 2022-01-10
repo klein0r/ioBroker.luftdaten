@@ -15,11 +15,11 @@
 
 Warte einige Sekunden, bis die Daten das erste Mal vom Sensor abgeholt werden.
 
-*Bei Bedarf kann der Abfrage-Interval unter Instanzen angepasst werden (Standard: alle 30 Minuten).*
+*Bei Bedarf kann der Abfrage-Interval im Tab "Instanzen" angepasst werden (Standard: alle 30 Minuten).*
 
 ### Remote
 
-1. Wähle einen Sensor von der offiziellen Karte: [deutschland.maps.luftdaten.info](https://deutschland.maps.luftdaten.info/)
+1. Wähle einen Sensor von der offiziellen Karte: [deutschland.maps.sensor.community](https://deutschland.maps.sensor.community/)
 2. Klicke auf den Sensor und kopiere die ID (#XXXXX)
 3. Erstelle eine neue Instanz des Adapters
 4. Wähle einen beliebigen Sensornamen und füge ihn in die erste Spalte ein
@@ -29,8 +29,8 @@ Warte einige Sekunden, bis die Daten das erste Mal vom Sensor abgeholt werden.
 
 Warte einige Sekunden, bis die Daten das erste Mal vom Sensor abgeholt werden.
 
-*Bei Bedarf kann der Abfrage-Interval unter Instanzen angepasst werden (Standard: alle 30 Minuten).*
+*Bei Bedarf kann der Abfrage-Interval im Tab "Instanzen" angepasst werden (Standard: alle 30 Minuten).*
 
-### Example
+### Beispiel
 
-![Configuration example](./exampleConfiguration.png)
+![Konfigurationsbeispiel](./exampleConfiguration.png)

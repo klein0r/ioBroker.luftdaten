@@ -15,11 +15,11 @@
 
 Wait some seconds until the cronjob collects the data for the first time.
 
-*Feel free to change the schedule settings in the instances tab (default is every 30 minutes).*
+*Feel free to change the schedule settings in the instances tab (default: every 30 minutes).*
 
 ### Remote
 
-1. Choose one of the sensors on the official map: [deutschland.maps.luftdaten.info](https://deutschland.maps.luftdaten.info/)
+1. Choose one of the sensors on the official map: [deutschland.maps.sensor.community](https://deutschland.maps.sensor.community/)
 2. Click on the sensor and copy the ID (#XXXXX)
 3. Create a new instance of the adapter
 4. Type a custom name in the first table column
@@ -29,7 +29,7 @@ Wait some seconds until the cronjob collects the data for the first time.
 
 Wait some seconds until the cronjob collects the data for the first time.
 
-*Feel free to change the schedule settings in the instances tab (default is every 30 minutes).*
+*Feel free to change the schedule settings in the instances tab (default: every 30 minutes).*
 
 ### Example
 
