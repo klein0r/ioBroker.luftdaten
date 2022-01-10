@@ -27,32 +27,11 @@ Please use the "adapter list" in ioBroker to install a stable version of this ad
 iobroker add luftdaten
 ```
 
-## Configuration
+## Documentation
 
-### Local
+[🇺🇸 Documentation](./docs/en/basics.md)
 
-1. Build your own adapter and add it to your local wifi network
-2. Create a new instance of the adapter
-3. Choose "Local" as type
-4. Fill the IP or Hostname of the sensor in the second input
-5. Choose a name and save the settings
-
-Wait some minutes until the cronjob collects the data for the first time.
-
-*Feel free to change the schedule settings in the instances tab (default is every 15 minutes).*
-
-### Remote
-
-1. Choose one of the sensors on the online map: [deutschland.maps.luftdaten.info](https://deutschland.maps.luftdaten.info/)
-2. Click on the sensor and copy the ID (#XXXXX)
-3. Create a new instance of the adapter
-4. Choose "Remote" as type
-5. Fill the ID of the sensor in the second input (without #)
-6. Choose a name and save the settings
-
-Wait some minutes until the cronjob collects the data for the first time.
-
-*Feel free to change the schedule settings in the instances tab (default is every 15 minutes).*
+[🇩🇪 Dokumentation](./docs/de/basics.md)
 
 ## Sentry
 
