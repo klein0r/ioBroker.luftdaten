@@ -43,6 +43,12 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+* (klein0r) Added local link to sensor map
+* (klein0r) Added documentation
+
 ### 2.1.3 (2021-12-23)
 
 * (klein0r) Updated dependencies

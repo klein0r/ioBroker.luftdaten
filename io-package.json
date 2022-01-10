@@ -128,6 +128,9 @@
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
     "enabled": true,
     "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
+    "localLinks": {
+      "_default": "https://deutschland.maps.sensor.community/"
+    },
     "loglevel": "info",
     "mode": "schedule",
     "allowInit": true,
