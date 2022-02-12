@@ -49,6 +49,7 @@ iobroker add luftdaten
 * (klein0r) Added local link to sensor map
 * (klein0r) Added documentation
 * (klein0r) Added hint for Admin 4 configuration
+* (klein0r) Updated state roles
 
 ### 2.1.3 (2021-12-23)
 

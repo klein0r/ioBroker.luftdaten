@@ -122,7 +122,10 @@ class Luftdaten extends utils.Adapter {
 
             await this.setObjectNotExistsAsync(deviceName, {
                 type: 'device',
-                common: {}
+                common: {
+                    name: sensorName
+                },
+                native: {}
             });
 
             this.extendObjectAsync(deviceName, {
@@ -147,7 +150,9 @@ class Luftdaten extends utils.Adapter {
                         'zh-cn': '传感器名称'
                     },
                     type: 'string',
-                    role: 'text'
+                    role: 'text',
+                    read: true,
+                    write: false
                 },
                 native: {}
             });
@@ -327,7 +332,8 @@ class Luftdaten extends utils.Adapter {
                                             'zh-cn': '地点'
                                         },
                                         role: 'value.gps'
-                                    }
+                                    },
+                                    native: {}
                                 });
 
                                 await this.setObjectNotExistsAsync(path + 'location.longitude', {
