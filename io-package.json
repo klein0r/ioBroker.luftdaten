@@ -88,7 +88,6 @@
         "zh-cn": "修正了一些小错误"
       }
     },
-    "title": "Luftdaten.info",
     "titleLang": {
       "en": "Luftdaten.info",
       "de": "Luftdaten.info",
@@ -139,6 +138,7 @@
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
+    "materialize": true,
     "adminUI": {
       "config": "json"
     },
