@@ -71,7 +71,7 @@ class Luftdaten extends utils.Adapter {
                     }
                 }
 
-                this.killTimeout = setTimeout(this.stop.bind(this), 15 * 1000); // 15 Seconds
+                this.killTimeout = this.setTimeout(async () => this.stop(), 6000);
             }
         );
     }
@@ -477,7 +477,7 @@ class Luftdaten extends utils.Adapter {
 
             if (this.killTimeout) {
                 this.log.debug('clearing kill timeout');
-                clearTimeout(this.killTimeout);
+                this.clearTimeout(this.killTimeout);
             }
 
             this.log.debug('cleaned everything up...');
