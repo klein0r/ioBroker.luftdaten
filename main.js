@@ -36,7 +36,7 @@ class Luftdaten extends utils.Adapter {
                         // Check if the state is a direct child (device)
                         if (id.indexOf('.') === -1) {
                             sensorsAll.push(id);
-                            this.log.debug('sensor device exists: ' + id);
+                            this.log.debug(`sensor device exists: ${id}`);
                         }
                     }
                 }
@@ -44,7 +44,7 @@ class Luftdaten extends utils.Adapter {
                 const sensors = this.config.sensors;
 
                 if (sensors && Array.isArray(sensors)) {
-                    this.log.debug('Found ' + sensors.length + ' sensors, fetching data');
+                    this.log.debug(`Found ${sensors.length} sensors, fetching data`);
 
                     for (const s in sensors) {
                         const sensor = sensors[s];
@@ -53,7 +53,7 @@ class Luftdaten extends utils.Adapter {
 
                         if (sensorName) {
                             sensorsKeep.push(sensorName);
-                            this.log.debug('sensor found: ' + sensorName);
+                            this.log.debug(`sensor found: ${sensorName}`);
                         }
                     }
                 } else {
@@ -66,7 +66,7 @@ class Luftdaten extends utils.Adapter {
 
                     if (sensorsKeep.indexOf(id) === -1) {
                         this.delObject(id, {recursive: true}, () => {
-                            this.log.debug('sensor device deleted: ' + id);
+                            this.log.debug(`sensor device deleted: ${id}`);
                         });
                     }
                 }
@@ -195,7 +195,7 @@ class Luftdaten extends utils.Adapter {
                         const content = response.data;
 
                         this.log.debug('local request done');
-                        this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
+                        this.log.debug(`received data (${response.status}): ${JSON.stringify(content)}`);
 
                         await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -247,7 +247,7 @@ class Luftdaten extends utils.Adapter {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
-                            this.log.warn('received error ' + error.response.status + ' response from local sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
+                            this.log.warn(`received error ${error.response.status} response from local sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
                             this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
@@ -277,7 +277,7 @@ class Luftdaten extends utils.Adapter {
                         const content = response.data;
 
                         this.log.debug('remote request done');
-                        this.log.debug('received data (' + response.status + '): ' + JSON.stringify(content));
+                        this.log.debug(`received data (${response.status}): ${JSON.stringify(content)}`);
 
                         await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -442,7 +442,7 @@ class Luftdaten extends utils.Adapter {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
-                            this.log.warn('received error ' + error.response.status + ' response from remote sensor ' + sensorIdentifier + ' with content: ' + JSON.stringify(error.response.data));
+                            this.log.warn(`received error ${error.response.status} response from remote sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
                             this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
