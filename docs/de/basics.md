@@ -33,4 +33,4 @@ Warte einige Sekunden, bis die Daten das erste Mal vom Sensor abgeholt werden.
 
 ### Beispiel
 
-![Konfigurationsbeispiel](./exampleConfiguration.png)
+![Konfigurationsbeispiel](./img/exampleConfiguration.png)

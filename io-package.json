@@ -143,8 +143,12 @@
       "config": "json"
     },
     "docs": {
-      "en": "docs/en/basics.md",
-      "de": "docs/de/basics.md"
+      "en": [
+        "docs/en/basics.md"
+      ],
+      "de": [
+        "docs/de/basics.md"
+      ]
     },
     "dependencies": [
       {
