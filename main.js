@@ -8,7 +8,7 @@ const axios = require('axios');
 const adapterName = require('./package.json').name.split('.').pop();
 
 axios.interceptors.request.use(x => {
-    x.meta = x.meta || {}
+    x.meta = x.meta || {};
     x.meta.requestStartedAt = new Date().getTime();
     return x;
 });
@@ -252,22 +252,22 @@ class Luftdaten extends utils.Adapter {
                         }
 
                         resolve(deviceName);
-                    }).catch((error) => {
+                    }).catch(async (error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
                             this.log.warn(`[getSensorData] received error ${error.response.status} response from local sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
-                            this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
+                            await this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js<div></div>
                             this.log.info(error.message);
-                            this.setStateAsync(path + 'responseCode', -1, true);
+                            await this.setStateAsync(path + 'responseCode', -1, true);
                         } else {
                             // Something happened in setting up the request that triggered an Error
                             this.log.info(error.message);
-                            this.setStateAsync(path + 'responseCode', -99, true);
+                            await this.setStateAsync(path + 'responseCode', -99, true);
                         }
 
                         reject('http error');
@@ -447,22 +447,22 @@ class Luftdaten extends utils.Adapter {
                         }
 
                         resolve(deviceName);
-                    }).catch((error) => {
+                    }).catch(async (error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
                             this.log.warn(`[getSensorData] received error ${error.response.status} response from remote sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
-                            this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
+                            await this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js
                             this.log.info(error.message);
-                            this.setStateAsync(path + 'responseCode', -1, true);
+                            await this.setStateAsync(path + 'responseCode', -1, true);
                         } else {
                             // Something happened in setting up the request that triggered an Error
                             this.log.info(error.message);
-                            this.setStateAsync(path + 'responseCode', -99, true);
+                            await this.setStateAsync(path + 'responseCode', -99, true);
                         }
 
                         reject('http error');
