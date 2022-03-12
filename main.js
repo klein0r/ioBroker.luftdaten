@@ -7,6 +7,17 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios');
 const adapterName = require('./package.json').name.split('.').pop();
 
+axios.interceptors.request.use(x => {
+    x.meta = x.meta || {}
+    x.meta.requestStartedAt = new Date().getTime();
+    return x;
+});
+
+axios.interceptors.response.use(x => {
+    x.responseTime = new Date().getTime() - x.config.meta.requestStartedAt;
+    return x;
+});
+
 class Luftdaten extends utils.Adapter {
 
     constructor(options) {
@@ -14,8 +25,6 @@ class Luftdaten extends utils.Adapter {
             ...options,
             name: adapterName,
         });
-
-        this.killTimeout = null;
 
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
@@ -36,7 +45,7 @@ class Luftdaten extends utils.Adapter {
                         // Check if the state is a direct child (device)
                         if (id.indexOf('.') === -1) {
                             sensorsAll.push(id);
-                            this.log.debug(`sensor device exists: ${id}`);
+                            this.log.debug(`[onReady] sensor device exists: ${id}`);
                         }
                     }
                 }
@@ -44,20 +53,24 @@ class Luftdaten extends utils.Adapter {
                 const sensors = this.config.sensors;
 
                 if (sensors && Array.isArray(sensors)) {
-                    this.log.debug(`Found ${sensors.length} sensors, fetching data`);
+                    this.log.debug(`[onReady] Found ${sensors.length} sensors, fetching data`);
 
                     for (const s in sensors) {
                         const sensor = sensors[s];
 
-                        const sensorName = await this.getSensorData(sensor);
+                        try {
+                            const sensorName = await this.getSensorData(sensor);
 
-                        if (sensorName) {
-                            sensorsKeep.push(sensorName);
-                            this.log.debug(`sensor found: ${sensorName}`);
+                            if (sensorName) {
+                                sensorsKeep.push(sensorName);
+                                this.log.debug(`[onReady] sensor data added: ${sensorName}`);
+                            }
+                        } catch (err) {
+                            this.log.debug(`[onReady] sensor error: ${err}`);
                         }
                     }
                 } else {
-                    this.log.error('No sensors configured');
+                    this.log.error('[onReady] no sensors configured');
                 }
 
                 // Delete non existent sensors
@@ -65,137 +78,133 @@ class Luftdaten extends utils.Adapter {
                     const id = sensorsAll[i];
 
                     if (sensorsKeep.indexOf(id) === -1) {
-                        this.delObject(id, {recursive: true}, () => {
-                            this.log.debug(`sensor device deleted: ${id}`);
-                        });
+                        await this.delObjectAsync(id, {recursive: true});
                     }
                 }
 
-                this.killTimeout = this.setTimeout(async () => this.stop(), 6000);
+                this.stop();
             }
         );
     }
 
     async getSensorData(sensor) {
+        return new Promise(async (resolve, reject) => {
 
-        const unitList = {
-            P1: 'µg/m³',
-            P2: 'µg/m³',
-            temperature: '°C',
-            humidity: '%',
-            pressure: 'Pa',
-            pressure_at_sealevel: 'Pa',
-            noise: 'dB(A)',
-            signal: 'dB(A)',
-            min_micro: 'µs',
-            max_micro: 'µs'
-        };
+            const unitList = {
+                P1: 'µg/m³',
+                P2: 'µg/m³',
+                temperature: '°C',
+                humidity: '%',
+                pressure: 'Pa',
+                pressure_at_sealevel: 'Pa',
+                noise: 'dB(A)',
+                signal: 'dB(A)',
+                min_micro: 'µs',
+                max_micro: 'µs'
+            };
 
-        const roleList = {
-            P1: 'value.ppm',
-            P2: 'value.ppm',
-            temperature: 'value.temperature',
-            humidity: 'value.humidity',
-            pressure: 'value.pressure',
-            pressure_at_sealevel: 'value.pressure',
-            noise: 'value',
-            signal: 'value',
-            min_micro: 'value',
-            max_micro: 'value'
-        };
+            const roleList = {
+                P1: 'value.ppm',
+                P2: 'value.ppm',
+                temperature: 'value.temperature',
+                humidity: 'value.humidity',
+                pressure: 'value.pressure',
+                pressure_at_sealevel: 'value.pressure',
+                noise: 'value',
+                signal: 'value',
+                min_micro: 'value',
+                max_micro: 'value'
+            };
 
-        const sensorType = sensor.type;
-        const sensorIdentifier = sensor.identifier;
-        const sensorName = (sensor.name === '') ? sensorIdentifier : sensor.name;
+            const sensorType = sensor.type;
+            const sensorIdentifier = sensor.identifier;
+            const sensorName = (sensor.name === '') ? sensorIdentifier : sensor.name;
 
-        if (sensorIdentifier && sensorName) {
-            const deviceName = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
-            const path = deviceName + '.';
+            if (sensorIdentifier && sensorName) {
+                const deviceName = (sensorType == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
+                const path = deviceName + '.';
 
-            if (!deviceName) {
-                this.log.error('Device name is empty. Check configuration.');
-
-                return null;
-            }
-
-            this.log.debug(`sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensorIdentifier}", device: "${deviceName}"`);
-
-            await this.setObjectNotExistsAsync(deviceName, {
-                type: 'device',
-                common: {
-                    name: sensorName
-                },
-                native: {}
-            });
-
-            this.extendObjectAsync(deviceName, {
-                common: {
-                    name: sensorName
+                if (!deviceName) {
+                    reject('Device name is empty. Check configuration.');
                 }
-            });
 
-            await this.setObjectNotExistsAsync(path + 'name', {
-                type: 'state',
-                common: {
-                    name: {
-                        en: 'Sensor name',
-                        de: 'Sensorname',
-                        ru: 'Имя датчика',
-                        pt: 'Nome do sensor',
-                        nl: 'Sensornaam',
-                        fr: 'Nom du capteur',
-                        it: 'Nome del sensore',
-                        es: 'Nombre del sensor',
-                        pl: 'Nazwa czujnika',
-                        'zh-cn': '传感器名称'
+                this.log.debug(`[getSensorData] sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensorIdentifier}", device: "${deviceName}"`);
+
+                await this.setObjectNotExistsAsync(deviceName, {
+                    type: 'device',
+                    common: {
+                        name: sensorName
                     },
-                    type: 'string',
-                    role: 'text',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(path + 'name', {val: sensorName, ack: true});
+                    native: {}
+                });
 
-            await this.setObjectNotExistsAsync(path + 'responseCode', {
-                type: 'state',
-                common: {
-                    name: {
-                        en: 'Response Code',
-                        de: 'Antwortcode',
-                        ru: 'Код ответа',
-                        pt: 'Código de resposta',
-                        nl: 'Reactiecode',
-                        fr: 'Code de réponse',
-                        it: 'Codice di risposta',
-                        es: 'Código de respuesta',
-                        pl: 'Kod odpowiedzi',
-                        'zh-cn': '响应代码'
+                this.extendObjectAsync(deviceName, {
+                    common: {
+                        name: sensorName
+                    }
+                });
+
+                await this.setObjectNotExistsAsync(path + 'name', {
+                    type: 'state',
+                    common: {
+                        name: {
+                            en: 'Sensor name',
+                            de: 'Sensorname',
+                            ru: 'Имя датчика',
+                            pt: 'Nome do sensor',
+                            nl: 'Sensornaam',
+                            fr: 'Nom du capteur',
+                            it: 'Nome del sensore',
+                            es: 'Nombre del sensor',
+                            pl: 'Nazwa czujnika',
+                            'zh-cn': '传感器名称'
+                        },
+                        type: 'string',
+                        role: 'text',
+                        read: true,
+                        write: false
                     },
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
+                    native: {}
+                });
+                await this.setStateAsync(path + 'name', {val: sensorName, ack: true});
 
-            if (sensorType == 'local') {
-                this.log.debug('local request started');
+                await this.setObjectNotExistsAsync(path + 'responseCode', {
+                    type: 'state',
+                    common: {
+                        name: {
+                            en: 'Response Code',
+                            de: 'Antwortcode',
+                            ru: 'Код ответа',
+                            pt: 'Código de resposta',
+                            nl: 'Reactiecode',
+                            fr: 'Code de réponse',
+                            it: 'Codice di risposta',
+                            es: 'Código de respuesta',
+                            pl: 'Kod odpowiedzi',
+                            'zh-cn': '响应代码'
+                        },
+                        type: 'number',
+                        role: 'value',
+                        read: true,
+                        write: false
+                    },
+                    native: {}
+                });
 
-                axios({
-                    method: 'get',
-                    baseURL: 'http://' + sensorIdentifier + '/',
-                    url: '/data.json',
-                    timeout: this.config.requestTimeout * 1000,
-                    responseType: 'json'
-                }).then(
-                    async (response) => {
+                if (sensorType == 'local') {
+                    const sensorUrl = `https://${sensorIdentifier}/data.json`;
+
+                    this.log.debug(`[getSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
+
+                    axios({
+                        method: 'get',
+                        url: sensorUrl,
+                        timeout: this.config.requestTimeout * 1000,
+                        responseType: 'json'
+                    }).then(async (response) => {
                         const content = response.data;
 
-                        this.log.debug('local request done');
-                        this.log.debug(`received data (${response.status}): ${JSON.stringify(content)}`);
+                        this.log.debug(`[getSensorData] local request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
                         await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -241,13 +250,13 @@ class Luftdaten extends utils.Adapter {
                                 await this.setStateAsync(path + obj.value_type, {val: parseFloat(obj.value), ack: true});
                             }
                         }
-                    }
-                ).catch(
-                    (error) => {
+
+                        resolve(deviceName);
+                    }).catch((error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
-                            this.log.warn(`received error ${error.response.status} response from local sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
+                            this.log.warn(`[getSensorData] received error ${error.response.status} response from local sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
                             this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
@@ -260,24 +269,24 @@ class Luftdaten extends utils.Adapter {
                             this.log.info(error.message);
                             this.setStateAsync(path + 'responseCode', -99, true);
                         }
-                    }
-                );
 
-            } else if (sensorType == 'remote') {
-                this.log.debug('remote request started');
+                        reject('http error');
+                    });
 
-                axios({
-                    method: 'get',
-                    baseURL: 'https://data.sensor.community/airrohr/v1/sensor/',
-                    url: '/' + sensorIdentifier.replace(/\D/g,'') + '/',
-                    timeout: this.config.requestTimeout * 1000,
-                    responseType: 'json'
-                }).then(
-                    async (response) => {
+                } else if (sensorType == 'remote') {
+                    const sensorUrl = `https://data.sensor.community/airrohr/v1/sensor/${sensorIdentifier.replace(/\D/g,'')}/`;
+
+                    this.log.debug(`[getSensorData] remote request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
+
+                    axios({
+                        method: 'get',
+                        url: sensorUrl,
+                        timeout: this.config.requestTimeout * 1000,
+                        responseType: 'json'
+                    }).then(async (response) => {
                         const content = response.data;
 
-                        this.log.debug('remote request done');
-                        this.log.debug(`received data (${response.status}): ${JSON.stringify(content)}`);
+                        this.log.debug(`[getSensorData] remote request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
                         await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -436,13 +445,13 @@ class Luftdaten extends utils.Adapter {
                                 await this.setStateAsync(path + 'timestamp', {val: new Date(sensorData.timestamp).getTime(), ack: true});
                             }
                         }
-                    }
-                ).catch(
-                    (error) => {
+
+                        resolve(deviceName);
+                    }).catch((error) => {
                         if (error.response) {
                             // The request was made and the server responded with a status code
 
-                            this.log.warn(`received error ${error.response.status} response from remote sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
+                            this.log.warn(`[getSensorData] received error ${error.response.status} response from remote sensor ${sensorIdentifier} with content: ${JSON.stringify(error.response.data)}`);
                             this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                         } else if (error.request) {
                             // The request was made but no response was received
@@ -455,16 +464,16 @@ class Luftdaten extends utils.Adapter {
                             this.log.info(error.message);
                             this.setStateAsync(path + 'responseCode', -99, true);
                         }
-                    }
-                );
+
+                        reject('http error');
+                    });
+                } else {
+                    reject('unknown sensor type');
+                }
+            } else {
+                reject('sensor type and/or sensor identifier not defined');
             }
-
-            return deviceName;
-        } else {
-            this.log.debug('sensor type and/or sensor identifier not defined');
-
-            return null;
-        }
+        });
     }
 
     removeNamespace(id) {
@@ -474,12 +483,6 @@ class Luftdaten extends utils.Adapter {
 
     onUnload(callback) {
         try {
-
-            if (this.killTimeout) {
-                this.log.debug('clearing kill timeout');
-                this.clearTimeout(this.killTimeout);
-            }
-
             this.log.debug('cleaned everything up...');
             callback();
         } catch (e) {
