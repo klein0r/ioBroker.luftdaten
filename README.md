@@ -43,6 +43,10 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Do not delete sensors on http problems
+
 ### 2.2.0 (2022-03-14)
 
 * (klein0r) Added documentation
