@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.0 (2021-11-04)
+
+* (klein0r) Admin 5 Support
+
 ## 2.0.3 (2021-10-04)
 
 * (klein0r) Fixed error logging

@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "news": {
+      "2.2.1": {
+        "en": "Do not delete sensors on http problems",
+        "de": "Löschen Sie keine Sensoren bei HTTP-Problemen",
+        "ru": "Не удалять датчики при проблемах с http",
+        "pt": "Não exclua sensores em problemas de http",
+        "nl": "Verwijder geen sensoren bij http-problemen",
+        "fr": "Ne supprimez pas les capteurs sur les problèmes http",
+        "it": "Non eliminare i sensori sui problemi http",
+        "es": "No elimine sensores en problemas de http",
+        "pl": "Nie usuwaj czujników w przypadku problemów z http",
+        "zh-cn": "不要删除关于 http 问题的传感器"
+      },
       "2.2.0": {
         "en": "Added documentation\nAdded hint for Admin 4 configuration\nUpdated state roles\nUpdated debug messages to provide more information\nUpdated dependencies",
         "de": "Dokumentation hinzugefügt\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nStatusrollen aktualisiert\nAktualisierte Debug-Meldungen, um weitere Informationen bereitzustellen\nAktualisierte Abhängigkeiten",
@@ -74,18 +86,6 @@
         "es": "Registro de errores fijos",
         "pl": "Naprawiono rejestrowanie błędów",
         "zh-cn": "修复错误记录"
-      },
-      "2.0.2": {
-        "en": "Added timeout option",
-        "de": "Option für Timeout-Limit hinzugefügt",
-        "ru": "Добавлена ​​опция тайм-аута",
-        "pt": "Adicionada opção de tempo limite",
-        "nl": "Time-outoptie toegevoegd",
-        "fr": "Ajout d'une option de délai d'attente",
-        "it": "Aggiunta opzione di timeout",
-        "es": "Opción de tiempo de espera agregada",
-        "pl": "Dodano opcję limitu czasu",
-        "zh-cn": "添加超时选项"
       }
     },
     "titleLang": {

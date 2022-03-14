@@ -1,6 +1,6 @@
 {
   "name": "iobroker.luftdaten",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "ioBroker Luftdaten Adapter",
   "author": {
     "name": "Matthias Kleine",
