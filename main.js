@@ -196,7 +196,7 @@ class Luftdaten extends utils.Adapter {
             });
 
             if (sensorType == 'local') {
-                const sensorUrl = `https://${sensor.identifier}/data.json`;
+                const sensorUrl = `http://${sensor.identifier}/data.json`;
 
                 this.log.debug(`[getSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
