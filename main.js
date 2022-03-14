@@ -57,21 +57,20 @@ class Luftdaten extends utils.Adapter {
 
                     for (const s in sensors) {
                         const sensor = sensors[s];
+                        const sensorIdentifier = sensor.identifier;
+                        const deviceId = (sensor.type == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
 
-                        try {
-                            const sensorIdentifier = sensor.identifier;
-                            const deviceId = (sensor.type == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
+                        if (deviceId) {
+                            sensorsKeep.push(deviceId);
 
-                            if (deviceId) {
-                                sensorsKeep.push(deviceId);
-
+                            try {
                                 const responseTime = await this.fillSensorData(deviceId, sensor);
                                 this.log.debug(`[onReady] sensor data filled: ${deviceId}`);
-                            } else {
-                                this.log.error(`[onReady] sensor identifier missing - check instance configuration`);
+                            } catch (err) {
+                                this.log.debug(`[onReady] sensor "${deviceId}" error: ${err}`);
                             }
-                        } catch (err) {
-                            this.log.debug(`[onReady] sensor error: ${err}`);
+                        } else {
+                            this.log.error(`[onReady] sensor identifier missing - check instance configuration`);
                         }
                     }
                 } else {
