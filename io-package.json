@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "news": {
+      "2.2.2": {
+        "en": "Bugfix: Requested local sensors with https instead of http",
+        "de": "Bugfix: Angeforderte lokale Sensoren mit https statt http",
+        "ru": "Исправление: запрашивались локальные датчики с https вместо http",
+        "pt": "Bugfix: Sensores locais solicitados com https em vez de http",
+        "nl": "Bugfix: gevraagde lokale sensoren met https in plaats van http",
+        "fr": "Correction de bug : Capteurs locaux demandés avec https au lieu de http",
+        "it": "Bugfix: sensori locali richiesti con https invece di http",
+        "es": "Corrección de errores: sensores locales solicitados con https en lugar de http",
+        "pl": "Bugfix: Żądane lokalne czujniki z https zamiast http",
+        "zh-cn": "错误修正：使用 https 而不是 http 请求本地传感器"
+      },
       "2.2.1": {
         "en": "Do not delete sensors on http problems",
         "de": "Löschen Sie keine Sensoren bei HTTP-Problemen",
@@ -74,18 +86,6 @@
         "es": "Soporte Admin 5",
         "pl": "Wsparcie administratora 5",
         "zh-cn": "管理员 5 支持"
-      },
-      "2.0.3": {
-        "en": "Fixed error logging",
-        "de": "Fehler-Logging behoben",
-        "ru": "Исправлено ведение журнала ошибок",
-        "pt": "Registro de erro corrigido",
-        "nl": "Vaste foutregistratie",
-        "fr": "Correction de la journalisation des erreurs",
-        "it": "Risolto errore di registrazione",
-        "es": "Registro de errores fijos",
-        "pl": "Naprawiono rejestrowanie błędów",
-        "zh-cn": "修复错误记录"
       }
     },
     "titleLang": {

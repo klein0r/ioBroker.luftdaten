@@ -43,7 +43,7 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.2 (2022-03-14)
 
 * (klein0r) Bugfix: Requested local sensors with https instead of http
 
@@ -66,10 +66,6 @@ iobroker add luftdaten
 ### 2.1.2 (2021-11-14)
 
 * (klein0r) Translated admin tab table headers
-
-### 2.1.1 (2021-11-06)
-
-* (klein0r) Fixed missing translations
 
 ## License
 

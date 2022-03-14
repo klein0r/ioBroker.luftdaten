@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.1 (2021-11-06)
+
+* (klein0r) Fixed missing translations
+
 ## 2.1.0 (2021-11-04)
 
 * (klein0r) Admin 5 Support
