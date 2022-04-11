@@ -43,7 +43,7 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.3 (2022-04-11)
 
 * (klein0r) Always stop instance when tasks are completed
 * (klein0r) Updated log messages
@@ -67,10 +67,6 @@ iobroker add luftdaten
 ### 2.1.3 (2021-12-23)
 
 * (klein0r) Updated dependencies
-
-### 2.1.2 (2021-11-14)
-
-* (klein0r) Translated admin tab table headers
 
 ## License
 

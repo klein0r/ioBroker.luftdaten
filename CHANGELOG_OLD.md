@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.2 (2021-11-14)
+
+* (klein0r) Translated admin tab table headers
+
 ## 2.1.1 (2021-11-06)
 
 * (klein0r) Fixed missing translations

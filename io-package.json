@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "2.2.2",
+    "version": "2.2.3",
     "news": {
+      "2.2.3": {
+        "en": "Always stop instance when tasks are completed\nUpdated log messages",
+        "de": "Beenden Sie die Instanz immer, wenn Aufgaben abgeschlossen sind\nProtokollmeldungen aktualisiert",
+        "ru": "Всегда останавливать экземпляр, когда задачи завершены\nОбновлены сообщения журнала",
+        "pt": "Sempre pare a instância quando as tarefas forem concluídas\nMensagens de registro atualizadas",
+        "nl": "Instantie altijd stoppen wanneer taken zijn voltooid\nBijgewerkte logberichten",
+        "fr": "Toujours arrêter l'instance lorsque les tâches sont terminées\nMessages de journal mis à jour",
+        "it": "Interrompi sempre l'istanza quando le attività sono completate\nMessaggi di registro aggiornati",
+        "es": "Siempre detenga la instancia cuando se completen las tareas\nMensajes de registro actualizados",
+        "pl": "Zawsze zatrzymuj instancję po zakończeniu zadań\nZaktualizowane komunikaty dziennika",
+        "zh-cn": "任务完成时始终停止实例\n更新的日志消息"
+      },
       "2.2.2": {
         "en": "Bugfix: Requested local sensors with https instead of http",
         "de": "Bugfix: Angeforderte lokale Sensoren mit https statt http",
@@ -74,18 +86,6 @@
         "es": "Se corrigieron las traducciones faltantes",
         "pl": "Naprawiono brakujące tłumaczenia",
         "zh-cn": "修复了丢失的翻译"
-      },
-      "2.1.0": {
-        "en": "Admin 5 Support",
-        "de": "Admin 5 Support",
-        "ru": "Admin 5 Поддержка",
-        "pt": "Suporte Admin 5",
-        "nl": "Beheerder 5 Ondersteuning",
-        "fr": "Assistance administrateur 5",
-        "it": "Supporto amministratore 5",
-        "es": "Soporte Admin 5",
-        "pl": "Wsparcie administratora 5",
-        "zh-cn": "管理员 5 支持"
       }
     },
     "titleLang": {
