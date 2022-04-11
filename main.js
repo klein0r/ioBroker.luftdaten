@@ -53,7 +53,7 @@ class Luftdaten extends utils.Adapter {
             let successfullyFilled = 0;
 
             if (sensors && Array.isArray(sensors)) {
-                this.log.debug(`[onReady] Found ${sensors.length} sensors in configuration, requesting data`);
+                this.log.debug(`[onReady] found ${sensors.length} sensors in configuration, requesting data`);
 
                 for (const s in sensors) {
                     const sensorIndex = parseInt(s) + 1;
@@ -63,6 +63,8 @@ class Luftdaten extends utils.Adapter {
 
                     if (deviceId) {
                         sensorsKeep.push(deviceId);
+
+                        this.log.debug(`[onReady] sensor ${sensorIndex}/${sensors.length} with idenfitier "${sensorIdentifier}" will be saved as deviceId "${deviceId}"`);
 
                         try {
                             const responseTime = await this.fillSensorData(deviceId, sensor);
