@@ -31,64 +31,72 @@ class Luftdaten extends utils.Adapter {
     }
 
     async onReady() {
-        this.getDevices(
-            async (err, states) => {
+        const sensorsAll = [];
+        const sensorsKeep = [];
 
-                const sensorsAll = [];
-                const sensorsKeep = [];
+        try {
+            const devices = await this.getDevicesAsync();
 
-                // Collect all types
-                if (states) {
-                    for (let i = 0; i < states.length; i++) {
-                        const id = this.removeNamespace(states[i]._id);
+            if (devices && devices.length) {
+                for (let i = 0; i < devices.length; i++) {
+                    const id = this.removeNamespace(devices[i]._id);
 
-                        // Check if the state is a direct child (device)
-                        if (id.indexOf('.') === -1) {
-                            sensorsAll.push(id);
-                            this.log.debug(`[onReady] sensor device exists: ${id}`);
-                        }
+                    // Check if the state is a direct child (device)
+                    if (id.indexOf('.') === -1) {
+                        sensorsAll.push(id);
+                        this.log.debug(`[onReady] sensor deviceId exists: "${id}"`);
                     }
                 }
-
-                const sensors = this.config.sensors;
-
-                if (sensors && Array.isArray(sensors)) {
-                    this.log.debug(`[onReady] Found ${sensors.length} sensors, requesting data`);
-
-                    for (const s in sensors) {
-                        const sensor = sensors[s];
-                        const sensorIdentifier = sensor.identifier;
-                        const deviceId = (sensor.type == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
-
-                        if (deviceId) {
-                            sensorsKeep.push(deviceId);
-
-                            try {
-                                const responseTime = await this.fillSensorData(deviceId, sensor);
-                                this.log.debug(`[onReady] sensor data filled: ${deviceId}`);
-                            } catch (err) {
-                                this.log.debug(`[onReady] sensor "${deviceId}" error: ${err}`);
-                            }
-                        } else {
-                            this.log.error(`[onReady] sensor identifier missing - check instance configuration`);
-                        }
-                    }
-                } else {
-                    this.log.error('[onReady] no sensors configured');
-                }
-
-                // Delete non existent sensors
-                for (let i = 0; i < sensorsAll.length; i++) {
-                    const id = sensorsAll[i];
-
-                    if (sensorsKeep.indexOf(id) === -1) {
-                        await this.delObjectAsync(id, {recursive: true});
-                    }
-                }
-
-                this.stop();
             }
-        );
+
+            const sensors = this.config.sensors;
+            let successfullyFilled = 0;
+
+            if (sensors && Array.isArray(sensors)) {
+                this.log.debug(`[onReady] Found ${sensors.length} sensors in configuration, requesting data`);
+
+                for (const s in sensors) {
+                    const sensorIndex = parseInt(s) + 1;
+                    const sensor = sensors[s];
+                    const sensorIdentifier = sensor.identifier;
+                    const deviceId = (sensor.type == 'local') ? sensorIdentifier.replace(/\./g, '_') : sensorIdentifier.replace(/\D/g,'');
+
+                    if (deviceId) {
+                        sensorsKeep.push(deviceId);
+
+                        try {
+                            const responseTime = await this.fillSensorData(deviceId, sensor);
+                            this.log.debug(`[onReady] sensor ${sensorIndex}/${sensors.length} - data of deviceId  "${deviceId}" filled in ${responseTime/1000}s`);
+                            successfullyFilled++;
+                        } catch (err) {
+                            this.log.debug(`[onReady] sensor ${sensorIndex}/${sensors.length} - error of deviceId "${deviceId}": ${err}`);
+                        }
+                    } else {
+                        this.log.error(`[onReady] sensor ${sensorIndex}/${sensors.length} identifier missing or invalid: "${sensorIdentifier}" - check instance configuration`);
+                    }
+                }
+
+                this.log.debug(`[onReady] successfully filled ${successfullyFilled} of ${sensors.length} sensors`);
+            } else {
+                this.log.error('[onReady] no sensors configured - check instance configuration');
+            }
+
+            // Delete non existent sensors
+            for (let i = 0; i < sensorsAll.length; i++) {
+                const id = sensorsAll[i];
+
+                if (sensorsKeep.indexOf(id) === -1) {
+                    await this.delObjectAsync(id, {recursive: true});
+                    this.log.debug(`[onReady] deleted deviceId: "${id}"`);
+                }
+            }
+
+        } catch (err) {
+            this.log.error(`[onReady] error: ${err}`);
+        } finally {
+            this.log.debug(`[onReady] finished - stopping instance`);
+            this.stop();
+        }
     }
 
     async fillSensorData(deviceId, sensor) {
@@ -106,7 +114,7 @@ class Luftdaten extends utils.Adapter {
             const sensorName = (sensor.name === '') ? sensor.identifier : sensor.name;
             const path = deviceId + '.';
 
-            this.log.debug(`[getSensorData] sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensor.identifier}", deviceId: "${deviceId}"`);
+            this.log.debug(`[fillSensorData] sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensor.identifier}", deviceId: "${deviceId}"`);
 
             const unitList = {
                 P1: 'µg/m³',
@@ -198,7 +206,7 @@ class Luftdaten extends utils.Adapter {
             if (sensorType == 'local') {
                 const sensorUrl = `http://${sensor.identifier}/data.json`;
 
-                this.log.debug(`[getSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
+                this.log.debug(`[fillSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
                 axios({
                     method: 'get',
@@ -208,7 +216,7 @@ class Luftdaten extends utils.Adapter {
                 }).then(async (response) => {
                     const content = response.data;
 
-                    this.log.debug(`[getSensorData] local request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
+                    this.log.debug(`[fillSensorData] local request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
                     await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -260,17 +268,17 @@ class Luftdaten extends utils.Adapter {
                     if (error.response) {
                         // The request was made and the server responded with a status code
 
-                        this.log.warn(`[getSensorData] received error ${error.response.status} response from local sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
+                        this.log.warn(`[fillSensorData] received error ${error.response.status} response from local sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
                         await this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                     } else if (error.request) {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                         // http.ClientRequest in node.js<div></div>
-                        this.log.info(error.message);
+                        this.log.info(`[fillSensorData] error: ${error.message}`);
                         await this.setStateAsync(path + 'responseCode', -1, true);
                     } else {
                         // Something happened in setting up the request that triggered an Error
-                        this.log.info(error.message);
+                        this.log.info(`[fillSensorData] error: ${error.message}`);
                         await this.setStateAsync(path + 'responseCode', -99, true);
                     }
 
@@ -280,7 +288,7 @@ class Luftdaten extends utils.Adapter {
             } else if (sensorType == 'remote') {
                 const sensorUrl = `https://data.sensor.community/airrohr/v1/sensor/${sensor.identifier.replace(/\D/g,'')}/`;
 
-                this.log.debug(`[getSensorData] remote request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
+                this.log.debug(`[fillSensorData] remote request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
                 axios({
                     method: 'get',
@@ -290,7 +298,7 @@ class Luftdaten extends utils.Adapter {
                 }).then(async (response) => {
                     const content = response.data;
 
-                    this.log.debug(`[getSensorData] remote request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
+                    this.log.debug(`[fillSensorData] remote request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
                     await this.setStateAsync(path + 'responseCode', {val: response.status, ack: true});
 
@@ -455,17 +463,17 @@ class Luftdaten extends utils.Adapter {
                     if (error.response) {
                         // The request was made and the server responded with a status code
 
-                        this.log.warn(`[getSensorData] received error ${error.response.status} response from remote sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
+                        this.log.warn(`[fillSensorData] received error ${error.response.status} response from remote sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
                         await this.setStateAsync(path + 'responseCode', {val: error.response.status, ack: true});
                     } else if (error.request) {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                         // http.ClientRequest in node.js
-                        this.log.info(error.message);
+                        this.log.info(`[fillSensorData] error: ${error.message}`);
                         await this.setStateAsync(path + 'responseCode', -1, true);
                     } else {
                         // Something happened in setting up the request that triggered an Error
-                        this.log.info(error.message);
+                        this.log.info(`[fillSensorData] error: ${error.message}`);
                         await this.setStateAsync(path + 'responseCode', -99, true);
                     }
 
