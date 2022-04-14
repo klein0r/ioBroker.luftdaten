@@ -8,7 +8,7 @@
             "items": {
                 "requestTimeout": {
                     "type": "number",
-                    "min": 0,
+                    "min": 1,
                     "max": 120,
                     "sm": 12,
                     "md": 6,

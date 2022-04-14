@@ -210,17 +210,17 @@ class Luftdaten extends utils.Adapter {
 
                 this.log.debug(`[fillSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
-                const abortController = new AbortController();
+                const source = axios.CancelToken.source();
                 const abortTimeout = this.setTimeout(() => {
                     this.log.debug(`[fillSensorData] local request takes too much time - aborting ...`);
-                    abortController.abort();
+                    source.cancel();
                 }, this.config.requestTimeout * 1000);
 
                 axios({
                     method: 'get',
                     url: sensorUrl,
                     timeout: this.config.requestTimeout * 1000,
-                    signal: abortController.signal,
+                    cancelToken: source.token,
                     responseType: 'json'
                 }).then(async (response) => {
                     this.clearTimeout(abortTimeout);
@@ -275,7 +275,9 @@ class Luftdaten extends utils.Adapter {
 
                     resolve(response.responseTime);
                 }).catch(async (error) => {
-                    if (error.response) {
+                    if (axios.isCancel(error)) {
+                        await this.setStateAsync(path + 'responseCode', -2, true);
+                    } else if (error.response) {
                         // The request was made and the server responded with a status code
 
                         this.log.warn(`[fillSensorData] received error ${error.response.status} response from local sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
@@ -300,17 +302,17 @@ class Luftdaten extends utils.Adapter {
 
                 this.log.debug(`[fillSensorData] remote request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
-                const abortController = new AbortController();
+                const source = axios.CancelToken.source();
                 const abortTimeout = this.setTimeout(() => {
                     this.log.debug(`[fillSensorData] remote request takes too much time - aborting ...`);
-                    abortController.abort();
+                    source.cancel();
                 }, this.config.requestTimeout * 1000);
 
                 axios({
                     method: 'get',
                     url: sensorUrl,
                     timeout: this.config.requestTimeout * 1000,
-                    signal: abortController.signal,
+                    cancelToken: source.token,
                     responseType: 'json'
                 }).then(async (response) => {
                     this.clearTimeout(abortTimeout);
@@ -478,7 +480,9 @@ class Luftdaten extends utils.Adapter {
 
                     resolve(response.responseTime);
                 }).catch(async (error) => {
-                    if (error.response) {
+                    if (axios.isCancel(error)) {
+                        await this.setStateAsync(path + 'responseCode', -2, true);
+                    } else if (error.response) {
                         // The request was made and the server responded with a status code
 
                         this.log.warn(`[fillSensorData] received error ${error.response.status} response from remote sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`);
