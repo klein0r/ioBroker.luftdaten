@@ -43,7 +43,7 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.4 (2022-04-14)
 
 * (klein0r) Abort HTTP requests if running too long
 
@@ -66,10 +66,6 @@ iobroker add luftdaten
 * (klein0r) Added hint for Admin 4 configuration
 * (klein0r) Updated state roles
 * (klein0r) Updated debug messages to provide more information
-* (klein0r) Updated dependencies
-
-### 2.1.3 (2021-12-23)
-
 * (klein0r) Updated dependencies
 
 ## License

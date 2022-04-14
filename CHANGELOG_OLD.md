@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.3 (2021-12-23)
+
+* (klein0r) Updated dependencies
+
 ## 2.1.2 (2021-11-14)
 
 * (klein0r) Translated admin tab table headers

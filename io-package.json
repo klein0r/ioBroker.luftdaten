@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "2.2.3",
+    "version": "2.2.4",
     "news": {
+      "2.2.4": {
+        "en": "Abort HTTP requests if running too long",
+        "de": "HTTP-Anforderungen abbrechen, wenn sie zu lange laufen",
+        "ru": "Прервать HTTP-запросы, если они выполняются слишком долго",
+        "pt": "Abortar solicitações HTTP se a execução for muito longa",
+        "nl": "HTTP-verzoeken afbreken als deze te lang duren",
+        "fr": "Abandonner les requêtes HTTP si elles s'exécutent trop longtemps",
+        "it": "Annulla le richieste HTTP se l'esecuzione è troppo lunga",
+        "es": "Abortar las solicitudes HTTP si se ejecutan demasiado tiempo",
+        "pl": "Przerwij żądania HTTP, jeśli działają zbyt długo",
+        "zh-cn": "如果运行时间过长，中止 HTTP 请求"
+      },
       "2.2.3": {
         "en": "Always stop instance when tasks are completed\nUpdated log messages",
         "de": "Beenden Sie die Instanz immer, wenn Aufgaben abgeschlossen sind\nProtokollmeldungen aktualisiert",
@@ -74,18 +86,6 @@
         "es": "Encabezados de tabla de pestañas de administración traducidos",
         "pl": "Przetłumaczone nagłówki tabeli karty administratora",
         "zh-cn": "翻译的管理标签表标题"
-      },
-      "2.1.1": {
-        "en": "Fixed missing translations",
-        "de": "Fehlende Übersetzungen hinzugefügt",
-        "ru": "Исправлены отсутствующие переводы",
-        "pt": "Traduções em falta corrigidas",
-        "nl": "Ontbrekende vertalingen verholpen",
-        "fr": "Correction des traductions manquantes",
-        "it": "Risolte le traduzioni mancanti",
-        "es": "Se corrigieron las traducciones faltantes",
-        "pl": "Naprawiono brakujące tłumaczenia",
-        "zh-cn": "修复了丢失的翻译"
       }
     },
     "titleLang": {
