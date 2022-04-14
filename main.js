@@ -210,12 +210,20 @@ class Luftdaten extends utils.Adapter {
 
                 this.log.debug(`[fillSensorData] local request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
+                const abortController = new AbortController();
+                const abortTimeout = this.setTimeout(() => {
+                    this.log.debug(`[fillSensorData] local request takes too much time - aborting ...`);
+                    abortController.abort();
+                }, this.config.requestTimeout * 1000);
+
                 axios({
                     method: 'get',
                     url: sensorUrl,
                     timeout: this.config.requestTimeout * 1000,
+                    signal: abortController.signal,
                     responseType: 'json'
                 }).then(async (response) => {
+                    this.clearTimeout(abortTimeout);
                     const content = response.data;
 
                     this.log.debug(`[fillSensorData] local request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
@@ -292,12 +300,20 @@ class Luftdaten extends utils.Adapter {
 
                 this.log.debug(`[fillSensorData] remote request started (timeout ${this.config.requestTimeout}s): ${sensorUrl}`);
 
+                const abortController = new AbortController();
+                const abortTimeout = this.setTimeout(() => {
+                    this.log.debug(`[fillSensorData] remote request takes too much time - aborting ...`);
+                    abortController.abort();
+                }, this.config.requestTimeout * 1000);
+
                 axios({
                     method: 'get',
                     url: sensorUrl,
                     timeout: this.config.requestTimeout * 1000,
+                    signal: abortController.signal,
                     responseType: 'json'
                 }).then(async (response) => {
+                    this.clearTimeout(abortTimeout);
                     const content = response.data;
 
                     this.log.debug(`[fillSensorData] remote request done after ${response.responseTime/1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
