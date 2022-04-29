@@ -43,6 +43,10 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+(klein0r) Updated depedency for js-controller to 4.0.15
+
 ### 2.2.4 (2022-04-14)
 
 * (klein0r) Abort HTTP requests if running too long
