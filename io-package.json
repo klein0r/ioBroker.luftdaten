@@ -164,7 +164,8 @@
         }
     },
     "native": {
-        "requestTimeout": 10
+        "requestTimeout": 10,
+        "sensors": []
     },
     "objects": []
 }
