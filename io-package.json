@@ -1,170 +1,170 @@
 {
-  "common": {
-    "name": "luftdaten",
-    "version": "2.2.4",
-    "news": {
-      "2.2.4": {
-        "en": "Abort HTTP requests if running too long",
-        "de": "HTTP-Anforderungen abbrechen, wenn sie zu lange laufen",
-        "ru": "Прервать HTTP-запросы, если они выполняются слишком долго",
-        "pt": "Abortar solicitações HTTP se a execução for muito longa",
-        "nl": "HTTP-verzoeken afbreken als deze te lang duren",
-        "fr": "Abandonner les requêtes HTTP si elles s'exécutent trop longtemps",
-        "it": "Annulla le richieste HTTP se l'esecuzione è troppo lunga",
-        "es": "Abortar las solicitudes HTTP si se ejecutan demasiado tiempo",
-        "pl": "Przerwij żądania HTTP, jeśli działają zbyt długo",
-        "zh-cn": "如果运行时间过长，中止 HTTP 请求"
-      },
-      "2.2.3": {
-        "en": "Always stop instance when tasks are completed\nUpdated log messages",
-        "de": "Beenden Sie die Instanz immer, wenn Aufgaben abgeschlossen sind\nProtokollmeldungen aktualisiert",
-        "ru": "Всегда останавливать экземпляр, когда задачи завершены\nОбновлены сообщения журнала",
-        "pt": "Sempre pare a instância quando as tarefas forem concluídas\nMensagens de registro atualizadas",
-        "nl": "Instantie altijd stoppen wanneer taken zijn voltooid\nBijgewerkte logberichten",
-        "fr": "Toujours arrêter l'instance lorsque les tâches sont terminées\nMessages de journal mis à jour",
-        "it": "Interrompi sempre l'istanza quando le attività sono completate\nMessaggi di registro aggiornati",
-        "es": "Siempre detenga la instancia cuando se completen las tareas\nMensajes de registro actualizados",
-        "pl": "Zawsze zatrzymuj instancję po zakończeniu zadań\nZaktualizowane komunikaty dziennika",
-        "zh-cn": "任务完成时始终停止实例\n更新的日志消息"
-      },
-      "2.2.2": {
-        "en": "Bugfix: Requested local sensors with https instead of http",
-        "de": "Bugfix: Angeforderte lokale Sensoren mit https statt http",
-        "ru": "Исправление: запрашивались локальные датчики с https вместо http",
-        "pt": "Bugfix: Sensores locais solicitados com https em vez de http",
-        "nl": "Bugfix: gevraagde lokale sensoren met https in plaats van http",
-        "fr": "Correction de bug : Capteurs locaux demandés avec https au lieu de http",
-        "it": "Bugfix: sensori locali richiesti con https invece di http",
-        "es": "Corrección de errores: sensores locales solicitados con https en lugar de http",
-        "pl": "Bugfix: Żądane lokalne czujniki z https zamiast http",
-        "zh-cn": "错误修正：使用 https 而不是 http 请求本地传感器"
-      },
-      "2.2.1": {
-        "en": "Do not delete sensors on http problems",
-        "de": "Löschen Sie keine Sensoren bei HTTP-Problemen",
-        "ru": "Не удалять датчики при проблемах с http",
-        "pt": "Não exclua sensores em problemas de http",
-        "nl": "Verwijder geen sensoren bij http-problemen",
-        "fr": "Ne supprimez pas les capteurs sur les problèmes http",
-        "it": "Non eliminare i sensori sui problemi http",
-        "es": "No elimine sensores en problemas de http",
-        "pl": "Nie usuwaj czujników w przypadku problemów z http",
-        "zh-cn": "不要删除关于 http 问题的传感器"
-      },
-      "2.2.0": {
-        "en": "Added documentation\nAdded hint for Admin 4 configuration\nUpdated state roles\nUpdated debug messages to provide more information\nUpdated dependencies",
-        "de": "Dokumentation hinzugefügt\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nStatusrollen aktualisiert\nAktualisierte Debug-Meldungen, um weitere Informationen bereitzustellen\nAktualisierte Abhängigkeiten",
-        "ru": "Добавлена документация\nДобавлена подсказка для конфигурации Admin 4\nОбновлены роли состояния\nОбновлены отладочные сообщения для предоставления дополнительной информации.\nОбновленные зависимости",
-        "pt": "Documentação adicionada\nAdicionada dica para configuração do Admin 4\nFunções de estado atualizadas\nMensagens de depuração atualizadas para fornecer mais informações\nDependências atualizadas",
-        "nl": "Toegevoegde documentatie\nHint toegevoegd voor configuratie van Admin 4\nBijgewerkte statusrollen\nBijgewerkte foutopsporingsberichten om meer informatie te geven\nBijgewerkte afhankelijkheden",
-        "fr": "Documents ajoutés\nAjout d'un indice pour la configuration d'Admin 4\nRôles d'état mis à jour\nMessages de débogage mis à jour pour fournir plus d'informations\nDépendances mises à jour",
-        "it": "Aggiunta documentazione\nAggiunto suggerimento per la configurazione dell'amministratore 4\nRuoli statali aggiornati\nMessaggi di debug aggiornati per fornire ulteriori informazioni\nDipendenze aggiornate",
-        "es": "Documentación añadida\nSugerencia agregada para la configuración de Admin 4\nRoles de estado actualizados\nMensajes de depuración actualizados para proporcionar más información.\nDependencias actualizadas",
-        "pl": "Dodana dokumentacja\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nZaktualizowane role stanowe\nZaktualizowano komunikaty debugowania, aby dostarczyć więcej informacji\nZaktualizowane zależności",
-        "zh-cn": "添加的文档\n添加了 Admin 4 配置的提示\n更新了状态角色\n更新了调试消息以提供更多信息\n更新的依赖项"
-      },
-      "2.1.3": {
-        "en": "Updated dependencies",
-        "de": "Aktualisierte Abhängigkeiten",
-        "ru": "Обновленные зависимости",
-        "pt": "Dependências atualizadas",
-        "nl": "Bijgewerkte afhankelijkheden",
-        "fr": "Dépendances mises à jour",
-        "it": "Dipendenze aggiornate",
-        "es": "Dependencias actualizadas",
-        "pl": "Zaktualizowane zależności",
-        "zh-cn": "更新的依赖项"
-      },
-      "2.1.2": {
-        "en": "Translated admin tab table headers",
-        "de": "Admin Tab übersetzt",
-        "ru": "Переведены заголовки таблицы вкладки администратора",
-        "pt": "Cabeçalhos de tabela da guia de administração traduzidos",
-        "nl": "Vertaalde tabelkoppen van het beheerderstabblad",
-        "fr": "En-têtes de tableau des onglets d'administration traduits",
-        "it": "Intestazioni della tabella della scheda amministratore tradotte",
-        "es": "Encabezados de tabla de pestañas de administración traducidos",
-        "pl": "Przetłumaczone nagłówki tabeli karty administratora",
-        "zh-cn": "翻译的管理标签表标题"
-      }
+    "common": {
+        "name": "luftdaten",
+        "version": "2.2.4",
+        "news": {
+            "2.2.4": {
+                "en": "Abort HTTP requests if running too long",
+                "de": "HTTP-Anforderungen abbrechen, wenn sie zu lange laufen",
+                "ru": "Прервать HTTP-запросы, если они выполняются слишком долго",
+                "pt": "Abortar solicitações HTTP se a execução for muito longa",
+                "nl": "HTTP-verzoeken afbreken als deze te lang duren",
+                "fr": "Abandonner les requêtes HTTP si elles s'exécutent trop longtemps",
+                "it": "Annulla le richieste HTTP se l'esecuzione è troppo lunga",
+                "es": "Abortar las solicitudes HTTP si se ejecutan demasiado tiempo",
+                "pl": "Przerwij żądania HTTP, jeśli działają zbyt długo",
+                "zh-cn": "如果运行时间过长，中止 HTTP 请求"
+            },
+            "2.2.3": {
+                "en": "Always stop instance when tasks are completed\nUpdated log messages",
+                "de": "Beenden Sie die Instanz immer, wenn Aufgaben abgeschlossen sind\nProtokollmeldungen aktualisiert",
+                "ru": "Всегда останавливать экземпляр, когда задачи завершены\nОбновлены сообщения журнала",
+                "pt": "Sempre pare a instância quando as tarefas forem concluídas\nMensagens de registro atualizadas",
+                "nl": "Instantie altijd stoppen wanneer taken zijn voltooid\nBijgewerkte logberichten",
+                "fr": "Toujours arrêter l'instance lorsque les tâches sont terminées\nMessages de journal mis à jour",
+                "it": "Interrompi sempre l'istanza quando le attività sono completate\nMessaggi di registro aggiornati",
+                "es": "Siempre detenga la instancia cuando se completen las tareas\nMensajes de registro actualizados",
+                "pl": "Zawsze zatrzymuj instancję po zakończeniu zadań\nZaktualizowane komunikaty dziennika",
+                "zh-cn": "任务完成时始终停止实例\n更新的日志消息"
+            },
+            "2.2.2": {
+                "en": "Bugfix: Requested local sensors with https instead of http",
+                "de": "Bugfix: Angeforderte lokale Sensoren mit https statt http",
+                "ru": "Исправление: запрашивались локальные датчики с https вместо http",
+                "pt": "Bugfix: Sensores locais solicitados com https em vez de http",
+                "nl": "Bugfix: gevraagde lokale sensoren met https in plaats van http",
+                "fr": "Correction de bug : Capteurs locaux demandés avec https au lieu de http",
+                "it": "Bugfix: sensori locali richiesti con https invece di http",
+                "es": "Corrección de errores: sensores locales solicitados con https en lugar de http",
+                "pl": "Bugfix: Żądane lokalne czujniki z https zamiast http",
+                "zh-cn": "错误修正：使用 https 而不是 http 请求本地传感器"
+            },
+            "2.2.1": {
+                "en": "Do not delete sensors on http problems",
+                "de": "Löschen Sie keine Sensoren bei HTTP-Problemen",
+                "ru": "Не удалять датчики при проблемах с http",
+                "pt": "Não exclua sensores em problemas de http",
+                "nl": "Verwijder geen sensoren bij http-problemen",
+                "fr": "Ne supprimez pas les capteurs sur les problèmes http",
+                "it": "Non eliminare i sensori sui problemi http",
+                "es": "No elimine sensores en problemas de http",
+                "pl": "Nie usuwaj czujników w przypadku problemów z http",
+                "zh-cn": "不要删除关于 http 问题的传感器"
+            },
+            "2.2.0": {
+                "en": "Added documentation\nAdded hint for Admin 4 configuration\nUpdated state roles\nUpdated debug messages to provide more information\nUpdated dependencies",
+                "de": "Dokumentation hinzugefügt\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nStatusrollen aktualisiert\nAktualisierte Debug-Meldungen, um weitere Informationen bereitzustellen\nAktualisierte Abhängigkeiten",
+                "ru": "Добавлена документация\nДобавлена подсказка для конфигурации Admin 4\nОбновлены роли состояния\nОбновлены отладочные сообщения для предоставления дополнительной информации.\nОбновленные зависимости",
+                "pt": "Documentação adicionada\nAdicionada dica para configuração do Admin 4\nFunções de estado atualizadas\nMensagens de depuração atualizadas para fornecer mais informações\nDependências atualizadas",
+                "nl": "Toegevoegde documentatie\nHint toegevoegd voor configuratie van Admin 4\nBijgewerkte statusrollen\nBijgewerkte foutopsporingsberichten om meer informatie te geven\nBijgewerkte afhankelijkheden",
+                "fr": "Documents ajoutés\nAjout d'un indice pour la configuration d'Admin 4\nRôles d'état mis à jour\nMessages de débogage mis à jour pour fournir plus d'informations\nDépendances mises à jour",
+                "it": "Aggiunta documentazione\nAggiunto suggerimento per la configurazione dell'amministratore 4\nRuoli statali aggiornati\nMessaggi di debug aggiornati per fornire ulteriori informazioni\nDipendenze aggiornate",
+                "es": "Documentación añadida\nSugerencia agregada para la configuración de Admin 4\nRoles de estado actualizados\nMensajes de depuración actualizados para proporcionar más información.\nDependencias actualizadas",
+                "pl": "Dodana dokumentacja\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nZaktualizowane role stanowe\nZaktualizowano komunikaty debugowania, aby dostarczyć więcej informacji\nZaktualizowane zależności",
+                "zh-cn": "添加的文档\n添加了 Admin 4 配置的提示\n更新了状态角色\n更新了调试消息以提供更多信息\n更新的依赖项"
+            },
+            "2.1.3": {
+                "en": "Updated dependencies",
+                "de": "Aktualisierte Abhängigkeiten",
+                "ru": "Обновленные зависимости",
+                "pt": "Dependências atualizadas",
+                "nl": "Bijgewerkte afhankelijkheden",
+                "fr": "Dépendances mises à jour",
+                "it": "Dipendenze aggiornate",
+                "es": "Dependencias actualizadas",
+                "pl": "Zaktualizowane zależności",
+                "zh-cn": "更新的依赖项"
+            },
+            "2.1.2": {
+                "en": "Translated admin tab table headers",
+                "de": "Admin Tab übersetzt",
+                "ru": "Переведены заголовки таблицы вкладки администратора",
+                "pt": "Cabeçalhos de tabela da guia de administração traduzidos",
+                "nl": "Vertaalde tabelkoppen van het beheerderstabblad",
+                "fr": "En-têtes de tableau des onglets d'administration traduits",
+                "it": "Intestazioni della tabella della scheda amministratore tradotte",
+                "es": "Encabezados de tabla de pestañas de administración traducidos",
+                "pl": "Przetłumaczone nagłówki tabeli karty administratora",
+                "zh-cn": "翻译的管理标签表标题"
+            }
+        },
+        "titleLang": {
+            "en": "Luftdaten.info",
+            "de": "Luftdaten.info",
+            "ru": "Luftdaten.info",
+            "pt": "Luftdaten.info",
+            "nl": "Luftdaten.info",
+            "fr": "Luftdaten.info",
+            "it": "Luftdaten.info",
+            "es": "Luftdaten.info",
+            "pl": "Luftdaten.info",
+            "zh-cn": "Luftdaten.info"
+        },
+        "desc": {
+            "en": "Loads current air quality data from a local or remote sensor",
+            "de": "Lädt aktuelle Luftqualitätsdaten eines lokalen oder Cloud-Sensors",
+            "ru": "Загружает текущие данные о качестве воздуха с местного или удаленного датчика",
+            "pt": "Carrega dados atuais de qualidade do ar de um sensor local ou remoto",
+            "nl": "Laadt huidige luchtkwaliteitsgegevens van een lokale of externe sensor",
+            "fr": "Charge les données actuelles sur la qualité de l'air à partir d'un capteur local ou distant",
+            "it": "Carica i dati attuali sulla qualità dell'aria da un sensore locale o remoto",
+            "es": "Carga datos actuales de la calidad del aire desde un sensor local o remoto",
+            "pl": "Ładuje aktualne dane o jakości powietrza z lokalnego lub zdalnego czujnika",
+            "zh-cn": "从本地或远程传感器加载当前的空气质量数据"
+        },
+        "authors": [
+            "Matthias Kleine <info@haus-automatisierung.com>"
+        ],
+        "keywords": [
+            "web",
+            "weather",
+            "air",
+            "quality"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "icon": "luftdaten.png",
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
+        "enabled": true,
+        "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "allowInit": true,
+        "schedule": "*/30 * * * *",
+        "type": "weather",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "docs": {
+            "en": [
+                "docs/en/basics.md"
+            ],
+            "de": [
+                "docs/de/basics.md"
+            ]
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.15"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.3.2"
+            }
+        ],
+        "plugins": {
+            "sentry": {
+                "dsn": "https://baf35e4e423d409bbec94cb01b55257e@sentry.iobroker.net/103"
+            }
+        }
     },
-    "titleLang": {
-      "en": "Luftdaten.info",
-      "de": "Luftdaten.info",
-      "ru": "Luftdaten.info",
-      "pt": "Luftdaten.info",
-      "nl": "Luftdaten.info",
-      "fr": "Luftdaten.info",
-      "it": "Luftdaten.info",
-      "es": "Luftdaten.info",
-      "pl": "Luftdaten.info",
-      "zh-cn": "Luftdaten.info"
+    "native": {
+        "requestTimeout": 10
     },
-    "desc": {
-      "en": "Loads current air quality data from a local or remote sensor",
-      "de": "Lädt aktuelle Luftqualitätsdaten eines lokalen oder Cloud-Sensors",
-      "ru": "Загружает текущие данные о качестве воздуха с местного или удаленного датчика",
-      "pt": "Carrega dados atuais de qualidade do ar de um sensor local ou remoto",
-      "nl": "Laadt huidige luchtkwaliteitsgegevens van een lokale of externe sensor",
-      "fr": "Charge les données actuelles sur la qualité de l'air à partir d'un capteur local ou distant",
-      "it": "Carica i dati attuali sulla qualità dell'aria da un sensore locale o remoto",
-      "es": "Carga datos actuales de la calidad del aire desde un sensor local o remoto",
-      "pl": "Ładuje aktualne dane o jakości powietrza z lokalnego lub zdalnego czujnika",
-      "zh-cn": "从本地或远程传感器加载当前的空气质量数据"
-    },
-    "authors": [
-      "Matthias Kleine <info@haus-automatisierung.com>"
-    ],
-    "keywords": [
-      "web",
-      "weather",
-      "air",
-      "quality"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "icon": "luftdaten.png",
-    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
-    "enabled": true,
-    "readme": "https://github.com/klein0r/ioBroker.luftdaten/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "schedule",
-    "allowInit": true,
-    "schedule": "*/30 * * * *",
-    "type": "weather",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "materialize": true,
-    "adminUI": {
-      "config": "json"
-    },
-    "docs": {
-      "en": [
-        "docs/en/basics.md"
-      ],
-      "de": [
-        "docs/de/basics.md"
-      ]
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.15"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.3.2"
-      }
-    ],
-    "plugins": {
-      "sentry": {
-        "dsn": "https://baf35e4e423d409bbec94cb01b55257e@sentry.iobroker.net/103"
-      }
-    }
-  },
-  "native": {
-    "requestTimeout": 10
-  },
-  "objects": []
+    "objects": []
 }

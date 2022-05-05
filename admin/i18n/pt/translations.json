@@ -9,5 +9,6 @@
     "Sensor Type": "Tipo de sensor",
     "Sensors": "Sensores",
     "You can find remote sensors here": "Você pode encontrar sensores remotos <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>aqui</a>",
-    "in Seconds": "em segundos"
+    "in Seconds": "em segundos",
+    "Sensor map": "Mapa do sensor"
 }

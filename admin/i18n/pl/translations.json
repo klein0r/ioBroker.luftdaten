@@ -9,5 +9,6 @@
     "Sensor Type": "Typ czujnika",
     "Sensors": "Czujniki",
     "You can find remote sensors here": "Możesz znaleźć zdalne czujniki <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>tutaj</a>",
-    "in Seconds": "w sekundy"
+    "in Seconds": "w sekundy",
+    "Sensor map": "Mapa czujników"
 }

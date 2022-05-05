@@ -9,5 +9,6 @@
     "Sensor Type": "Тип датчика",
     "Sensors": "Датчики",
     "You can find remote sensors here": "Вы можете найти удаленные датчики <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>здесь</a>",
-    "in Seconds": "в секундах"
+    "in Seconds": "в секундах",
+    "Sensor map": "Сенсорная карта"
 }

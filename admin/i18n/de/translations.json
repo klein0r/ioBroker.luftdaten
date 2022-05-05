@@ -9,5 +9,6 @@
     "Sensor Type": "Sensorart",
     "Sensors": "Sensoren",
     "You can find remote sensors here": "<a target='_blank' href='http://deutschland.maps.luftdaten.info/'>Hier</a> findest Du die Sensoren",
-    "in Seconds": "in Sekunden"
+    "in Seconds": "in Sekunden",
+    "Sensor map": "Sensorkarte"
 }

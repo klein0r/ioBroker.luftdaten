@@ -31,7 +31,14 @@
             "type": "panel",
             "label": "Sensors",
             "items": {
+                "_externalMapLink": {
+                    "type": "staticLink",
+                    "href": "https://maps.sensor.community/",
+                    "label": "Sensor map",
+                    "button": true
+                },
                 "sensors": {
+                    "newLine": true,
                     "type": "table",
                     "sm": 12,
                     "md": 12,

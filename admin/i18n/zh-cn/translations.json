@@ -9,5 +9,6 @@
     "Sensor Type": "传感器类型",
     "Sensors": "传感器",
     "You can find remote sensors here": "您可以<a target='_blank' href='http://deutschland.maps.luftdaten.info/'>在这里</a>找到远程传感器",
-    "in Seconds": "马上"
+    "in Seconds": "马上",
+    "Sensor map": "传感器图"
 }
