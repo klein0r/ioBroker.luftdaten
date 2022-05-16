@@ -47,6 +47,7 @@ iobroker add luftdaten
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Added link to sensor map to instance configuration
+* (klein0r) Updated dependencies
 * (klein0r) Updated depedency for js-controller to 4.0.15
 
 ### 2.2.4 (2022-04-14)
