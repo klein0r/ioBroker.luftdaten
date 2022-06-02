@@ -2,14 +2,25 @@
 
 # ioBroker.luftdaten
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.luftdaten.svg)](https://www.npmjs.com/package/iobroker.luftdaten)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.luftdaten.svg)](https://www.npmjs.com/package/iobroker.luftdaten)
-[![Stable](http://iobroker.live/badges/luftdaten-stable.svg)](http://iobroker.live/badges/luftdaten-stable.svg)
-[![Installed](http://iobroker.live/badges/luftdaten-installed.svg)](http://iobroker.live/badges/luftdaten-installed.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/klein0r/ioBroker.luftdaten/badge.svg)](https://snyk.io/test/github/klein0r/ioBroker.luftdaten)
-![Test and Release](https://github.com/klein0r/ioBroker.luftdaten/workflows/Test%20and%20Release/badge.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.luftdaten?style=flat-square)](https://www.npmjs.com/package/iobroker.luftdaten)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.luftdaten?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/iobroker.luftdaten)
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/iobroker.luftdaten?label=npm%20vulnerabilities&style=flat-square)
+![node-lts](https://img.shields.io/node/v-lts/iobroker.luftdaten?style=flat-square)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/iobroker.luftdaten?label=npm%20dependencies&style=flat-square)
 
-[![NPM](https://nodei.co/npm/iobroker.luftdaten.png?downloads=true)](https://nodei.co/npm/iobroker.luftdaten/)
+![GitHub](https://img.shields.io/github/license/klein0r/iobroker.luftdaten?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/klein0r/iobroker.luftdaten?logo=github&style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/klein0r/iobroker.luftdaten?logo=github&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/klein0r/iobroker.luftdaten?logo=github&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/klein0r/iobroker.luftdaten?logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/klein0r/iobroker.luftdaten/Test%20and%20Release?label=Test%20and%20Release&logo=github&style=flat-square)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/klein0r/iobroker.luftdaten?label=repo%20vulnerabilities&logo=github&style=flat-square)
+
+## Versions
+
+![Beta](https://img.shields.io/npm/v/iobroker.luftdaten.svg?color=red&label=beta)
+![Stable](http://iobroker.live/badges/luftdaten-stable.svg)
+![Installed](http://iobroker.live/badges/luftdaten-installed.svg)
 
 This adapter adds "luftdaten.info" sensor data to your ioBroker installation.
 You can decide if you want to add a local sensor by ip or if you just want to use the API of lufdaten.info to get the data of another sensor.
