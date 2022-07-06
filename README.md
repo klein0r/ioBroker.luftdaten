@@ -39,9 +39,9 @@ iobroker add luftdaten
 
 ## Documentation
 
-[🇺🇸 Documentation](./docs/en/basics.md)
+[🇺🇸 Documentation](./docs/en/README.md)
 
-[🇩🇪 Dokumentation](./docs/de/basics.md)
+[🇩🇪 Dokumentation](./docs/de/README.md)
 
 ## Sentry
 

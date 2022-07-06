@@ -141,10 +141,10 @@
         },
         "docs": {
             "en": [
-                "docs/en/basics.md"
+                "docs/en/README.md"
             ],
             "de": [
-                "docs/de/basics.md"
+                "docs/de/README.md"
             ]
         },
         "dependencies": [
