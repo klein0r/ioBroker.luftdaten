@@ -38,12 +38,12 @@ class Luftdaten extends utils.Adapter {
 
             if (devices && devices.length) {
                 for (let i = 0; i < devices.length; i++) {
-                    const id = this.removeNamespace(devices[i]._id);
+                    const idNoNamespace = this.removeNamespace(devices[i]._id);
 
                     // Check if the state is a direct child (device)
-                    if (id.indexOf('.') === -1) {
-                        sensorsAll.push(id);
-                        this.log.debug(`[onReady] sensor deviceId exists: "${id}"`);
+                    if (idNoNamespace.indexOf('.') === -1) {
+                        sensorsAll.push(idNoNamespace);
+                        this.log.debug(`[onReady] sensor deviceId exists: "${idNoNamespace}"`);
                     }
                 }
             }
@@ -102,7 +102,6 @@ class Luftdaten extends utils.Adapter {
     async fillSensorData(deviceId, sensor) {
         const sensorType = sensor.type;
         const sensorName = sensor.name === '' ? sensor.identifier : sensor.name;
-        const path = deviceId + '.';
 
         this.log.debug(`[fillSensorData] sensor "${sensorName}" with type: "${sensorType}", identifier: "${sensor.identifier}", deviceId: "${deviceId}"`);
 
@@ -146,7 +145,7 @@ class Luftdaten extends utils.Adapter {
             },
         });
 
-        await this.setObjectNotExistsAsync(path + 'name', {
+        await this.setObjectNotExistsAsync(`${deviceId}.name`, {
             type: 'state',
             common: {
                 name: {
@@ -168,9 +167,9 @@ class Luftdaten extends utils.Adapter {
             },
             native: {},
         });
-        await this.setStateAsync(path + 'name', { val: sensorName, ack: true });
+        await this.setStateChangedAsync(`${deviceId}.name`, { val: sensorName, ack: true });
 
-        await this.setObjectNotExistsAsync(path + 'responseCode', {
+        await this.setObjectNotExistsAsync(`${deviceId}.responseCode`, {
             type: 'state',
             common: {
                 name: {
@@ -218,7 +217,7 @@ class Luftdaten extends utils.Adapter {
 
                         this.log.debug(`[fillSensorData] local request done after ${response.responseTime / 1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
-                        await this.setStateAsync(path + 'responseCode', { val: response.status, ack: true });
+                        await this.setStateAsync(`${deviceId}.responseCode`, { val: response.status, ack: true });
 
                         if (content && Object.prototype.hasOwnProperty.call(content, 'sensordatavalues')) {
                             for (const key in content.sensordatavalues) {
@@ -247,7 +246,7 @@ class Luftdaten extends utils.Adapter {
                                     role = roleList[obj.value_type];
                                 }
 
-                                await this.setObjectNotExistsAsync(path + obj.value_type, {
+                                await this.setObjectNotExistsAsync(`${deviceId}.${obj.value_type}`, {
                                     type: 'state',
                                     common: {
                                         name: obj.value_type,
@@ -259,7 +258,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setStateAsync(path + obj.value_type, { val: parseFloat(obj.value), ack: true });
+                                await this.setStateChangedAsync(`${deviceId}.${obj.value_type}`, { val: parseFloat(obj.value), ack: true });
                             }
                         }
 
@@ -267,24 +266,24 @@ class Luftdaten extends utils.Adapter {
                     })
                     .catch(async (error) => {
                         if (axios.isCancel(error)) {
-                            await this.setStateAsync(path + 'responseCode', -2, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -2, ack: true });
                         } else if (error.response) {
                             // The request was made and the server responded with a status code
 
                             this.log.warn(
                                 `[fillSensorData] received error ${error.response.status} response from local sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`,
                             );
-                            await this.setStateAsync(path + 'responseCode', { val: error.response.status, ack: true });
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: error.response.status, ack: true });
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js<div></div>
                             this.log.info(`[fillSensorData] error: ${error.message}`);
-                            await this.setStateAsync(path + 'responseCode', -1, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -1, ack: true });
                         } else {
                             // Something happened in setting up the request that triggered an Error
                             this.log.info(`[fillSensorData] error: ${error.message}`);
-                            await this.setStateAsync(path + 'responseCode', -99, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -99, ack: true });
                         }
 
                         reject('http error');
@@ -313,7 +312,7 @@ class Luftdaten extends utils.Adapter {
 
                         this.log.debug(`[fillSensorData] remote request done after ${response.responseTime / 1000}s - received data (${response.status}): ${JSON.stringify(content)}`);
 
-                        await this.setStateAsync(path + 'responseCode', { val: response.status, ack: true });
+                        await this.setStateAsync(`${deviceId}.responseCode`, { val: response.status, ack: true });
 
                         if (content && Array.isArray(content) && content.length > 0) {
                             const sensorData = content[0];
@@ -333,7 +332,7 @@ class Luftdaten extends utils.Adapter {
                                         role = roleList[obj.value_type];
                                     }
 
-                                    await this.setObjectNotExistsAsync(path + 'SDS_' + obj.value_type, {
+                                    await this.setObjectNotExistsAsync(`${deviceId}.SDS_${obj.value_type}`, {
                                         type: 'state',
                                         common: {
                                             name: obj.value_type,
@@ -345,12 +344,12 @@ class Luftdaten extends utils.Adapter {
                                         },
                                         native: {},
                                     });
-                                    await this.setStateAsync(path + 'SDS_' + obj.value_type, { val: parseFloat(obj.value), ack: true });
+                                    await this.setStateChangedAsync(`${deviceId}.SDS_${obj.value_type}`, { val: parseFloat(obj.value), ack: true });
                                 }
                             }
 
                             if (Object.prototype.hasOwnProperty.call(sensorData, 'location')) {
-                                await this.setObjectNotExistsAsync(path + 'location', {
+                                await this.setObjectNotExistsAsync(`${deviceId}.location`, {
                                     type: 'channel',
                                     common: {
                                         name: {
@@ -370,7 +369,7 @@ class Luftdaten extends utils.Adapter {
                                     native: {},
                                 });
 
-                                await this.setObjectNotExistsAsync(path + 'location.longitude', {
+                                await this.setObjectNotExistsAsync(`${deviceId}.location.longitude`, {
                                     type: 'state',
                                     common: {
                                         name: {
@@ -393,9 +392,9 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setStateAsync(path + 'location.longitude', { val: parseFloat(sensorData.location.longitude), ack: true });
+                                await this.setStateChangedAsync(`${deviceId}.location.longitude`, { val: parseFloat(sensorData.location.longitude), ack: true });
 
-                                await this.setObjectNotExistsAsync(path + 'location.latitude', {
+                                await this.setObjectNotExistsAsync(`${deviceId}.location.latitude`, {
                                     type: 'state',
                                     common: {
                                         name: {
@@ -418,9 +417,9 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setStateAsync(path + 'location.latitude', { val: parseFloat(sensorData.location.latitude), ack: true });
+                                await this.setStateChangedAsync(`${deviceId}.location.latitude`, { val: parseFloat(sensorData.location.latitude), ack: true });
 
-                                await this.setObjectNotExistsAsync(path + 'location.altitude', {
+                                await this.setObjectNotExistsAsync(`${deviceId}.location.altitude`, {
                                     type: 'state',
                                     common: {
                                         name: {
@@ -443,9 +442,9 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setStateAsync(path + 'location.altitude', { val: parseFloat(sensorData.location.altitude), ack: true });
+                                await this.setStateChangedAsync(`${deviceId}.location.altitude`, { val: parseFloat(sensorData.location.altitude), ack: true });
 
-                                await this.setObjectNotExistsAsync(path + 'timestamp', {
+                                await this.setObjectNotExistsAsync(`${deviceId}.'timestamp`, {
                                     type: 'state',
                                     common: {
                                         name: {
@@ -467,7 +466,7 @@ class Luftdaten extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setStateAsync(path + 'timestamp', { val: new Date(sensorData.timestamp).getTime(), ack: true });
+                                await this.setStateChangedAsync(`${deviceId}.timestamp`, { val: new Date(sensorData.timestamp).getTime(), ack: true });
                             }
                         }
 
@@ -475,24 +474,24 @@ class Luftdaten extends utils.Adapter {
                     })
                     .catch(async (error) => {
                         if (axios.isCancel(error)) {
-                            await this.setStateAsync(path + 'responseCode', -2, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -2, ack: true });
                         } else if (error.response) {
                             // The request was made and the server responded with a status code
 
                             this.log.warn(
                                 `[fillSensorData] received error ${error.response.status} response from remote sensor ${sensor.identifier} with content: ${JSON.stringify(error.response.data)}`,
                             );
-                            await this.setStateAsync(path + 'responseCode', { val: error.response.status, ack: true });
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: error.response.status, ack: true });
                         } else if (error.request) {
                             // The request was made but no response was received
                             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                             // http.ClientRequest in node.js
                             this.log.info(`[fillSensorData] error: ${error.message}`);
-                            await this.setStateAsync(path + 'responseCode', -1, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -1, ack: true });
                         } else {
                             // Something happened in setting up the request that triggered an Error
                             this.log.info(`[fillSensorData] error: ${error.message}`);
-                            await this.setStateAsync(path + 'responseCode', -99, true);
+                            await this.setStateAsync(`${deviceId}.responseCode`, { val: -99, ack: true });
                         }
 
                         reject('http error');
