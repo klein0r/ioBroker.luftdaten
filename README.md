@@ -53,7 +53,7 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0 (2023-05-01)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
@@ -79,14 +79,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 ### 2.2.1 (2022-03-14)
 
 * (klein0r) Do not delete sensors on http problems
-
-### 2.2.0 (2022-03-14)
-
-* (klein0r) Added documentation
-* (klein0r) Added hint for Admin 4 configuration
-* (klein0r) Updated state roles
-* (klein0r) Updated debug messages to provide more information
-* (klein0r) Updated dependencies
 
 ## License
 
