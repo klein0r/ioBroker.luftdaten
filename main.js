@@ -450,7 +450,7 @@ class Luftdaten extends utils.Adapter {
                                 });
                                 await this.setStateChangedAsync(`${deviceId}.location.altitude`, { val: parseFloat(sensorData.location.altitude), ack: true });
 
-                                await this.setObjectNotExistsAsync(`${deviceId}.'timestamp`, {
+                                await this.setObjectNotExistsAsync(`${deviceId}.timestamp`, {
                                     type: 'state',
                                     common: {
                                         name: {
