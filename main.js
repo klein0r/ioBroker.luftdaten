@@ -1,10 +1,7 @@
-/* jshint -W097 */
-/* jshint strict: false */
-/* jslint node: true */
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const axios = require('axios');
+const axios = require('axios').default;
 const adapterName = require('./package.json').name.split('.').pop();
 
 axios.interceptors.request.use((x) => {
