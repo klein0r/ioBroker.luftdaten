@@ -96,17 +96,17 @@
       }
     },
     "titleLang": {
-      "en": "Luftdaten.info",
-      "de": "Luftdaten.info",
-      "ru": "Luftdaten.info",
-      "pt": "Luftdaten.info",
-      "nl": "Luftdaten.info",
-      "fr": "Luftdaten.info",
-      "it": "Luftdaten.info",
-      "es": "Luftdaten.info",
-      "pl": "Luftdaten.info",
-      "zh-cn": "Luftdaten.info",
-      "uk": "Luftdaten.info"
+      "en": "Luftdaten",
+      "de": "Luftdaten",
+      "ru": "Luftdaten",
+      "pt": "Luftdaten",
+      "nl": "Luftdaten",
+      "fr": "Luftdaten",
+      "it": "Luftdaten",
+      "es": "Luftdaten",
+      "pl": "Luftdaten",
+      "zh-cn": "Luftdaten",
+      "uk": "Luftdaten"
     },
     "desc": {
       "en": "Loads current air quality data from a local or remote sensor",
@@ -128,7 +128,8 @@
       "web",
       "weather",
       "air",
-      "quality"
+      "quality",
+      ""
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
@@ -146,6 +147,11 @@
     "dataSource": "poll",
     "adminUI": {
       "config": "json"
+    },
+    "localLinks": {
+      "map": {
+        "link": "https://maps.sensor.community/"
+      }
     },
     "docs": {
       "en": [
