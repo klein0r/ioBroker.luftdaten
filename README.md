@@ -53,6 +53,8 @@ iobroker add luftdaten
 -->
 ### **WORK IN PROGRESS**
 
+NodeJS 16.x is required
+
 * (klein0r) Added link to sensor map to intro tab
 
 ### 3.0.0 (2023-05-01)
