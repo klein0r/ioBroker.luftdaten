@@ -446,32 +446,32 @@ class Luftdaten extends utils.Adapter {
                                     native: {},
                                 });
                                 await this.setStateChangedAsync(`${deviceId}.location.altitude`, { val: parseFloat(sensorData.location.altitude), ack: true });
-
-                                await this.setObjectNotExistsAsync(`${deviceId}.timestamp`, {
-                                    type: 'state',
-                                    common: {
-                                        name: {
-                                            en: 'Last Update',
-                                            de: 'Letztes Update',
-                                            ru: 'Последнее обновление',
-                                            pt: 'Última atualização',
-                                            nl: 'Laatste update',
-                                            fr: 'Dernière mise à jour',
-                                            it: 'Ultimo aggiornamento',
-                                            es: 'Última actualización',
-                                            pl: 'Ostatnia aktualizacja',
-                                            uk: 'Останнє оновлення',
-                                            'zh-cn': '最后更新',
-                                        },
-                                        type: 'number',
-                                        role: 'date',
-                                        read: true,
-                                        write: false,
-                                    },
-                                    native: {},
-                                });
-                                await this.setStateChangedAsync(`${deviceId}.timestamp`, { val: new Date(sensorData.timestamp).getTime(), ack: true });
                             }
+
+                            await this.setObjectNotExistsAsync(`${deviceId}.timestamp`, {
+                                type: 'state',
+                                common: {
+                                    name: {
+                                        en: 'Last Update',
+                                        de: 'Letztes Update',
+                                        ru: 'Последнее обновление',
+                                        pt: 'Última atualização',
+                                        nl: 'Laatste update',
+                                        fr: 'Dernière mise à jour',
+                                        it: 'Ultimo aggiornamento',
+                                        es: 'Última actualización',
+                                        pl: 'Ostatnia aktualizacja',
+                                        uk: 'Останнє оновлення',
+                                        'zh-cn': '最后更新',
+                                    },
+                                    type: 'number',
+                                    role: 'date',
+                                    read: true,
+                                    write: false,
+                                },
+                                native: {},
+                            });
+                            await this.setStateChangedAsync(`${deviceId}.timestamp`, { val: new Date(sensorData.timestamp).getTime(), ack: true });
                         }
 
                         resolve(response.responseTime);
