@@ -34,8 +34,13 @@
                 "_externalMapLink": {
                     "type": "staticLink",
                     "href": "https://maps.sensor.community/",
-                    "label": "Sensor map",
-                    "button": true
+                    "text": "Sensor map",
+                    "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNDA4IDEyMGMwIDU0LjYtNzMuMSAxNTEuOS0xMDUuMiAxOTJjLTcuNyA5LjYtMjIgOS42LTI5LjYgMEMyNDEuMSAyNzEuOSAxNjggMTc0LjYgMTY4IDEyMEMxNjggNTMuNyAyMjEuNyAwIDI4OCAwczEyMCA1My43IDEyMCAxMjB6bTggODAuNGMzLjUtNi45IDYuNy0xMy44IDkuNi0yMC42Yy41LTEuMiAxLTIuNSAxLjUtMy43bDExNi00Ni40QzU1OC45IDEyMy40IDU3NiAxMzUgNTc2IDE1MlY0MjIuOGMwIDkuOC02IDE4LjYtMTUuMSAyMi4zTDQxNiA1MDNWMjAwLjR6TTEzNy42IDEzOC4zYzIuNCAxNC4xIDcuMiAyOC4zIDEyLjggNDEuNWMyLjkgNi44IDYuMSAxMy43IDkuNiAyMC42VjQ1MS44TDMyLjkgNTAyLjdDMTcuMSA1MDkgMCA0OTcuNCAwIDQ4MC40VjIwOS42YzAtOS44IDYtMTguNiAxNS4xLTIyLjNsMTIyLjYtNDl6TTMyNy44IDMzMmMxMy45LTE3LjQgMzUuNy00NS43IDU2LjItNzdWNTA0LjNMMTkyIDQ0OS40VjI1NWMyMC41IDMxLjMgNDIuMyA1OS42IDU2LjIgNzdjMjAuNSAyNS42IDU5LjEgMjUuNiA3OS42IDB6TTI4OCAxNTJhNDAgNDAgMCAxIDAgMC04MCA0MCA0MCAwIDEgMCAwIDgweiIvPjwvc3ZnPg==",
+                    "button": true,
+                    "variant": "contained",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
                 },
                 "sensors": {
                     "newLine": true,
