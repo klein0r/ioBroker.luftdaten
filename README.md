@@ -57,6 +57,7 @@ NodeJS 16.x is required
 
 * (klein0r) Added link to sensor map to intro tab
 * (klein0r) Create timestamps if location is not available
+* (klein0r) Added admin icons
 
 ### 3.0.0 (2023-05-01)
 
