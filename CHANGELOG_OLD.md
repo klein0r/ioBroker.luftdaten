@@ -1,4 +1,8 @@
 # Older changes
+## 2.2.1 (2022-03-14)
+
+* (klein0r) Do not delete sensors on http problems
+
 ## 2.2.0 (2022-03-14)
 
 * (klein0r) Added documentation

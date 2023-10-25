@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "news": {
+      "3.1.0": {
+        "en": "NodeJS 16.x is required\n\n* Added link to sensor map to intro tab\n* Create timestamps if location is not available\n* Added admin icons",
+        "de": "NodeJS 16.x ist erforderlich\n\n* Link zur Sensorkarte hinzugefügt\n* Zeitstempel erstellen, wenn der Standort nicht verfügbar ist\n* Admin-Symbole hinzugefügt",
+        "ru": "NodeJS 16.x требуется\n\n* Добавлена ссылка на карту датчика на вкладку intro\n* Создавайте метки, если место не доступно\n* Добавлены иконки админ",
+        "pt": "NodeJS 16.x é necessário\n\n* Adicionado link para o mapa do sensor para a guia intro\n* Criar timestamps se a localização não estiver disponível\n* Adicionado ícones de administrador",
+        "nl": "NodeJS 16.x is vereist\n\nQuality over Quantity (QoQ) Releases Vertaling:\n♪ Create timestamps if locatie is not beschikbaar ♪\n♪ Added admin icons ♪",
+        "fr": "NodeJS 16.x est nécessaire\n\n* Ajout du lien vers la carte de capteur à l'onglet intro\n* Créer des timetamps si l'emplacement n'est pas disponible\n* Ajout des icônes d'administration",
+        "it": "NodeJS 16.x è richiesto\n\n* Aggiunto link alla mappa del sensore alla scheda intro\n* Creare timestamp se la posizione non è disponibile\n* Aggiunte icone di amministratore",
+        "es": "NodeJS 16.x es necesario\n\n* Añadido enlace al mapa de sensores a la pestaña de introducción\n* Crear timetamps si la ubicación no está disponible\n* iconos de administración añadidos",
+        "pl": "NodeJS 16 (ang.)\n\n* Włącz do mapy czujników do wstawiania tabeli\n* Wspomnienia czasowe nie są dostępne\n* Added admin icon",
+        "uk": "NodeJS 16.x обов'язковий\n\n* Додано посилання на сенсорну карту в вкладці intro\n* Створіть часові запаси, якщо розташування не доступна\n* Додано іконки адміністратора",
+        "zh-cn": "不需要16.JS16x。\n\n* 在表格中增添传感器图链接。\n* 如果不能提供地点,则设立时间。\n* 增加说明"
+      },
       "3.0.0": {
         "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added link to sensor map to instance configuration\n* Updated dependencies\n* Updated depedency for js-controller to 4.0.15\n* Dropped Admin 5 support\n* Added Ukrainian language",
         "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Link zur Sensorkarte zur Instanz-Konfiguration hinzugefügt\n* Aktualisierte Abhängigkeiten\n* Aktualisierte Depedanz für js-Controller auf 4.0.15\n* Dropped Admin 5 Unterstützung\n* Hinzugefügt Ukrainische Sprache",
@@ -80,19 +93,6 @@
         "pl": "Dodana dokumentacja\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nZaktualizowane role stanowe\nZaktualizowano komunikaty debugowania, aby dostarczyć więcej informacji\nZaktualizowane zależności",
         "zh-cn": "添加的文档\n添加了 Admin 4 配置的提示\n更新了状态角色\n更新了调试消息以提供更多信息\n更新的依赖项",
         "uk": "Додана документація\nДодано підказку для конфігурації Admin 4\nОновлені ролі стану\nОновлено повідомлення про налагодження, щоб надати більше інформації\nОновлені залежності"
-      },
-      "2.1.3": {
-        "en": "Updated dependencies",
-        "de": "Aktualisierte Abhängigkeiten",
-        "ru": "Обновленные зависимости",
-        "pt": "Dependências atualizadas",
-        "nl": "Bijgewerkte afhankelijkheden",
-        "fr": "Dépendances mises à jour",
-        "it": "Dipendenze aggiornate",
-        "es": "Dependencias actualizadas",
-        "pl": "Zaktualizowane zależności",
-        "zh-cn": "更新的依赖项",
-        "uk": "Оновлені залежності"
       }
     },
     "titleLang": {
