@@ -25,7 +25,7 @@ You can decide if you want to add a local sensor by ip or if you just want to us
 
 ## Sponsored by
 
-[![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-luftdaten)
+[![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png?2024)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-luftdaten)
 
 ## Installation
 
