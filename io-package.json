@@ -131,7 +131,12 @@
       "quality",
       ""
     ],
-    "license": "MIT",
+    "tier": 3,
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "automaticUpgrade": "patch",
     "platform": "Javascript/Node.js",
     "icon": "luftdaten.png",
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.luftdaten/master/admin/luftdaten.png",
