@@ -128,8 +128,7 @@
       "web",
       "weather",
       "air",
-      "quality",
-      ""
+      "quality"
     ],
     "tier": 3,
     "licenseInformation": {
