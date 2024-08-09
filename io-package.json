@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "news": {
+      "4.0.0": {
+        "en": "NodeJS >= 18.x and js-controller >= 5 is required",
+        "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich",
+        "ru": "NodeJS >= 18.x и js-контроллер >= 5 требуется",
+        "pt": "NodeJS >= 18.x e js-controller >= 5 é necessário",
+        "nl": "Voor de toepassing van de onderverdelingen 870190 tot en met 870290 wordt onder post 8702 verstaan: 5 is vereist",
+        "fr": "NodeJS >= 18.x et js-controller >= 5 est nécessaire",
+        "it": "NodeJS >= 18.x e js-controller 5 è richiesto",
+        "es": "NodeJS >= 18.x y js-controller Se requiere 5",
+        "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane",
+        "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково",
+        "zh-cn": "节点JS18x和js控制器QQ 需要5个"
+      },
       "3.1.0": {
         "en": "NodeJS 16.x is required\n\n* Added link to sensor map to intro tab\n* Create timestamps if location is not available\n* Added admin icons",
         "de": "NodeJS 16.x ist erforderlich\n\n* Link zur Sensorkarte hinzugefügt\n* Zeitstempel erstellen, wenn der Standort nicht verfügbar ist\n* Admin-Symbole hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Nie usuwaj czujników w przypadku problemów z http",
         "zh-cn": "不要删除关于 http 问题的传感器",
         "uk": "Не видаляйте датчики на проблемах http"
-      },
-      "2.2.0": {
-        "en": "Added documentation\nAdded hint for Admin 4 configuration\nUpdated state roles\nUpdated debug messages to provide more information\nUpdated dependencies",
-        "de": "Dokumentation hinzugefügt\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nStatusrollen aktualisiert\nAktualisierte Debug-Meldungen, um weitere Informationen bereitzustellen\nAktualisierte Abhängigkeiten",
-        "ru": "Добавлена документация\nДобавлена подсказка для конфигурации Admin 4\nОбновлены роли состояния\nОбновлены отладочные сообщения для предоставления дополнительной информации.\nОбновленные зависимости",
-        "pt": "Documentação adicionada\nAdicionada dica para configuração do Admin 4\nFunções de estado atualizadas\nMensagens de depuração atualizadas para fornecer mais informações\nDependências atualizadas",
-        "nl": "Toegevoegde documentatie\nHint toegevoegd voor configuratie van Admin 4\nBijgewerkte statusrollen\nBijgewerkte foutopsporingsberichten om meer informatie te geven\nBijgewerkte afhankelijkheden",
-        "fr": "Documents ajoutés\nAjout d'un indice pour la configuration d'Admin 4\nRôles d'état mis à jour\nMessages de débogage mis à jour pour fournir plus d'informations\nDépendances mises à jour",
-        "it": "Aggiunta documentazione\nAggiunto suggerimento per la configurazione dell'amministratore 4\nRuoli statali aggiornati\nMessaggi di debug aggiornati per fornire ulteriori informazioni\nDipendenze aggiornate",
-        "es": "Documentación añadida\nSugerencia agregada para la configuración de Admin 4\nRoles de estado actualizados\nMensajes de depuración actualizados para proporcionar más información.\nDependencias actualizadas",
-        "pl": "Dodana dokumentacja\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nZaktualizowane role stanowe\nZaktualizowano komunikaty debugowania, aby dostarczyć więcej informacji\nZaktualizowane zależności",
-        "zh-cn": "添加的文档\n添加了 Admin 4 配置的提示\n更新了状态角色\n更新了调试消息以提供更多信息\n更新的依赖项",
-        "uk": "Додана документація\nДодано підказку для конфігурації Admin 4\nОновлені ролі стану\nОновлено повідомлення про налагодження, щоб надати більше інформації\nОновлені залежності"
       }
     },
     "titleLang": {
