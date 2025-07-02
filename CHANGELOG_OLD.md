@@ -1,4 +1,9 @@
 # Older changes
+## 2.2.3 (2022-04-11)
+
+* (klein0r) Always stop instance when tasks are completed
+* (klein0r) Updated log messages
+
 ## 2.2.2 (2022-03-14)
 
 * (klein0r) Bugfix: Requested local sensors with https instead of http

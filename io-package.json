@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "luftdaten",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "news": {
+      "5.0.0": {
+        "en": "NodeJS >= 20.x and js-controller >= 6 is required",
+        "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich",
+        "ru": "NodeJS >= 20.x и js-контроллер >= 6 Требуется",
+        "pt": "NodeJS >= 20.x e js-controlador >= 6 é necessário",
+        "nl": "Van niet-gelegeerd staal 6 is vereist",
+        "fr": "NodeJS >= 20.x et js-controller >= 6 est nécessaire",
+        "it": "NodeJS >= 20.x e js-controller >= 6 è richiesto",
+        "es": "NodeJS ю= 20.x y js-controller Se requiere 6",
+        "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane",
+        "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий",
+        "zh-cn": "节点JS20x和js控制器QQ 需要6个"
+      },
       "4.0.0": {
         "en": "NodeJS >= 18.x and js-controller >= 5 is required",
         "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich",
@@ -80,19 +93,6 @@
         "pl": "Bugfix: Żądane lokalne czujniki z https zamiast http",
         "zh-cn": "错误修正：使用 https 而不是 http 请求本地传感器",
         "uk": "Виправлення: локальні датчики запитувалися з https замість http"
-      },
-      "2.2.1": {
-        "en": "Do not delete sensors on http problems",
-        "de": "Löschen Sie keine Sensoren bei HTTP-Problemen",
-        "ru": "Не удалять датчики при проблемах с http",
-        "pt": "Não exclua sensores em problemas de http",
-        "nl": "Verwijder geen sensoren bij http-problemen",
-        "fr": "Ne supprimez pas les capteurs sur les problèmes http",
-        "it": "Non eliminare i sensori sui problemi http",
-        "es": "No elimine sensores en problemas de http",
-        "pl": "Nie usuwaj czujników w przypadku problemów z http",
-        "zh-cn": "不要删除关于 http 问题的传感器",
-        "uk": "Не видаляйте датчики на проблемах http"
       }
     },
     "titleLang": {
