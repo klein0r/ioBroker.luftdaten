@@ -88,6 +88,8 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Abort HTTP requests if running too long
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 The MIT License (MIT)
