@@ -3,19 +3,6 @@
     "name": "luftdaten",
     "version": "6.0.0",
     "news": {
-      "6.0.0": {
-        "en": "Adapter requires node.js >= 22 now\nadmin 7.6.20 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
-        "de": "Adapter benötigt node.js >= 22 jetzt\nadmin 7.6.20 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
-        "ru": "Адаптер требует node.js >= 22 сейчас\nadmin 7.6.20 и js-контроллер 6.0.11 (или более поздний)\nОбновленные зависимости",
-        "pt": "Adaptador requer nod.js >= 22 agora\nadmin 7.6.20 e js-controller 6.0.11 (ou posterior) são necessários\nDependências atualizadas",
-        "nl": "Voor de adapter zijn node.js < 22 nu nodig\nadmin 7.6.20 en js-controller 6.0.11 (of later) zijn vereist\nBijgewerkte afhankelijkheden",
-        "fr": "Adaptateur nécessite node.js >= 22 maintenant\nadmin 7.6.20 et js-controller 6.0.11 (ou plus tard) sont requis\nDépendances actualisées",
-        "it": "Adattatore richiede node.js >= 22 ora\nadmin 7.6.20 e js-controller 6.0.11 (o più tardi) sono richiesti\nDipendenze aggiornate",
-        "es": "Adaptador requiere node.js ю= 22 ahora\nadmin 7.6.20 y js-controller 6.0.11 (o posterior) son necesarios\nDependencias actualizadas",
-        "pl": "Adapter wymaga node.js > = 22\nwymagane jest admin 7.6.20 i js- controller 6.0.11 (lub później)\nAktualizacja zależności",
-        "uk": "Адаптер вимагає node.js >= 22 тепер\nadmin 7.6.20 і js-controller 6.0.11 (або пізніше) обов'язкові\nОновлені залежності",
-        "zh-cn": "适配器需要节点.js 现在22\n需要admin 7.6.20和js控制器 6.0.11(或以后)\n更新的依赖关系"
-      },
       "5.0.0": {
         "en": "NodeJS >= 20.x and js-controller >= 6 is required",
         "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich",
