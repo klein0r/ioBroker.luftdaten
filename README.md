@@ -51,8 +51,7 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 6.0.0 (2026-05-05)
 
 * (copilot) Adapter requires node.js >= 22 now
 * (@klein0r) admin 7.6.20 and js-controller 6.0.11 (or later) are required
@@ -83,12 +82,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 * (klein0r) Updated depedency for js-controller to 4.0.15
 * (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
-
-### 2.2.4 (2022-04-14)
-
-* (klein0r) Abort HTTP requests if running too long
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 

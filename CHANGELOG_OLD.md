@@ -1,4 +1,10 @@
 # Older changes
+## 2.2.4 (2022-04-14)
+
+* (klein0r) Abort HTTP requests if running too long
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## 2.2.3 (2022-04-11)
 
 * (klein0r) Always stop instance when tasks are completed
