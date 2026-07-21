@@ -7,8 +7,8 @@
     "Request Timeout": "Час очікування запиту минув",
     "Sensor Identifier": "Ідентифікатор датчика",
     "Sensor Type": "Тип датчика",
+    "Sensor map": "Сенсорна карта",
     "Sensors": "Датчики",
     "You can find remote sensors here": "Ви можете знайти дистанційні датчики <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>тут</a>",
-    "in Seconds": "за секунди",
-    "Sensor map": "Сенсорна карта"
+    "in Seconds": "за секунди"
 }

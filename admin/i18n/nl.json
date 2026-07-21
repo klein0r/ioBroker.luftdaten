@@ -7,8 +7,8 @@
     "Request Timeout": "Verzoek time-out",
     "Sensor Identifier": "Sensoridentificatie",
     "Sensor Type": "Sensortype",
+    "Sensor map": "Sensorkaart",
     "Sensors": "Sensoren",
     "You can find remote sensors here": "Remote sensoren vind je <a target='_blank' href='http://deutschland.maps.luftdaten.info/'>hier</a>",
-    "in Seconds": "in seconden",
-    "Sensor map": "Sensorkaart"
+    "in Seconds": "in seconden"
 }
