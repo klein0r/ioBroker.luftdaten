@@ -75,6 +75,7 @@
                                 "it": "Nome del sensore",
                                 "es": "Nombre del sensor",
                                 "pl": "Nazwa czujnika",
+                                "uk": "Назва датчика",
                                 "zh-cn": "传感器名称"
                             },
                             "filter": true,
@@ -95,6 +96,7 @@
                                         "it": "A distanza",
                                         "es": "Remoto",
                                         "pl": "Zdalny",
+                                        "uk": "Дистанційний",
                                         "zh-cn": "远程"
                                     },
                                     "value": "remote"
@@ -110,6 +112,7 @@
                                         "it": "Locale",
                                         "es": "Local",
                                         "pl": "Lokalny",
+                                        "uk": "Місцеві",
                                         "zh-cn": "本地"
                                     },
                                     "value": "local"
@@ -127,6 +130,7 @@
                                 "it": "Tipo di sensore",
                                 "es": "Tipo de sensor",
                                 "pl": "Typ czujnika",
+                                "uk": "Тип датчика",
                                 "zh-cn": "传感器类型"
                             },
                             "filter": false,
@@ -147,6 +151,7 @@
                                 "it": "Identificatore del sensore",
                                 "es": "Identificador de sensor",
                                 "pl": "Identyfikator czujnika",
+                                "uk": "Ідентифікатор датчика",
                                 "zh-cn": "传感器标识符"
                             },
                             "filter": false,
