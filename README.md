@@ -51,6 +51,10 @@ iobroker add luftdaten
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Added missing translations
+
 ### 6.0.1 (2026-05-05)
 
 * (copilot) Adapter requires node.js >= 22 now
