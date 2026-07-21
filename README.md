@@ -83,6 +83,8 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 * (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 The MIT License (MIT)
