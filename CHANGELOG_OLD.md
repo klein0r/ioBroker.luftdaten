@@ -1,4 +1,14 @@
 # Older changes
+## 3.0.0 (2023-05-01)
+
+NodeJS 14.x is required (NodeJS 12.x is EOL)
+
+* (klein0r) Added link to sensor map to instance configuration
+* (klein0r) Updated dependencies
+* (klein0r) Updated depedency for js-controller to 4.0.15
+* (klein0r) Dropped Admin 5 support
+* (klein0r) Added Ukrainian language
+
 ## 2.2.4 (2022-04-14)
 
 * (klein0r) Abort HTTP requests if running too long
